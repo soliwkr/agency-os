@@ -10,15 +10,15 @@ const { showSidebar, toggleSidebar } = useProposals();
 </script>
 <template>
 	<header class="w-full space-y-4 md:flex md:items-center md:space-x-6 md:space-y-0">
-		<div class="flex items-center bg-gray-800 rounded-lg md:justify-between md:flex-1">
+		<div class="flex items-center bg-inverted rounded-lg md:justify-between md:flex-1">
 			<div class="px-4 py-3">
-				<Logo class="h-6 text-white" />
+				<Logo class="h-6 text-inverted" />
 			</div>
 
-			<TypographyHeadline size="xs" :content="`Proposal for ${organization}`" class="text-white" />
+			<TypographyHeadline size="xs" :content="`Proposal for ${organization}`" class="text-inverted" />
 
 			<div class="flex items-center justify-end flex-shrink-0 p-2 space-x-2">
-				<DarkModeToggle class="hidden text-gray-200 md:block hover:text-gray-400" />
+				<DarkModeToggle class="hidden text-inverted/80 md:block hover:text-inverted" />
 			</div>
 		</div>
 

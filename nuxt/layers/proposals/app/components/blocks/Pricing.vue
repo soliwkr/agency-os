@@ -6,18 +6,18 @@
 				<div>
 					<div class="text-left">
 						<div>
-							<div class="flex items-center justify-center w-12 h-12 text-black rounded-full bg-gray-50">❖</div>
-							<p class="mt-4 text-lg font-medium text-black lg:text-2xl">Starter</p>
+							<div class="flex items-center justify-center w-12 h-12 text-highlighted rounded-full bg-elevated">❖</div>
+							<p class="mt-4 text-lg font-medium text-highlighted lg:text-2xl">Starter</p>
 						</div>
 						<p class="mt-6">
-							<span class="text-4xl text-black lg:text-6xl">$15</span>
-							<span class="text-base font-medium text-gray-500">/mo</span>
+							<span class="text-4xl text-highlighted lg:text-6xl">$15</span>
+							<span class="text-base font-medium text-muted">/mo</span>
 						</p>
-						<p class="mt-6 text-sm text-gray-500">
+						<p class="mt-6 text-sm text-muted">
 							The issue tracking tool you'll enjoy using.Helps streamline software projects, sprints, tasks, and bug
 							tracking. It’s built for high-performance teams.
 						</p>
-						<p class="mt-4 text-lg font-medium text-black lg:text-2xl">Features</p>
+						<p class="mt-4 text-lg font-medium text-highlighted lg:text-2xl">Features</p>
 						<ul class="gap-4 mt-6 space-y-3 list-none lg:gap-6" role="list">
 							<li class="flex items-center">
 								<ion-icon
@@ -26,7 +26,7 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">Unlimited deploys</span>
+								<span class="ml-3 text-muted">Unlimited deploys</span>
 							</li>
 							<li class="flex items-center">
 								<ion-icon
@@ -35,7 +35,7 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">Unlimited members</span>
+								<span class="ml-3 text-muted">Unlimited members</span>
 							</li>
 							<li class="flex items-center">
 								<ion-icon
@@ -44,7 +44,7 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">5 TB cloud storage</span>
+								<span class="ml-3 text-muted">5 TB cloud storage</span>
 							</li>
 							<li class="flex items-center">
 								<ion-icon
@@ -53,7 +53,7 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">Growth oriented</span>
+								<span class="ml-3 text-muted">Growth oriented</span>
 							</li>
 							<li class="flex items-center">
 								<ion-icon
@@ -62,12 +62,12 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">Marketing campaigns</span>
+								<span class="ml-3 text-muted">Marketing campaigns</span>
 							</li>
 						</ul>
 						<div class="mt-6">
 							<a
-								class="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-black border-2 border-black rounded-full nline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"
+								class="items-center justify-center w-full px-6 py-2.5 text-center text-inverted duration-200 bg-inverted border-2 border-inverted rounded-full nline-flex hover:bg-transparent hover:border-inverted hover:text-highlighted focus:outline-none focus-visible:outline-inverted text-sm focus-visible:ring-inverted"
 								href="#"
 								aria-describedby="tier-starter"
 							>
@@ -79,18 +79,18 @@
 				<div>
 					<div class="text-left">
 						<div>
-							<div class="flex items-center justify-center w-12 h-12 text-black rounded-full bg-gray-50">❖</div>
-							<p class="mt-4 text-lg font-medium text-black lg:text-2xl">Mega Pro</p>
+							<div class="flex items-center justify-center w-12 h-12 text-highlighted rounded-full bg-elevated">❖</div>
+							<p class="mt-4 text-lg font-medium text-highlighted lg:text-2xl">Mega Pro</p>
 						</div>
 						<p class="mt-6">
-							<span class="text-4xl text-black lg:text-6xl">$35</span>
-							<span class="text-base font-medium text-gray-500">/mo</span>
+							<span class="text-4xl text-highlighted lg:text-6xl">$35</span>
+							<span class="text-base font-medium text-muted">/mo</span>
 						</p>
-						<p class="mt-6 text-sm text-gray-500">
+						<p class="mt-6 text-sm text-muted">
 							The issue tracking tool you'll enjoy using.Helps streamline software projects, sprints, tasks, and bug
 							tracking. It’s built for high-performance teams.
 						</p>
-						<p class="mt-4 text-lg font-medium text-black lg:text-2xl">Features</p>
+						<p class="mt-4 text-lg font-medium text-highlighted lg:text-2xl">Features</p>
 						<ul class="gap-4 mt-6 space-y-3 list-none lg:gap-6" role="list">
 							<li class="flex items-center">
 								<ion-icon
@@ -99,7 +99,7 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">Unlimited deploys</span>
+								<span class="ml-3 text-muted">Unlimited deploys</span>
 							</li>
 							<li class="flex items-center">
 								<ion-icon
@@ -108,7 +108,7 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">Unlimited members</span>
+								<span class="ml-3 text-muted">Unlimited members</span>
 							</li>
 							<li class="flex items-center">
 								<ion-icon
@@ -117,7 +117,7 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">5 TB cloud storage</span>
+								<span class="ml-3 text-muted">5 TB cloud storage</span>
 							</li>
 							<li class="flex items-center">
 								<ion-icon
@@ -126,7 +126,7 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">Growth oriented</span>
+								<span class="ml-3 text-muted">Growth oriented</span>
 							</li>
 							<li class="flex items-center">
 								<ion-icon
@@ -135,12 +135,12 @@
 									role="img"
 									aria-label="checkmark outline"
 								></ion-icon>
-								<span class="ml-3 text-gray-500">Marketing campaigns</span>
+								<span class="ml-3 text-muted">Marketing campaigns</span>
 							</li>
 						</ul>
 						<div class="mt-6">
 							<a
-								class="items-center justify-center w-full px-6 py-2.5 text-center text-white duration-200 bg-black border-2 border-black rounded-full nline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus-visible:outline-black text-sm focus-visible:ring-black"
+								class="items-center justify-center w-full px-6 py-2.5 text-center text-inverted duration-200 bg-inverted border-2 border-inverted rounded-full nline-flex hover:bg-transparent hover:border-inverted hover:text-highlighted focus:outline-none focus-visible:outline-inverted text-sm focus-visible:ring-inverted"
 								href="#"
 								aria-describedby="tier-company"
 							>

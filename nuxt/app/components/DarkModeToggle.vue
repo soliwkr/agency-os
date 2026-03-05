@@ -26,7 +26,7 @@ const isDark = computed({
 			color="neutral"
 			aria-label="Theme"
 			size="lg"
-			:class="[bg === 'dark' ? 'text-white' : '']"
+			:class="[bg === 'dark' ? 'text-inverted' : '']"
 			@click="isDark = !isDark"
 		/>
 		<template #fallback>

@@ -18,7 +18,7 @@ const testimonials = computed(() => {
 <template>
 	<BlockContainer class="relative overflow-hidden" full-width>
 		<div
-			class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-700 dark:via-gray-900 dark:to-primary"
+			class="absolute inset-0 bg-gradient-to-br from-default via-muted to-primary"
 		/>
 		<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
 

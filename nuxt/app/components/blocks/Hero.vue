@@ -25,8 +25,8 @@ defineProps<{
 			<NuxtImg
 				v-if="data.image"
 				class="w-full overflow-hidden dark:brightness-90 max-h-[700px] h-full object-cover rounded-card"
-				:src="data.image as string"
-				alt=""
+				:src="safeRelationId(data.image) as string"
+				:alt="safeRelation(data.image)?.description ?? ''"
 			/>
 		</div>
 	</BlockContainer>

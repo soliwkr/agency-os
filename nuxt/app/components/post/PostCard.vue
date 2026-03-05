@@ -62,7 +62,7 @@ const postCategory = computed(() => {
 				<DirectusIcon
 					v-if="post.type"
 					:name="iconMap[post.type ?? 'blog'] ?? 'material-symbols:article-outline-rounded'"
-					class="w-6 h-6 text-white"
+					class="w-6 h-6 text-inverted"
 				/>
 			</div>
 		</NuxtLink>

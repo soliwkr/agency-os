@@ -86,7 +86,7 @@ watch(isOpen, (val) => {
 				<!-- Help Button -->
 				<div
 					v-auto-animate
-					class="absolute z-50 hidden gap-2 text-white bg-opacity-75 item-center md:flex top-4 left-4"
+					class="absolute z-50 hidden gap-2 text-inverted bg-opacity-75 item-center md:flex top-4 left-4"
 				>
 					<div>
 						<UButton

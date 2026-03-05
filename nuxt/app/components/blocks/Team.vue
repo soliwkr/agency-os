@@ -90,11 +90,11 @@ const duration = computed(() => {
 				<!-- Team -->
 				<div
 					ref="target"
-					class="w-full relative grid h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 md:grid-cols-2 border-t-4 border-t-primary border-b-4 border-b-gray-500 mt-8 lg:mt-0"
+					class="relative grid w-full h-[49rem] max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 mt-8 border-t-4 border-t-primary border-b-4 border-b-default md:grid-cols-2 lg:mt-0"
 				>
-					<!-- <div class="absolute top-0 z-10 w-full h-16 bg-gradient-to-b from-white to-transparent dark:from-gray-800" /> -->
+					<!-- <div class="absolute top-0 z-10 w-full h-16 bg-gradient-to-b from-default to-transparent" /> -->
 					<!-- <div
-						class="absolute bottom-0 z-10 w-full h-16 bg-gradient-to-t from-white to-transparent dark:from-gray-800"
+						class="absolute bottom-0 z-10 w-full h-16 bg-gradient-to-t from-default to-transparent"
 					/> -->
 
 					<!-- Left Col -->

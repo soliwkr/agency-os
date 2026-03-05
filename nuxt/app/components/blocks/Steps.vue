@@ -41,7 +41,7 @@ const steps = computed(() => {
 						'relative p-6 md:flex md:space-x-8 ring-primary/50 ring-1 rounded-panel',
 					]"
 				>
-					<div v-if="step.image" class="flex-shrink-0 dark:bg-white dark:brightness-90 rounded-panel">
+					<div v-if="step.image" class="flex-shrink-0 bg-default rounded-panel dark:brightness-90">
 						<NuxtImg
 							v-if="step.image"
 							class="object-cover w-full h-32 rounded-card md:w-48 md:h-full"

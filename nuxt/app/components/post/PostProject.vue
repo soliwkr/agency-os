@@ -20,8 +20,8 @@ const galleryItems = computed(() => {
 			<NuxtImg class="absolute inset-0 object-cover w-full h-full" :src="page?.image" />
 			<div class="absolute inset-0 bg-inverted opacity-75" />
 			<div class="relative max-w-3xl p-8 mx-auto overflow-hidden bg-inverted/50 rounded-card">
-				<TypographyHeadline :content="page?.title" class="text-white" size="xl" />
-				<TypographyProse :content="page?.summary" class="text-white mt-4" />
+				<TypographyHeadline :content="page?.title" class="text-inverted" size="xl" />
+				<TypographyProse :content="page?.summary" class="mt-4 text-inverted" />
 			</div>
 		</header>
 

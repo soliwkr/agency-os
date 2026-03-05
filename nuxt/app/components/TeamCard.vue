@@ -64,15 +64,15 @@ const flipped = ref(false);
 			</Motionable>
 
 			<div class="absolute z-10 bottom-4 left-7 right-7">
-				<TypographyHeadline v-if="person.name" :content="person.name" size="sm" class="text-white drop-shadow">
+				<TypographyHeadline v-if="person.name" :content="person.name" size="sm" class="text-inverted drop-shadow">
 					{{ person?.name }}
 				</TypographyHeadline>
-				<TypographyTitle v-if="person.job_title" class="text-white/50">
+				<TypographyTitle v-if="person.job_title" class="text-inverted/50">
 					{{ person?.job_title }}
 				</TypographyTitle>
 			</div>
 
-			<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-black h-1/3 opacity-80"></div>
+			<div class="absolute bottom-0 left-0 right-0 h-1/3 opacity-80 bg-gradient-to-b from-transparent to-inverted"></div>
 		</div>
 	</div>
 </template>

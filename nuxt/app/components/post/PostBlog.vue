@@ -12,10 +12,10 @@ defineProps<PostBlogProps>();
 				<!-- Post Image -->
 				<div class="relative w-full max-w-3xl">
 					<div
-						class="relative w-full mx-auto rounded-card overflow-hidden bg-cover h-[300px] md:h-[450px] dark:outline-gray-800"
+						class="relative w-full mx-auto overflow-hidden bg-cover rounded-card h-[300px] md:h-[450px] outline-default"
 					>
 						<NuxtImg :src="page?.image" class="object-cover w-full h-full saturate-0 dark:brightness-90" alt="" />
-						<div class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-gray-100 to-gray-900" />
+						<div class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-muted to-inverted" />
 					</div>
 				</div>
 
@@ -47,7 +47,7 @@ defineProps<PostBlogProps>();
 				class="relative w-full max-w-4xl p-2 px-8 py-8 mx-auto -mt-12 overflow-hidden text-highlighted border md:-mt-32 rounded-card border-primary md:px-16 md:py-12"
 			>
 				<div
-					class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-700 dark:via-gray-900 dark:to-primary/50"
+					class="absolute inset-0 bg-gradient-to-br from-default via-muted to-primary/50"
 				/>
 				<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
 				<div class="relative">

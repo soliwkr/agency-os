@@ -17,9 +17,9 @@ const props = withDefaults(defineProps<DateDisplayProps>(), {
 	<div
 		:class="[
 			{
-				'border-primary-500': color === 'primary',
+				'border-primary': color === 'primary',
 				'border-accented': color === 'gray',
-				'border-amber-500': color === 'amber',
+				'border-secondary': color === 'amber',
 			},
 			'overflow-hidden text-center border rounded-lg',
 		]"
@@ -33,11 +33,11 @@ const props = withDefaults(defineProps<DateDisplayProps>(), {
 					'px-6 py-2 text-base': size === 'lg',
 				},
 				{
-					'bg-primary-500': color === 'primary',
+					'bg-primary': color === 'primary',
 					'bg-accented': color === 'gray',
-					'bg-amber-500': color === 'amber',
+					'bg-secondary': color === 'amber',
 				},
-				'font-semibold text-white uppercase',
+				'font-semibold text-inverted uppercase',
 			]"
 		>
 			{{ date ? getMonth(date) : '?' }}
@@ -63,7 +63,7 @@ const props = withDefaults(defineProps<DateDisplayProps>(), {
 					'px-4 text-sm': size === 'md',
 					'px-6 text-base': size === 'lg',
 				},
-				'text-primary-500',
+				'text-primary',
 			]"
 		>
 			{{ date ? getDay(date) : '' }}

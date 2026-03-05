@@ -9,7 +9,7 @@ defineProps<{
 	<BlockContainer>
 		<div class="relative overflow-hidden p-8 text-highlighted border md:px-10 md:py-8 border-primary/50 rounded-panel">
 			<div
-				class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-800 dark:via-gray-900 dark:to-gray-600"
+				class="absolute inset-0 bg-gradient-to-br from-default via-muted to-primary"
 			/>
 			<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
 			<div class="relative md:flex md:items-center md:justify-between md:space-x-4">

@@ -105,12 +105,12 @@ const mobileMenuOpen = ref(false);
 							</NuxtLink>
 							<DarkModeToggle bg="dark" class="" />
 							<!-- Profile dropdown -->
-							<UDropdown class="relative" :items="userNavigation">
+							<UDropdownMenu class="relative" :items="userNavigation">
 								<button>
 									<span class="sr-only">Open user menu</span>
 									<UAvatar class="w-12 h-12 mx-auto" :src="user.avatar" :alt="userName(user)" />
 								</button>
-							</UDropdown>
+							</UDropdownMenu>
 						</div>
 					</div>
 				</div>

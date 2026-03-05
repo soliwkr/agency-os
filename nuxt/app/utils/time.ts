@@ -32,7 +32,9 @@ const units: Record<string, number> = {
 const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 
 function getRelativeTime(d1: Date | string, d2: Date = new Date()): string {
+	if (!d1) return '';
 	if (!(d1 instanceof Date)) d1 = new Date(d1);
+	if (isNaN(d1.getTime())) return '';
 
 	const elapsed = d1.getTime() - d2.getTime();
 

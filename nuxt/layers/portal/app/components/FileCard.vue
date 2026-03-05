@@ -74,9 +74,9 @@ const possibleActions = (file: File) => {
 				<DirectusIcon :name="getFileIcon(file?.type)" class="flex-shrink-0 w-6 h-6 text-gray-500" />
 				<p class="text-xs line-clamp-2">{{ file.filename_download }}</p>
 			</div>
-			<UDropdown :items="possibleActions(file)">
+			<UDropdownMenu :items="possibleActions(file)">
 				<UButton icon="material-symbols:more-vert" variant="ghost" color="neutral" size="lg" />
-			</UDropdown>
+			</UDropdownMenu>
 		</div>
 
 		<div class="relative mt-2">

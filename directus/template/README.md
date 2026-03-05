@@ -1,10 +1,25 @@
-# AgencyOS Template
+# AgencyOS - Directus Template
 
-This is a template for [Directus](https://directus.io/) - an open-source headless CMS and API. Use the template-cli to load / apply this template to a blank instance.
+This directory contains the Directus template data for AgencyOS, used by the [Directus Template CLI](https://github.com/directus-community/directus-template-cli).
 
-## Why
+## Contents
 
-## What
+- `src/` – Schema, collections, content, files, flows, permissions, and other Directus configuration
+- `package.json` – Template metadata
+
+## Usage
+
+To apply this template to a Directus instance:
+
+```bash
+npx directus-template-cli@latest apply
+```
+
+To initialize a new project with this template:
+
+```bash
+npx directus-template-cli@latest init --template=https://github.com/directus-labs/agency-os
+```
 
 ## License
 

@@ -19,10 +19,6 @@ const tabs = [
 		href: `/portal/projects/${params.id}/tasks`,
 	},
 	{
-		name: 'Conversations',
-		href: `/portal/projects/${params.id}/conversations`,
-	},
-	{
 		name: 'Files',
 		href: `/portal/projects/${params.id}/files`,
 	},

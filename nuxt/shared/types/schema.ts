@@ -1,0 +1,1616 @@
+export interface BlockButton {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	type?: 'pages' | 'posts' | 'external' | null;
+	page?: Page | string | null;
+	post?: Post | string | null;
+	external_url?: string | null;
+	label?: string | null;
+	color?: 'primary' | 'gray' | 'black' | 'white' | null;
+	variant?: 'solid' | 'outline' | 'soft' | 'ghost' | 'link' | null;
+	button_group?: BlockButtonGroup | string | null;
+}
+
+export interface BlockButtonGroup {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	alignment?: 'start' | 'center' | 'end' | null;
+	buttons?: BlockButton[] | string[];
+}
+
+export interface BlockColumn {
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	rows?: BlockColumnsRow[] | string[];
+}
+
+export interface BlockColumnsRow {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	block_columns?: BlockColumn | string | null;
+	title?: string | null;
+	headline?: string | null;
+	image?: DirectusFile | string | null;
+	image_position?: 'left' | 'right' | null;
+	content?: string | null;
+	button_group?: BlockButtonGroup | string | null;
+}
+
+export interface BlockCta {
+	content?: string | null;
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	button_group?: BlockButtonGroup | string | null;
+}
+
+export interface BlockDivider {
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+}
+
+export interface BlockFaq {
+	faqs?: Array<{ title: string; answer: string }> | null;
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	alignment?: 'left' | 'center' | null;
+}
+
+export interface BlockForm {
+	form?: Form | string | null;
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+}
+
+export interface BlockGallery {
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	gallery_items?: BlockGalleryFile[] | string[];
+}
+
+export interface BlockGalleryFile {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	block_gallery_id?: BlockGallery | string | null;
+	directus_files_id?: DirectusFile | string | null;
+}
+
+export interface BlockHero {
+	content?: string | null;
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	image?: DirectusFile | string | null;
+	title?: string | null;
+	image_position?: 'left' | 'right' | null;
+	button_group?: BlockButtonGroup | string | null;
+}
+
+export interface BlockHtml {
+	/** @primaryKey */
+	id: string;
+	raw_html?: string | null;
+}
+
+export interface BlockLogocloud {
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	logos?: BlockLogocloudLogo[] | string[];
+}
+
+export interface BlockLogocloudLogo {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	block_logocloud_id?: BlockLogocloud | string | null;
+	directus_files_id?: DirectusFile | string | null;
+}
+
+export interface BlockPost {
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	headline?: string | null;
+	post_type?: 'all' | 'blog' | 'project' | 'video' | null;
+	featured_post?: Post | string | null;
+	show_search?: boolean | null;
+	layout?: 'grid' | 'cards' | null;
+	limit?: number | null;
+}
+
+export interface BlockQuote {
+	content?: string | null;
+	/** @primaryKey */
+	id: string;
+	subtitle?: string | null;
+	title?: string | null;
+}
+
+export interface BlockRichtext {
+	content?: string | null;
+	/** @required */
+	headline: string;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	alignment?: 'left' | 'center' | null;
+}
+
+export interface BlockStepItem {
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	image?: DirectusFile | string | null;
+	content?: string | null;
+	block_steps?: BlockStep | string | null;
+	sort?: number | null;
+	button_group?: BlockButtonGroup | string | null;
+}
+
+export interface BlockStep {
+	/** @description If enabled, image position is alternated between left and right. */
+	alternate_image_position?: boolean;
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	/** @description Show the step numbers on the website. For example: (Step 1, Step 2, etc) */
+	show_step_numbers?: boolean | null;
+	title?: string | null;
+	steps?: BlockStepItem[] | string[];
+}
+
+export interface BlockTeam {
+	content?: string | null;
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+}
+
+export interface BlockTestimonial {
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	testimonials?: BlockTestimonialSliderItem[] | string[];
+}
+
+export interface BlockTestimonialSliderItem {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	block_testimonial_slider_id?: BlockTestimonial | string | null;
+	testimonials_id?: Testimonial | string | null;
+}
+
+export interface BlockVideo {
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	title?: string | null;
+	type?: 'url' | 'file' | null;
+	video_file?: DirectusFile | string | null;
+	video_url?: string | null;
+}
+
+export interface Category {
+	color?: string | null;
+	headline?: string | null;
+	/** @primaryKey */
+	id: string;
+	seo?: Seo | string | null;
+	slug?: string | null;
+	sort?: number | null;
+	title?: string | null;
+}
+
+export interface Contact {
+	/** @primaryKey */
+	id: string;
+	/** @description Is this an active contact? */
+	status?: 'active' | 'archived' | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	first_name?: string | null;
+	last_name?: string | null;
+	/** @description Not every contact will have a login to the portal. This is the linked user account for this contact. */
+	user?: DirectusUser | string | null;
+	email?: string | null;
+	phone?: string | null;
+	job_title?: string | null;
+	/** @description Notes about this contact. Never visible to this person or their organization. */
+	contact_notes?: string | null;
+	organizations?: OrganizationsContact[] | string[];
+	deals?: OsDealContact[] | string[];
+	activities?: OsActivityContact[] | string[];
+}
+
+export interface Form {
+	date_created?: string | null;
+	date_updated?: string | null;
+	/** @primaryKey */
+	id: string;
+	key?: string | null;
+	on_success?: 'redirect' | 'message' | null;
+	redirect_url?: string | null;
+	/** @description The fields for the form. */
+	schema?: Array<{ name: string; type: 'text' | 'textarea' | 'checkbox' | 'radio' | 'file' | 'select' | 'hidden'; label: string; placeholder: string; help: string; validation: string; width: '100' | '67' | '50' | '33'; conditions: Array<{ field: string; action: 'show' | 'hide'; condition: 'is_empty' | 'is_filled' | 'contains' | 'not_contains' | 'equals' | 'not_equal'; value: string }> }> | null;
+	sort?: number | null;
+	status?: 'draft' | 'in_review' | 'published' | 'archived';
+	/** @description The text for the submit button label. */
+	submit_label?: string | null;
+	success_message?: string | null;
+	title?: string | null;
+	user_created?: DirectusUser | string | null;
+	user_updated?: DirectusUser | string | null;
+}
+
+export interface Globals {
+	address_country?: string | null;
+	address_locality?: string | null;
+	address_region?: string | null;
+	description?: string | null;
+	email?: string | null;
+	/** @primaryKey */
+	id: string;
+	og_image?: DirectusFile | string | null;
+	phone?: string | null;
+	postal_code?: string | null;
+	/** @description Social media profile URLs */
+	social_links?: Array<{ url: string; service: 'facebook' | 'instagram' | 'linkedin' | 'x' | 'vimeo' | 'youtube' | 'github' | 'discord' | 'docker' }> | null;
+	street_address?: string | null;
+	/** @description What's the website title? */
+	tagline?: string | null;
+	/** @description What's the website title? */
+	title?: string | null;
+	/** @description What's is the base url for the site? */
+	url?: string | null;
+	logo?: DirectusFile | string | null;
+	logo_dark_mode?: DirectusFile | string | null;
+	border_radius?: 'none' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | 'full' | null;
+	primary_color?: 'red' | 'orange' | 'amber' | 'yellow' | 'lime' | 'green' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'violet' | 'purple' | 'fuchsia' | 'pink' | 'rose' | null;
+	font_display?: string | null;
+	font_body?: string | null;
+	font_monospace?: string | null;
+	neutral_color?: 'slate' | 'gray' | 'zinc' | 'neutral' | 'stone' | null;
+	header_navigation?: NavigationItem[] | string[];
+	footer_navigation?: NavigationItem[] | string[];
+}
+
+export interface Inbox {
+	data?: Record<string, any> | null;
+	date_created?: string | null;
+	date_updated?: string | null;
+	form?: Form | string | null;
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	status?: 'new' | 'archived' | null;
+	user_created?: DirectusUser | string | null;
+	user_updated?: DirectusUser | string | null;
+	project?: OsProject | string | null;
+	task?: OsTask | string | null;
+}
+
+export interface NavigationItem {
+	has_children?: boolean | null;
+	/** @description Icon that displays in dropdown menus on website. */
+	icon?: string | null;
+	/** @primaryKey */
+	id: string;
+	/** @description Label to help users. Displays below the link in dropdown nav menus. */
+	label?: string | null;
+	open_in_new_tab?: boolean | null;
+	page?: Page | string | null;
+	parent?: NavigationItem | string | null;
+	sort?: number | null;
+	/** @required */
+	title: string;
+	type?: 'page' | 'url' | null;
+	url?: string | null;
+	globals_header?: Globals | string | null;
+	globals_footer?: Globals | string | null;
+	children?: NavigationItem[] | string[];
+}
+
+export interface OrganizationAddresse {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	organization?: Organization | string | null;
+	name?: string | null;
+	street_address?: string | null;
+	postal_code?: string | null;
+	/** @description State (or region if outside US) */
+	address_region?: string | null;
+	address_country?: string | null;
+	/** @description City */
+	address_locality?: string | null;
+	/** @description Is this the primary billing address? */
+	is_primary_billing?: boolean | null;
+}
+
+export interface Organization {
+	/** @primaryKey */
+	id: string;
+	status?: 'active' | 'archived';
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	name?: string | null;
+	website?: string | null;
+	logo?: DirectusFile | string | null;
+	brand_color?: string | null;
+	organization_notes?: string | null;
+	/** @description Company billing email address */
+	email?: string | null;
+	payment_terms?: OsPaymentTerm | string | null;
+	owner?: DirectusUser | string | null;
+	/** @description Company billing phone number */
+	phone?: string | null;
+	folder?: DirectusFolder | string | null;
+	stripe_customer_id?: string | null;
+	contacts?: OrganizationsContact[] | string[];
+	addresses?: OrganizationAddresse[] | string[];
+}
+
+export interface OrganizationsContact {
+	/** @primaryKey */
+	id: string;
+	contacts_id?: Contact | string | null;
+	organizations_id?: Organization | string | null;
+	sort?: number | null;
+}
+
+export interface OsActivity {
+	/** @primaryKey */
+	id: string;
+	status?: 'open' | 'completed';
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	/** @description What deal is this activity linked to? */
+	deal?: OsDeal | string | null;
+	activity_type?: 'call' | 'meeting' | 'email' | 'deadline' | null;
+	activity_notes?: string | null;
+	name?: string | null;
+	organization?: Organization | string | null;
+	/** @description Meeting start time */
+	start_time?: string | null;
+	/** @description Meeting end time */
+	end_time?: string | null;
+	/** @description When does this activity need to be completed? */
+	due_date?: string | null;
+	/** @description Who is assigned to perform this activity? Typically the deal owner. */
+	assigned_to?: DirectusUser | string | null;
+	contacts?: OsActivityContact[] | string[];
+}
+
+export interface OsActivityContact {
+	/** @primaryKey */
+	id: string;
+	os_activities_id?: OsActivity | string | null;
+	contacts_id?: Contact | string | null;
+}
+
+export interface OsDealContact {
+	/** @primaryKey */
+	id: string;
+	primary?: boolean | null;
+	os_deals_id?: OsDeal | string | null;
+	contacts_id?: Contact | string | null;
+	sort?: number | null;
+}
+
+export interface OsDeal {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	/** @description Name of the potential project */
+	name?: string | null;
+	/** @description Who's the sales rep / assigned to? */
+	owner?: DirectusUser | string | null;
+	organization?: Organization | string | null;
+	close_date?: string | null;
+	deal_stage?: OsDealStage | string | null;
+	next_contact_date?: string | null;
+	deal_value?: number | null;
+	deal_notes?: string | null;
+	contacts?: OsDealContact[] | string[];
+	proposals?: OsProposal[] | string[];
+	activities?: OsActivity[] | string[];
+}
+
+export interface OsDealStage {
+	/** @primaryKey */
+	id: string;
+	status?: 'published' | 'draft' | 'archived';
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	name?: string | null;
+	color?: string | null;
+}
+
+export interface OsEmailTemplate {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	subject?: string | null;
+	body?: string | null;
+	name?: string | null;
+}
+
+export interface OsExpense {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	category?: 'meals' | 'travel' | 'outsourced' | null;
+	name?: string | null;
+	cost?: number | null;
+	description?: string | null;
+	date?: string | null;
+	file?: DirectusFile | string | null;
+	project?: OsProject | string | null;
+	is_billable?: boolean | null;
+	invoice_item?: OsInvoiceItem | string | null;
+	status?: 'draft' | 'submitted' | 'approved' | 'paid' | 'voided';
+	is_reimbursable?: boolean | null;
+	user_submitted?: DirectusUser | string | null;
+}
+
+export interface OsInvoiceItem {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	invoice?: OsInvoice | string | null;
+	line_item_number?: number | null;
+	description?: string | null;
+	tax_rate?: OsTaxRate | string | null;
+	tax_amount?: number | null;
+	unit_price?: number | null;
+	/** @required */
+	quantity: number;
+	line_amount?: number | null;
+	billable_expense?: OsExpense | string | null;
+	item?: OsItem | string | null;
+	/** @required */
+	type: 'item' | 'expense' | 'custom';
+	item_name?: string | null;
+	override_unit_price?: boolean | null;
+}
+
+export interface OsInvoice {
+	/** @primaryKey */
+	id: string;
+	status?: 'draft' | 'submitted' | 'approved' | 'paid' | 'voided';
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	invoice_number?: string | null;
+	due_date?: string | null;
+	reference?: string | null;
+	organization?: Organization | string | null;
+	contact?: Contact | string | null;
+	issue_date?: string | null;
+	project?: OsProject | string | null;
+	subtotal?: number | null;
+	total_tax?: number | null;
+	total?: number | null;
+	amount_paid?: number | null;
+	amount_due?: number | null;
+	payments?: OsPayment[] | string[];
+	line_items?: OsInvoiceItem[] | string[];
+}
+
+export interface OsItem {
+	/** @primaryKey */
+	id: string;
+	status?: 'active' | 'archived' | null;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	name?: string | null;
+	description?: string | null;
+	/** @required */
+	unit_price: number;
+	default_tax_rate?: OsTaxRate | string | null;
+	icon?: string | null;
+	/** @required */
+	unit_cost: number;
+}
+
+export interface OsPayment {
+	/** @primaryKey */
+	id: string;
+	status?: 'pending' | 'paid' | 'unpaid' | null;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	payment_date?: string | null;
+	amount?: number | null;
+	stripe_payment_id?: string | null;
+	organization?: Organization | string | null;
+	contact?: Contact | string | null;
+	invoice?: OsInvoice | string | null;
+	metadata?: Record<string, any> | null;
+	payment_method_type?: string | null;
+	receipt_url?: string | null;
+}
+
+export interface OsPaymentTerm {
+	/** @primaryKey */
+	id: string;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	name?: string | null;
+}
+
+export interface OsProjectContact {
+	/** @primaryKey */
+	id: string;
+	os_projects_id?: OsProject | string | null;
+	contacts_id?: Contact | string | null;
+	sort?: number | null;
+}
+
+export interface OsProject {
+	/** @primaryKey */
+	id: string;
+	status?: 'new' | 'in_progress' | 'completed' | 'on_hold' | 'void' | null;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	name?: string | null;
+	organization?: Organization | string | null;
+	description?: string | null;
+	owner?: DirectusUser | string | null;
+	start_date?: string | null;
+	due_date?: string | null;
+	updates?: OsProjectUpdate[] | string[];
+	tasks?: OsTask[] | string[];
+	contacts?: OsProjectContact[] | string[];
+	expenses?: OsExpense[] | string[];
+	invoices?: OsInvoice[] | string[];
+}
+
+export interface OsProjectTemplate {
+	/** @primaryKey */
+	id: string;
+	status?: 'active' | 'archived';
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	name?: string | null;
+	tasks?: Array<{ type: 'task' | 'milestone' | 'meeting' | 'deliverable'; name: string; description: string; assigned_to: 'team' | 'client' | 'both'; default_team_assigned_to: 'json'; is_visible_to_client: boolean; set_dates_relative_to: 'project_start_date' | 'project_due_date'; start_days: number; due_days: number; form: 'json'; embed_url: string }> | null;
+	description?: string | null;
+}
+
+export interface OsProjectUpdate {
+	/** @primaryKey */
+	id: string;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	project?: OsProject | string | null;
+	message?: string | null;
+}
+
+export interface OsProposalApproval {
+	/** @primaryKey */
+	id: string;
+	status?: 'published' | 'draft' | 'archived';
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	signature_text?: string | null;
+	signature_image?: DirectusFile | string | null;
+	signature_type?: string | null;
+	first_name?: string | null;
+	last_name?: string | null;
+	organization?: string | null;
+	proposal?: OsProposal | string | null;
+	email?: string | null;
+	metadata?: Record<string, any> | null;
+	ip_address?: string | null;
+	esignature_agreement?: boolean | null;
+	contact?: Contact | string | null;
+}
+
+export interface OsProposalBlock {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	os_proposals_id?: OsProposal | string | null;
+	item?: BlockQuote | BlockRichtext | BlockStep | BlockTeam | BlockVideo | BlockFaq | BlockLogocloud | BlockDivider | string | null;
+	collection?: string | null;
+}
+
+export interface OsProposalContact {
+	/** @primaryKey */
+	id: string;
+	os_proposals_id?: OsProposal | string | null;
+	contacts_id?: Contact | string | null;
+	sort?: number | null;
+}
+
+export interface OsProposal {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	/** @description Title of the proposal */
+	name?: string | null;
+	organization?: Organization | string | null;
+	deal?: OsDeal | string | null;
+	/** @description What is the current status of the proposal? */
+	status?: 'draft' | 'submitted' | 'approved' | 'voided';
+	expiration_date?: string | null;
+	contacts?: OsProposalContact[] | string[];
+	/** @description This is the content of your proposal */
+	blocks?: OsProposalBlock[] | string[];
+	approvals?: OsProposalApproval[] | string[];
+}
+
+export interface OsSettings {
+	/** @primaryKey */
+	id: string;
+	/** @description We'll auto-populate this number for the next invoice you create. */
+	next_invoice_number?: number | null;
+	/** @description We'll auto-populate this number for the next proposal you create. */
+	next_proposal_number?: number | null;
+	/** @description What is the parent folder for all your individual client folders? */
+	organization_folder_root?: DirectusFolder | string | null;
+}
+
+export interface OsTaskFile {
+	/** @primaryKey */
+	id: string;
+	os_tasks_id?: OsTask | string | null;
+	directus_files_id?: DirectusFile | string | null;
+	sort?: number | null;
+}
+
+export interface OsTask {
+	/** @primaryKey */
+	id: string;
+	status?: 'pending' | 'active' | 'in_progress' | 'in_review' | 'completed' | null;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	project?: OsProject | string | null;
+	name?: string | null;
+	description?: string | null;
+	assigned_to?: DirectusUser | string | null;
+	due_date?: string | null;
+	is_visible_to_client?: boolean;
+	/** @required */
+	type: 'task' | 'milestone' | 'meeting' | 'deliverable';
+	date_completed?: string | null;
+	responsibility?: 'client' | 'team' | 'both' | null;
+	start_date?: string | null;
+	embed_url?: string | null;
+	form?: Form | string | null;
+	files?: OsTaskFile[] | string[];
+}
+
+export interface OsTaxRate {
+	/** @primaryKey */
+	id: string;
+	status?: 'published' | 'draft' | 'archived';
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	name?: string | null;
+	rate?: number | null;
+}
+
+export interface PageBlock {
+	/** @primaryKey */
+	id: string;
+	sort?: number | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	user_updated?: DirectusUser | string | null;
+	date_updated?: string | null;
+	pages_id?: Page | string | null;
+	item?: BlockColumn | BlockCta | BlockDivider | BlockFaq | BlockForm | BlockGallery | BlockHero | BlockHtml | BlockLogocloud | BlockPost | BlockQuote | BlockRichtext | BlockStep | BlockTeam | BlockTestimonial | BlockVideo | string | null;
+	collection?: string | null;
+	/** @description Hide this block on the frontend without having to remove it from your page. */
+	hide_block?: boolean | null;
+	background?: 'default' | 'muted' | 'elevated' | 'accented' | 'inverted' | 'primary' | null;
+}
+
+export interface Page {
+	date_created?: string | null;
+	date_updated?: string | null;
+	/** @primaryKey */
+	id: string;
+	seo?: Seo | string | null;
+	sort?: number | null;
+	status?: 'draft' | 'in_review' | 'published' | 'archived';
+	/** @required */
+	title: string;
+	user_created?: string | null;
+	user_updated?: string | null;
+	/** @description Start with a slash (/page) and do NOT add a trailing slash (/page/) @required */
+	permalink: string;
+	blocks?: PageBlock[] | string[];
+}
+
+export interface PostGalleryItem {
+	/** @primaryKey */
+	id: string;
+	posts_id?: Post | string | null;
+	directus_files_id?: DirectusFile | string | null;
+	sort?: number | null;
+}
+
+export interface Post {
+	category?: Category | string | null;
+	content?: string | null;
+	date_created?: string | null;
+	date_published?: string | null;
+	date_updated?: string | null;
+	/** @primaryKey */
+	id: string;
+	image?: DirectusFile | string | null;
+	seo?: Seo | string | null;
+	/** @required */
+	slug: string;
+	sort?: number | null;
+	status?: 'draft' | 'in_review' | 'published' | 'archived';
+	summary?: string | null;
+	/** @required */
+	title: string;
+	user_created?: string | null;
+	user_updated?: string | null;
+	author?: Team | string | null;
+	client?: string | null;
+	/** @description Use a range */
+	cost?: string | null;
+	built_with?: string[] | null;
+	/** @description What type of post is this? Determines the template used to display the post on the frontend. */
+	type?: 'blog' | 'project' | 'video' | null;
+	video_url?: string | null;
+	gallery?: PostGalleryItem[] | string[];
+}
+
+export interface Redirect {
+	date_created?: string | null;
+	date_updated?: string | null;
+	/** @primaryKey */
+	id: string;
+	/** @required */
+	response_code: 301 | 302;
+	/** @required */
+	url_new: string;
+	/** @required */
+	url_old: string;
+	user_created?: DirectusUser | string | null;
+	user_updated?: DirectusUser | string | null;
+}
+
+export interface Seo {
+	/** @description Where should the canonical URL for this entry point to. */
+	canonical_url?: string | null;
+	/** @primaryKey */
+	id: string;
+	/** @description This entries meta description. Max 160 characters. */
+	meta_description?: string | null;
+	/** @description Instruct crawlers not to follow links on this page. */
+	no_follow?: boolean | null;
+	/** @description Instruct crawlers not to index this entry. */
+	no_index?: boolean | null;
+	/** @description How often to instruct search engines to crawl. */
+	sitemap_change_frequency?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' | null;
+	/** @description Valid values range from 0.0 to 1.0. This value does not affect how your pages are compared to pages on other sites, it only lets the search engines know which pages you deem most important for the crawlers. */
+	sitemap_priority?: number | null;
+	/** @description This entries title, defaults to title. Max 70 characters including the site name. */
+	title?: string | null;
+}
+
+export interface Team {
+	bio?: string | null;
+	date_created?: string | null;
+	date_updated?: string | null;
+	/** @primaryKey */
+	id: string;
+	image?: DirectusFile | string | null;
+	job_title?: string | null;
+	name?: string | null;
+	social_media?: Array<{ service: 'twitter' | 'facebook' | 'linkedin' | 'instagram' | 'youtube' | 'github'; url: string }> | null;
+	sort?: number | null;
+	status?: 'draft' | 'in_review' | 'published' | 'archived';
+	user_created?: DirectusUser | string | null;
+	user_updated?: DirectusUser | string | null;
+	posts?: Post[] | string[];
+}
+
+export interface Testimonial {
+	company?: string | null;
+	company_logo?: DirectusFile | string | null;
+	content?: string | null;
+	date_created?: string | null;
+	date_updated?: string | null;
+	/** @primaryKey */
+	id: string;
+	image?: DirectusFile | string | null;
+	link?: string | null;
+	sort?: number | null;
+	status?: 'draft' | 'in_review' | 'published' | 'archived';
+	subtitle?: string | null;
+	title?: string | null;
+	user_created?: DirectusUser | string | null;
+	user_updated?: DirectusUser | string | null;
+}
+
+export interface DirectusAccess {
+	/** @primaryKey */
+	id: string;
+	role?: DirectusRole | string | null;
+	user?: DirectusUser | string | null;
+	policy?: DirectusPolicy | string;
+	sort?: number | null;
+}
+
+export interface DirectusActivity {
+	/** @primaryKey */
+	id: number;
+	action?: string;
+	user?: DirectusUser | string | null;
+	timestamp?: string;
+	ip?: string | null;
+	user_agent?: string | null;
+	collection?: string;
+	item?: string;
+	origin?: string | null;
+	revisions?: DirectusRevision[] | string[];
+}
+
+export interface DirectusCollection {
+	/** @primaryKey */
+	collection: string;
+	icon?: string | null;
+	note?: string | null;
+	display_template?: string | null;
+	hidden?: boolean;
+	singleton?: boolean;
+	translations?: Array<{ language: string; translation: string; singular: string; plural: string }> | null;
+	archive_field?: string | null;
+	archive_app_filter?: boolean;
+	archive_value?: string | null;
+	unarchive_value?: string | null;
+	sort_field?: string | null;
+	accountability?: 'all' | 'activity' | null | null;
+	color?: string | null;
+	item_duplication_fields?: 'json' | null;
+	sort?: number | null;
+	group?: DirectusCollection | string | null;
+	collapse?: string;
+	preview_url?: string | null;
+	versioning?: boolean;
+}
+
+export interface DirectusComment {
+	/** @primaryKey */
+	id: string;
+	collection?: DirectusCollection | string;
+	item?: string;
+	comment?: string;
+	date_created?: string | null;
+	date_updated?: string | null;
+	user_created?: DirectusUser | string | null;
+	user_updated?: DirectusUser | string | null;
+}
+
+export interface DirectusField {
+	/** @primaryKey */
+	id: number;
+	collection?: DirectusCollection | string;
+	field?: string;
+	special?: string[] | null;
+	interface?: string | null;
+	options?: 'json' | null;
+	display?: string | null;
+	display_options?: 'json' | null;
+	readonly?: boolean;
+	hidden?: boolean;
+	sort?: number | null;
+	width?: string | null;
+	translations?: 'json' | null;
+	note?: string | null;
+	conditions?: 'json' | null;
+	required?: boolean | null;
+	group?: DirectusField | string | null;
+	validation?: 'json' | null;
+	validation_message?: string | null;
+	searchable?: boolean;
+}
+
+export interface DirectusFile {
+	/** @primaryKey */
+	id: string;
+	storage?: string;
+	filename_disk?: string | null;
+	filename_download?: string;
+	title?: string | null;
+	type?: string | null;
+	folder?: DirectusFolder | string | null;
+	uploaded_by?: DirectusUser | string | null;
+	created_on?: string;
+	modified_by?: DirectusUser | string | null;
+	modified_on?: string;
+	charset?: string | null;
+	filesize?: number | null;
+	width?: number | null;
+	height?: number | null;
+	duration?: number | null;
+	embed?: string | null;
+	description?: string | null;
+	location?: string | null;
+	tags?: string[] | null;
+	metadata?: 'json' | null;
+	focal_point_x?: number | null;
+	focal_point_y?: number | null;
+	tus_id?: string | null;
+	tus_data?: 'json' | null;
+	uploaded_on?: string | null;
+}
+
+export interface DirectusFolder {
+	/** @primaryKey */
+	id: string;
+	name?: string;
+	parent?: DirectusFolder | string | null;
+	organizations?: Organization[] | string[];
+}
+
+export interface DirectusMigration {
+	/** @primaryKey */
+	version: string;
+	name?: string;
+	timestamp?: string | null;
+}
+
+export interface DirectusPermission {
+	/** @primaryKey */
+	id: number;
+	collection?: string;
+	action?: string;
+	permissions?: 'json' | null;
+	validation?: 'json' | null;
+	presets?: 'json' | null;
+	fields?: string[] | null;
+	policy?: DirectusPolicy | string;
+}
+
+export interface DirectusPolicy {
+	/** @primaryKey */
+	id: string;
+	/** @required */
+	name: string;
+	icon?: string;
+	description?: string | null;
+	ip_access?: string[] | null;
+	enforce_tfa?: boolean;
+	admin_access?: boolean;
+	app_access?: boolean;
+	permissions?: DirectusPermission[] | string[];
+	users?: DirectusAccess[] | string[];
+	roles?: DirectusAccess[] | string[];
+}
+
+export interface DirectusPreset {
+	/** @primaryKey */
+	id: number;
+	bookmark?: string | null;
+	user?: DirectusUser | string | null;
+	role?: DirectusRole | string | null;
+	collection?: string | null;
+	search?: string | null;
+	layout?: string | null;
+	layout_query?: 'json' | null;
+	layout_options?: 'json' | null;
+	refresh_interval?: number | null;
+	filter?: 'json' | null;
+	icon?: string | null;
+	color?: string | null;
+}
+
+export interface DirectusRelation {
+	/** @primaryKey */
+	id: number;
+	many_collection?: string;
+	many_field?: string;
+	one_collection?: string | null;
+	one_field?: string | null;
+	one_collection_field?: string | null;
+	one_allowed_collections?: string[] | null;
+	junction_field?: string | null;
+	sort_field?: string | null;
+	one_deselect_action?: string;
+}
+
+export interface DirectusRevision {
+	/** @primaryKey */
+	id: number;
+	activity?: DirectusActivity | string;
+	collection?: string;
+	item?: string;
+	data?: 'json' | null;
+	delta?: 'json' | null;
+	parent?: DirectusRevision | string | null;
+	version?: DirectusVersion | string | null;
+}
+
+export interface DirectusRole {
+	/** @primaryKey */
+	id: string;
+	/** @required */
+	name: string;
+	icon?: string;
+	description?: string | null;
+	parent?: DirectusRole | string | null;
+	children?: DirectusRole[] | string[];
+	policies?: DirectusAccess[] | string[];
+	users?: DirectusUser[] | string[];
+}
+
+export interface DirectusSession {
+	/** @primaryKey */
+	token: string;
+	user?: DirectusUser | string | null;
+	expires?: string;
+	ip?: string | null;
+	user_agent?: string | null;
+	share?: DirectusShare | string | null;
+	origin?: string | null;
+	next_token?: string | null;
+}
+
+export interface DirectusSettings {
+	/** @primaryKey */
+	id: number;
+	project_name?: string;
+	project_url?: string | null;
+	project_color?: string;
+	project_logo?: DirectusFile | string | null;
+	public_foreground?: DirectusFile | string | null;
+	public_background?: DirectusFile | string | null;
+	public_note?: string | null;
+	auth_login_attempts?: number | null;
+	auth_password_policy?: null | `/^.{8,}$/` | `/(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{';'?>.<,])(?!.*\\s).*$/` | null;
+	storage_asset_transform?: 'all' | 'none' | 'presets' | null;
+	storage_asset_presets?: Array<{ key: string; fit: 'contain' | 'cover' | 'inside' | 'outside'; width: number; height: number; quality: number; withoutEnlargement: boolean; format: 'auto' | 'jpeg' | 'png' | 'webp' | 'tiff' | 'avif'; transforms: 'json' }> | null;
+	custom_css?: string | null;
+	storage_default_folder?: DirectusFolder | string | null;
+	basemaps?: Array<{ name: string; type: 'raster' | 'tile' | 'style'; url: string; tileSize: number; attribution: string }> | null;
+	mapbox_key?: string | null;
+	module_bar?: 'json' | null;
+	project_descriptor?: string | null;
+	default_language?: string;
+	custom_aspect_ratios?: Array<{ text: string; value: number }> | null;
+	public_favicon?: DirectusFile | string | null;
+	default_appearance?: 'auto' | 'light' | 'dark';
+	default_theme_light?: string | null;
+	theme_light_overrides?: 'json' | null;
+	default_theme_dark?: string | null;
+	theme_dark_overrides?: 'json' | null;
+	report_error_url?: string | null;
+	report_bug_url?: string | null;
+	report_feature_url?: string | null;
+	public_registration?: boolean;
+	public_registration_verify_email?: boolean;
+	public_registration_role?: DirectusRole | string | null;
+	public_registration_email_filter?: 'json' | null;
+	visual_editor_urls?: Array<{ url: string }> | null;
+	project_id?: string | null;
+	mcp_enabled?: boolean;
+	mcp_allow_deletes?: boolean;
+	mcp_prompts_collection?: string | null;
+	mcp_system_prompt_enabled?: boolean;
+	mcp_system_prompt?: string | null;
+	project_owner?: string | null;
+	project_usage?: string | null;
+	org_name?: string | null;
+	product_updates?: boolean | null;
+	project_status?: string | null;
+	ai_openai_api_key?: string | null;
+	ai_anthropic_api_key?: string | null;
+	ai_system_prompt?: string | null;
+	ai_google_api_key?: string | null;
+	ai_openai_compatible_api_key?: string | null;
+	ai_openai_compatible_base_url?: string | null;
+	ai_openai_compatible_name?: string | null;
+	ai_openai_compatible_models?: Array<{ id: string; name: string; context: number; output: number; attachment: boolean; reasoning: boolean; providerOptions: Record<string, any> }> | null;
+	ai_openai_compatible_headers?: Array<{ header: string; value: string }> | null;
+	ai_openai_allowed_models?: Array<`gpt-4o-mini` | `gpt-4.1-nano` | `gpt-4.1-mini` | `gpt-4.1` | `gpt-5-nano` | `gpt-5-mini` | `gpt-5` | `gpt-5.2` | `gpt-5.2-chat-latest` | `gpt-5.2-pro`> | null;
+	ai_anthropic_allowed_models?: Array<`claude-haiku-4-5` | `claude-sonnet-4-5` | `claude-opus-4-5`> | null;
+	ai_google_allowed_models?: Array<`gemini-3-pro-preview` | `gemini-3-flash-preview` | `gemini-2.5-pro` | `gemini-2.5-flash`> | null;
+	collaborative_editing_enabled?: boolean;
+}
+
+export interface DirectusUser {
+	/** @primaryKey */
+	id: string;
+	first_name?: string | null;
+	last_name?: string | null;
+	email?: string | null;
+	password?: string | null;
+	location?: string | null;
+	title?: string | null;
+	description?: string | null;
+	tags?: string[] | null;
+	avatar?: DirectusFile | string | null;
+	language?: string | null;
+	tfa_secret?: string | null;
+	status?: 'draft' | 'invited' | 'unverified' | 'active' | 'suspended' | 'archived';
+	role?: DirectusRole | string | null;
+	token?: string | null;
+	last_access?: string | null;
+	last_page?: string | null;
+	provider?: string;
+	external_identifier?: string | null;
+	auth_data?: 'json' | null;
+	email_notifications?: boolean | null;
+	appearance?: null | 'auto' | 'light' | 'dark' | null;
+	theme_dark?: string | null;
+	theme_light?: string | null;
+	theme_light_overrides?: 'json' | null;
+	theme_dark_overrides?: 'json' | null;
+	text_direction?: 'auto' | 'ltr' | 'rtl';
+	contacts?: Contact[] | string[];
+	policies?: DirectusAccess[] | string[];
+}
+
+export interface DirectusDashboard {
+	/** @primaryKey */
+	id: string;
+	name?: string;
+	icon?: string;
+	note?: string | null;
+	date_created?: string | null;
+	user_created?: DirectusUser | string | null;
+	color?: string | null;
+	panels?: DirectusPanel[] | string[];
+}
+
+export interface DirectusPanel {
+	/** @primaryKey */
+	id: string;
+	dashboard?: DirectusDashboard | string;
+	name?: string | null;
+	icon?: string | null;
+	color?: string | null;
+	show_header?: boolean;
+	note?: string | null;
+	type?: string;
+	position_x?: number;
+	position_y?: number;
+	width?: number;
+	height?: number;
+	options?: 'json' | null;
+	date_created?: string | null;
+	user_created?: DirectusUser | string | null;
+}
+
+export interface DirectusNotification {
+	/** @primaryKey */
+	id: number;
+	timestamp?: string | null;
+	status?: string | null;
+	recipient?: DirectusUser | string;
+	sender?: DirectusUser | string | null;
+	subject?: string;
+	message?: string | null;
+	collection?: string | null;
+	item?: string | null;
+}
+
+export interface DirectusShare {
+	/** @primaryKey */
+	id: string;
+	name?: string | null;
+	collection?: DirectusCollection | string;
+	item?: string;
+	role?: DirectusRole | string | null;
+	password?: string | null;
+	user_created?: DirectusUser | string | null;
+	date_created?: string | null;
+	date_start?: string | null;
+	date_end?: string | null;
+	times_used?: number | null;
+	max_uses?: number | null;
+}
+
+export interface DirectusFlow {
+	/** @primaryKey */
+	id: string;
+	name?: string;
+	icon?: string | null;
+	color?: string | null;
+	description?: string | null;
+	status?: string;
+	trigger?: string | null;
+	accountability?: string | null;
+	options?: 'json' | null;
+	operation?: DirectusOperation | string | null;
+	date_created?: string | null;
+	user_created?: DirectusUser | string | null;
+	operations?: DirectusOperation[] | string[];
+}
+
+export interface DirectusOperation {
+	/** @primaryKey */
+	id: string;
+	name?: string | null;
+	key?: string;
+	type?: string;
+	position_x?: number;
+	position_y?: number;
+	options?: 'json' | null;
+	resolve?: DirectusOperation | string | null;
+	reject?: DirectusOperation | string | null;
+	flow?: DirectusFlow | string;
+	date_created?: string | null;
+	user_created?: DirectusUser | string | null;
+}
+
+export interface DirectusTranslation {
+	/** @primaryKey */
+	id: string;
+	/** @required */
+	language: string;
+	/** @required */
+	key: string;
+	/** @required */
+	value: string;
+}
+
+export interface DirectusVersion {
+	/** @primaryKey */
+	id: string;
+	key?: string;
+	name?: string | null;
+	collection?: DirectusCollection | string;
+	item?: string;
+	hash?: string | null;
+	date_created?: string | null;
+	date_updated?: string | null;
+	user_created?: DirectusUser | string | null;
+	user_updated?: DirectusUser | string | null;
+	delta?: 'json' | null;
+}
+
+export interface DirectusExtension {
+	enabled?: boolean;
+	/** @primaryKey */
+	id: string;
+	folder?: string;
+	source?: string;
+	bundle?: string | null;
+}
+
+export interface DirectusDeployment {
+	/** @primaryKey */
+	id: string;
+	provider?: string;
+	credentials?: string | null;
+	options?: 'json' | null;
+	date_created?: string | null;
+	user_created?: DirectusUser | string | null;
+	webhook_ids?: 'json' | null;
+	webhook_secret?: string | null;
+	last_synced_at?: string | null;
+	projects?: DirectusDeploymentProject[] | string[];
+}
+
+export interface DirectusDeploymentProject {
+	/** @primaryKey */
+	id: string;
+	deployment?: DirectusDeployment | string;
+	external_id?: string;
+	name?: string;
+	date_created?: string | null;
+	user_created?: DirectusUser | string | null;
+	url?: string | null;
+	framework?: string | null;
+	deployable?: boolean;
+	runs?: DirectusDeploymentRun[] | string[];
+}
+
+export interface DirectusDeploymentRun {
+	/** @primaryKey */
+	id: string;
+	project?: DirectusDeploymentProject | string;
+	external_id?: string;
+	target?: string;
+	date_created?: string | null;
+	user_created?: DirectusUser | string | null;
+	status?: string | null;
+	url?: string | null;
+	started_at?: string | null;
+	completed_at?: string | null;
+}
+
+export interface Schema {
+	block_button: BlockButton[];
+	block_button_group: BlockButtonGroup[];
+	block_columns: BlockColumn[];
+	block_columns_rows: BlockColumnsRow[];
+	block_cta: BlockCta[];
+	block_divider: BlockDivider[];
+	block_faqs: BlockFaq[];
+	block_form: BlockForm[];
+	block_gallery: BlockGallery[];
+	block_gallery_files: BlockGalleryFile[];
+	block_hero: BlockHero[];
+	block_html: BlockHtml[];
+	block_logocloud: BlockLogocloud[];
+	block_logocloud_logos: BlockLogocloudLogo[];
+	block_posts: BlockPost[];
+	block_quote: BlockQuote[];
+	block_richtext: BlockRichtext[];
+	block_step_items: BlockStepItem[];
+	block_steps: BlockStep[];
+	block_team: BlockTeam[];
+	block_testimonials: BlockTestimonial[];
+	block_testimonial_slider_items: BlockTestimonialSliderItem[];
+	block_video: BlockVideo[];
+	categories: Category[];
+	contacts: Contact[];
+	forms: Form[];
+	globals: Globals;
+	inbox: Inbox[];
+	navigation_items: NavigationItem[];
+	organization_addresses: OrganizationAddresse[];
+	organizations: Organization[];
+	organizations_contacts: OrganizationsContact[];
+	os_activities: OsActivity[];
+	os_activity_contacts: OsActivityContact[];
+	os_deal_contacts: OsDealContact[];
+	os_deals: OsDeal[];
+	os_deal_stages: OsDealStage[];
+	os_email_templates: OsEmailTemplate[];
+	os_expenses: OsExpense[];
+	os_invoice_items: OsInvoiceItem[];
+	os_invoices: OsInvoice[];
+	os_items: OsItem[];
+	os_payments: OsPayment[];
+	os_payment_terms: OsPaymentTerm[];
+	os_project_contacts: OsProjectContact[];
+	os_projects: OsProject[];
+	os_project_templates: OsProjectTemplate[];
+	os_project_updates: OsProjectUpdate[];
+	os_proposal_approvals: OsProposalApproval[];
+	os_proposal_blocks: OsProposalBlock[];
+	os_proposal_contacts: OsProposalContact[];
+	os_proposals: OsProposal[];
+	os_settings: OsSettings;
+	os_task_files: OsTaskFile[];
+	os_tasks: OsTask[];
+	os_tax_rates: OsTaxRate[];
+	page_blocks: PageBlock[];
+	pages: Page[];
+	post_gallery_items: PostGalleryItem[];
+	posts: Post[];
+	redirects: Redirect[];
+	seo: Seo[];
+	team: Team[];
+	testimonials: Testimonial[];
+	directus_access: DirectusAccess[];
+	directus_activity: DirectusActivity[];
+	directus_collections: DirectusCollection[];
+	directus_comments: DirectusComment[];
+	directus_fields: DirectusField[];
+	directus_files: DirectusFile[];
+	directus_folders: DirectusFolder[];
+	directus_migrations: DirectusMigration[];
+	directus_permissions: DirectusPermission[];
+	directus_policies: DirectusPolicy[];
+	directus_presets: DirectusPreset[];
+	directus_relations: DirectusRelation[];
+	directus_revisions: DirectusRevision[];
+	directus_roles: DirectusRole[];
+	directus_sessions: DirectusSession[];
+	directus_settings: DirectusSettings;
+	directus_users: DirectusUser[];
+	directus_dashboards: DirectusDashboard[];
+	directus_panels: DirectusPanel[];
+	directus_notifications: DirectusNotification[];
+	directus_shares: DirectusShare[];
+	directus_flows: DirectusFlow[];
+	directus_operations: DirectusOperation[];
+	directus_translations: DirectusTranslation[];
+	directus_versions: DirectusVersion[];
+	directus_extensions: DirectusExtension[];
+	directus_deployments: DirectusDeployment[];
+	directus_deployment_projects: DirectusDeploymentProject[];
+	directus_deployment_runs: DirectusDeploymentRun[];
+}
+
+export enum CollectionNames {
+	block_button = 'block_button',
+	block_button_group = 'block_button_group',
+	block_columns = 'block_columns',
+	block_columns_rows = 'block_columns_rows',
+	block_cta = 'block_cta',
+	block_divider = 'block_divider',
+	block_faqs = 'block_faqs',
+	block_form = 'block_form',
+	block_gallery = 'block_gallery',
+	block_gallery_files = 'block_gallery_files',
+	block_hero = 'block_hero',
+	block_html = 'block_html',
+	block_logocloud = 'block_logocloud',
+	block_logocloud_logos = 'block_logocloud_logos',
+	block_posts = 'block_posts',
+	block_quote = 'block_quote',
+	block_richtext = 'block_richtext',
+	block_step_items = 'block_step_items',
+	block_steps = 'block_steps',
+	block_team = 'block_team',
+	block_testimonials = 'block_testimonials',
+	block_testimonial_slider_items = 'block_testimonial_slider_items',
+	block_video = 'block_video',
+	categories = 'categories',
+	contacts = 'contacts',
+	forms = 'forms',
+	globals = 'globals',
+	inbox = 'inbox',
+	navigation_items = 'navigation_items',
+	organization_addresses = 'organization_addresses',
+	organizations = 'organizations',
+	organizations_contacts = 'organizations_contacts',
+	os_activities = 'os_activities',
+	os_activity_contacts = 'os_activity_contacts',
+	os_deal_contacts = 'os_deal_contacts',
+	os_deals = 'os_deals',
+	os_deal_stages = 'os_deal_stages',
+	os_email_templates = 'os_email_templates',
+	os_expenses = 'os_expenses',
+	os_invoice_items = 'os_invoice_items',
+	os_invoices = 'os_invoices',
+	os_items = 'os_items',
+	os_payments = 'os_payments',
+	os_payment_terms = 'os_payment_terms',
+	os_project_contacts = 'os_project_contacts',
+	os_projects = 'os_projects',
+	os_project_templates = 'os_project_templates',
+	os_project_updates = 'os_project_updates',
+	os_proposal_approvals = 'os_proposal_approvals',
+	os_proposal_blocks = 'os_proposal_blocks',
+	os_proposal_contacts = 'os_proposal_contacts',
+	os_proposals = 'os_proposals',
+	os_settings = 'os_settings',
+	os_task_files = 'os_task_files',
+	os_tasks = 'os_tasks',
+	os_tax_rates = 'os_tax_rates',
+	page_blocks = 'page_blocks',
+	pages = 'pages',
+	post_gallery_items = 'post_gallery_items',
+	posts = 'posts',
+	redirects = 'redirects',
+	seo = 'seo',
+	team = 'team',
+	testimonials = 'testimonials',
+	directus_access = 'directus_access',
+	directus_activity = 'directus_activity',
+	directus_collections = 'directus_collections',
+	directus_comments = 'directus_comments',
+	directus_fields = 'directus_fields',
+	directus_files = 'directus_files',
+	directus_folders = 'directus_folders',
+	directus_migrations = 'directus_migrations',
+	directus_permissions = 'directus_permissions',
+	directus_policies = 'directus_policies',
+	directus_presets = 'directus_presets',
+	directus_relations = 'directus_relations',
+	directus_revisions = 'directus_revisions',
+	directus_roles = 'directus_roles',
+	directus_sessions = 'directus_sessions',
+	directus_settings = 'directus_settings',
+	directus_users = 'directus_users',
+	directus_dashboards = 'directus_dashboards',
+	directus_panels = 'directus_panels',
+	directus_notifications = 'directus_notifications',
+	directus_shares = 'directus_shares',
+	directus_flows = 'directus_flows',
+	directus_operations = 'directus_operations',
+	directus_translations = 'directus_translations',
+	directus_versions = 'directus_versions',
+	directus_extensions = 'directus_extensions',
+	directus_deployments = 'directus_deployments',
+	directus_deployment_projects = 'directus_deployment_projects',
+	directus_deployment_runs = 'directus_deployment_runs'
+}

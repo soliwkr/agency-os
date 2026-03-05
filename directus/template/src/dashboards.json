@@ -18,15 +18,5 @@
     "name": "1. My Dashboard",
     "note": "Shows the open tasks and sales activities for a selected user.",
     "panels": null
-  },
-  {
-    "id": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "date_created": "2023-10-10T02:17:17.582Z",
-    "color": "#8196B0",
-    "icon": "help_center",
-    "name": "3. Help Center Feedback",
-    "note": "Dashboard to analyze help center feedback.",
-    "panels": null
   }
 ]

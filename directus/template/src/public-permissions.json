@@ -436,36 +436,6 @@
   },
   {
     "role": null,
-    "collection": "help_articles",
-    "action": "read",
-    "presets": null,
-    "validation": {},
-    "permissions": {
-      "_and": [
-        {
-          "status": {
-            "_eq": "published"
-          }
-        }
-      ]
-    },
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "role": null,
-    "collection": "help_collections",
-    "action": "read",
-    "presets": null,
-    "validation": {},
-    "permissions": {},
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "role": null,
     "collection": "block_button_group",
     "action": "read",
     "presets": null,
@@ -512,17 +482,6 @@
     "role": null,
     "collection": "block_testimonial_slider_items",
     "action": "read",
-    "presets": null,
-    "validation": {},
-    "permissions": {},
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "role": null,
-    "collection": "help_feedback",
-    "action": "create",
     "presets": null,
     "validation": {},
     "permissions": {},

@@ -206,29 +206,6 @@
   },
   {
     "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
-    "id": "86021346-a0e8-4207-83aa-d00d5e37b5fe",
-    "operation": null,
-    "date_created": "2024-02-15T16:44:39.168Z",
-    "accountability": "all",
-    "trigger": "event",
-    "status": "active",
-    "color": null,
-    "icon": "bolt",
-    "name": "New Feedback",
-    "options": {
-      "type": "action",
-      "scope": [
-        "items.create"
-      ],
-      "collections": [
-        "help_feedback"
-      ]
-    },
-    "description": null,
-    "operations": null
-  },
-  {
-    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
     "id": "934737be-c005-4ce9-b305-0d03a4c34f54",
     "operation": "cd577186-e4e0-4452-ae76-6024956985dd",
     "date_created": "2024-03-14T15:41:00.794Z",
@@ -478,7 +455,7 @@
         }
       ],
       "requireSelection": false,
-      "confirmationDescription": "Create a New Project 🚀"
+      "confirmationDescription": "Create a New Project \ud83d\ude80"
     },
     "description": "Creates a new project using a template.",
     "operations": null

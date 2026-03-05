@@ -700,36 +700,6 @@
   {
     "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17",
     "action": "read",
-    "collection": "help_articles",
-    "permissions": {
-      "_and": [
-        {
-          "status": {
-            "_eq": "published"
-          }
-        }
-      ]
-    },
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17",
-    "action": "read",
-    "collection": "help_collections",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17",
-    "action": "read",
     "collection": "block_button_group",
     "permissions": {},
     "validation": {},
@@ -895,39 +865,6 @@
         }
       ]
     },
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "edc2e863-e2c4-4ee3-bcbd-d090df2911e1",
-    "action": "read",
-    "collection": "help_collections",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "edc2e863-e2c4-4ee3-bcbd-d090df2911e1",
-    "action": "read",
-    "collection": "help_articles",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "edc2e863-e2c4-4ee3-bcbd-d090df2911e1",
-    "action": "read",
-    "collection": "help_feedback",
-    "permissions": {},
     "validation": {},
     "presets": null,
     "fields": [
@@ -1962,17 +1899,6 @@
     ]
   },
   {
-    "policy": "abf8a154-5b1c-4a46-ac9c-7300570f4f17",
-    "action": "create",
-    "collection": "help_feedback",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
     "action": "update",
     "collection": "block_button",
@@ -3197,138 +3123,6 @@
     "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
     "action": "delete",
     "collection": "globals",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "update",
-    "collection": "help_articles",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "read",
-    "collection": "help_articles",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "create",
-    "collection": "help_articles",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "delete",
-    "collection": "help_articles",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "create",
-    "collection": "help_collections",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "read",
-    "collection": "help_collections",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "update",
-    "collection": "help_collections",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "delete",
-    "collection": "help_collections",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "update",
-    "collection": "help_feedback",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "delete",
-    "collection": "help_feedback",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "read",
-    "collection": "help_feedback",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ]
-  },
-  {
-    "policy": "8ba4ed6f-d330-4675-ae46-119c533a0928",
-    "action": "create",
-    "collection": "help_feedback",
     "permissions": {},
     "validation": {},
     "presets": null,

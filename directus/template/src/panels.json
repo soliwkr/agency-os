@@ -183,103 +183,6 @@
     "show_header": false
   },
   {
-    "id": "33d54856-e7a5-4346-bb50-448535fee9b9",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:38:55.691Z",
-    "icon": "comment",
-    "name": "Submissions With Comments",
-    "color": "#18222F",
-    "type": "list",
-    "options": {
-      "collection": "help_feedback",
-      "sortField": "date_created",
-      "limit": 10,
-      "displayTemplate": "{{title}} - {{comments}}",
-      "linkToItem": true,
-      "filter": {
-        "_and": [
-          {
-            "_and": [
-              {
-                "date_created": {
-                  "_gte": "{{date_from}}"
-                }
-              },
-              {
-                "date_created": {
-                  "_lte": "{{date_to}}"
-                }
-              },
-              {
-                "comments": {
-                  "_nnull": true
-                }
-              },
-              {
-                "comments": {
-                  "_icontains": "{{search}}"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "note": null,
-    "position_x": 32,
-    "width": 25,
-    "height": 26,
-    "position_y": 14,
-    "show_header": true
-  },
-  {
-    "id": "39c82b64-df2a-4d83-a2b8-a41575e87af3",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:45:00.908Z",
-    "icon": "date_range",
-    "name": "Date From",
-    "color": "#18222F",
-    "type": "variable",
-    "options": {
-      "field": "date_from",
-      "type": "dateTime",
-      "inter": "datetime",
-      "defaultValue": "2023-01-01T12:00:00",
-      "options": {
-        "use24": false
-      }
-    },
-    "note": null,
-    "position_x": 1,
-    "width": 15,
-    "height": 6,
-    "position_y": 7,
-    "show_header": true
-  },
-  {
-    "id": "3ca99f50-b186-4213-be9c-8773904cfd5e",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:21:58.888Z",
-    "icon": null,
-    "name": "Feedback",
-    "color": null,
-    "type": "label",
-    "options": {
-      "text": "Help Center Feedback",
-      "color": "#8196B0",
-      "fontWeight": 500
-    },
-    "note": null,
-    "position_x": 1,
-    "width": 30,
-    "height": 6,
-    "position_y": 1,
-    "show_header": false
-  },
-  {
     "id": "429d22a1-d60c-4daa-a9c0-a2db3cbb89b3",
     "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
     "dashboard": "0d85d827-a045-4dee-bcd3-d72d3a91cc52",
@@ -389,38 +292,6 @@
     "show_header": true
   },
   {
-    "id": "67071ea8-f03b-431d-8e89-14ad40258215",
-    "user_created": "1a3e5ba4-c118-4607-9918-77d36b74a9a3",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2024-02-29T16:51:04.731Z",
-    "icon": "magnify_docked",
-    "name": "Posts In Review",
-    "color": null,
-    "type": "metric",
-    "options": {
-      "collection": "posts",
-      "field": "id",
-      "function": "count",
-      "sortField": "id",
-      "filter": {
-        "_and": [
-          {
-            "status": {
-              "_eq": "in_review"
-            }
-          }
-        ]
-      },
-      "suffix": "posts"
-    },
-    "note": null,
-    "position_x": 27,
-    "width": 16,
-    "height": 6,
-    "position_y": 44,
-    "show_header": true
-  },
-  {
     "id": "6ea8ff25-d7f8-4494-b29e-79246cce6af9",
     "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
     "dashboard": "0d85d827-a045-4dee-bcd3-d72d3a91cc52",
@@ -443,57 +314,6 @@
     "width": 15,
     "height": 6,
     "position_y": 8,
-    "show_header": true
-  },
-  {
-    "id": "775d0469-a878-4814-b5c3-2558dbab1b1a",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:45:00.925Z",
-    "icon": "date_range",
-    "name": "Date To",
-    "color": "#18222F",
-    "type": "variable",
-    "options": {
-      "field": "date_to",
-      "type": "dateTime",
-      "inter": "datetime",
-      "defaultValue": "{{$NOW}}",
-      "options": {
-        "use24": false
-      }
-    },
-    "note": null,
-    "position_x": 16,
-    "width": 15,
-    "height": 6,
-    "position_y": 7,
-    "show_header": true
-  },
-  {
-    "id": "77a5d341-747b-4210-baf8-10a61bf6a10a",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:49:58.360Z",
-    "icon": "screen_search_desktop",
-    "name": "Search",
-    "color": "#18222F",
-    "type": "variable",
-    "options": {
-      "field": "search",
-      "type": "string",
-      "inter": "input",
-      "options": {
-        "placeholder": "Search comments here",
-        "iconLeft": null
-      },
-      "defaultValue": " "
-    },
-    "note": "Search response comments for a string of text.",
-    "position_x": 32,
-    "width": 25,
-    "height": 6,
-    "position_y": 7,
     "show_header": true
   },
   {
@@ -582,49 +402,6 @@
     "show_header": false
   },
   {
-    "id": "8194088d-4321-4cce-94e3-ac77d8f02ef6",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:32:38.957Z",
-    "icon": "show_chart",
-    "name": "Total Submissions Over Time",
-    "color": "#6644FF",
-    "type": "time-series",
-    "options": {
-      "collection": "help_feedback",
-      "valueField": "id",
-      "color": "#18222F",
-      "function": "count",
-      "precision": "day",
-      "range": "auto",
-      "dateField": "date_created",
-      "filter": {
-        "_and": [
-          {
-            "_and": [
-              {
-                "date_created": {
-                  "_gte": "{{date_from}}"
-                }
-              },
-              {
-                "date_created": {
-                  "_lte": "{{date_to}}"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "note": null,
-    "position_x": 1,
-    "width": 30,
-    "height": 10,
-    "position_y": 20,
-    "show_header": true
-  },
-  {
     "id": "8628bb84-90bb-4ff1-8142-42d385bbe3f0",
     "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
     "dashboard": "d283dd34-6886-4cfd-b1c5-744320562acc",
@@ -687,46 +464,6 @@
     "show_header": true
   },
   {
-    "id": "9bf6a9fe-3dc2-460c-863b-3533876c569d",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:27:51.804Z",
-    "icon": "numbers",
-    "name": "Total Submissions",
-    "color": "#A2B5CD",
-    "type": "metric",
-    "options": {
-      "collection": "help_feedback",
-      "sortField": null,
-      "field": "id",
-      "function": "count",
-      "filter": {
-        "_and": [
-          {
-            "_and": [
-              {
-                "date_created": {
-                  "_gte": "{{date_from}}"
-                }
-              },
-              {
-                "date_created": {
-                  "_lte": "{{date_to}}"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "note": null,
-    "position_x": 1,
-    "width": 15,
-    "height": 6,
-    "position_y": 14,
-    "show_header": true
-  },
-  {
     "id": "b2be5f3d-0500-442d-a8c7-84a8d06c92e6",
     "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
     "dashboard": "d283dd34-6886-4cfd-b1c5-744320562acc",
@@ -764,50 +501,6 @@
     "width": 15,
     "height": 5,
     "position_y": 16,
-    "show_header": true
-  },
-  {
-    "id": "b45fdb03-f5c4-414f-aeec-9f33f3e0340b",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:35:06.509Z",
-    "icon": "area_chart",
-    "name": "Average Rating Over Time",
-    "color": "#2ECDA7",
-    "type": "time-series",
-    "options": {
-      "collection": "help_feedback",
-      "valueField": "rating",
-      "color": "#18222F",
-      "function": "avg",
-      "precision": "day",
-      "range": "auto",
-      "dateField": "date_created",
-      "decimals": 2,
-      "filter": {
-        "_and": [
-          {
-            "_and": [
-              {
-                "date_created": {
-                  "_gte": "{{date_from}}"
-                }
-              },
-              {
-                "date_created": {
-                  "_lte": "{{date_to}}"
-                }
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "note": null,
-    "position_x": 1,
-    "width": 30,
-    "height": 10,
-    "position_y": 30,
     "show_header": true
   },
   {
@@ -883,48 +576,6 @@
     "width": 18,
     "height": 7,
     "position_y": 16,
-    "show_header": true
-  },
-  {
-    "id": "be40aae0-728b-4171-8c1e-34ca955f89eb",
-    "user_created": "95e535d2-f45b-4d94-891b-a89ee6ed1475",
-    "dashboard": "ea9c9be7-dcb3-4351-8a05-0d30c150bb64",
-    "date_created": "2023-10-10T02:32:38.940Z",
-    "icon": "star",
-    "name": "Average Rating",
-    "color": "#18222F",
-    "type": "metric",
-    "options": {
-      "collection": "help_feedback",
-      "sortField": null,
-      "field": "rating",
-      "function": "avg",
-      "filter": {
-        "_and": [
-          {
-            "_and": [
-              {
-                "date_created": {
-                  "_gte": "{{date_from}}"
-                }
-              },
-              {
-                "date_created": {
-                  "_lte": "{{date_to}}"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "minimumFractionDigits": 2,
-      "maximumFractionDigits": 2
-    },
-    "note": "Average rating across all articles. Rating is from 1 - 4. 1 being the lowest score. 4 being the highest.",
-    "position_x": 16,
-    "width": 15,
-    "height": 6,
-    "position_y": 14,
     "show_header": true
   },
   {

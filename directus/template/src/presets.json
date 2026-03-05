@@ -1070,7 +1070,7 @@
       "cards": {
         "icon": "insert_drive_file",
         "title": "{{ title }}",
-        "subtitle": "{{ type }} • {{ filesize }}",
+        "subtitle": "{{ type }} \u2022 {{ filesize }}",
         "size": 4,
         "imageFit": "crop"
       }
@@ -1187,7 +1187,7 @@
       "cards": {
         "icon": "insert_drive_file",
         "title": "{{ title }}",
-        "subtitle": "{{ type }} • {{ filesize }}",
+        "subtitle": "{{ type }} \u2022 {{ filesize }}",
         "size": 4,
         "imageFit": "crop"
       }
@@ -1398,7 +1398,7 @@
       "cards": {
         "icon": "insert_drive_file",
         "title": "{{ title }}",
-        "subtitle": "{{ type }} • {{ filesize }}",
+        "subtitle": "{{ type }} \u2022 {{ filesize }}",
         "size": 4,
         "imageFit": "crop"
       }
@@ -1807,58 +1807,6 @@
     "user": null,
     "role": null,
     "bookmark": null,
-    "collection": "help_articles",
-    "search": null,
-    "layout": null,
-    "icon": "bookmark",
-    "color": null,
-    "filter": null,
-    "layout_options": null,
-    "layout_query": {
-      "tabular": {
-        "limit": 25,
-        "page": 1
-      }
-    },
-    "refresh_interval": null
-  },
-  {
-    "user": null,
-    "role": null,
-    "bookmark": null,
-    "collection": "help_articles",
-    "search": null,
-    "layout": null,
-    "icon": "bookmark",
-    "color": null,
-    "filter": null,
-    "layout_options": {
-      "tabular": {
-        "widths": {
-          "status": 32
-        }
-      }
-    },
-    "layout_query": {
-      "tabular": {
-        "limit": 25,
-        "page": 1,
-        "fields": [
-          "status",
-          "title",
-          "help_collection"
-        ],
-        "sort": [
-          "sort"
-        ]
-      }
-    },
-    "refresh_interval": null
-  },
-  {
-    "user": null,
-    "role": null,
-    "bookmark": null,
     "collection": "block_hero",
     "search": null,
     "layout": null,
@@ -1913,56 +1861,7 @@
     "user": null,
     "role": null,
     "bookmark": null,
-    "collection": "help_collections",
-    "search": null,
-    "layout": null,
-    "icon": "bookmark",
-    "color": null,
-    "filter": null,
-    "layout_options": {
-      "tabular": {
-        "widths": {
-          "icon": 49.12109375
-        }
-      }
-    },
-    "layout_query": {
-      "tabular": {
-        "page": 1,
-        "limit": 25,
-        "fields": [
-          "icon",
-          "title",
-          "description"
-        ]
-      }
-    },
-    "refresh_interval": null
-  },
-  {
-    "user": null,
-    "role": null,
-    "bookmark": null,
     "collection": "messages",
-    "search": null,
-    "layout": null,
-    "icon": "bookmark",
-    "color": null,
-    "filter": null,
-    "layout_options": null,
-    "layout_query": {
-      "tabular": {
-        "page": 1,
-        "limit": 25
-      }
-    },
-    "refresh_interval": null
-  },
-  {
-    "user": null,
-    "role": null,
-    "bookmark": null,
-    "collection": "help_feedback",
     "search": null,
     "layout": null,
     "icon": "bookmark",

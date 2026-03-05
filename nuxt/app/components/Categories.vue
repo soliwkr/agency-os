@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const route = useRoute();
+
 const { data: categories } = await useAsyncData('categories', () => {
 	return useDirectus(
 		readItems('categories', {
@@ -11,7 +13,7 @@ const { data: categories } = await useAsyncData('categories', () => {
 	<div class="mt-4 space-y-2">
 		<div v-for="category in categories" :key="category.id">
 			<NuxtLink :href="`/posts/categories/${category.slug}`" class="text-default hover:opacity-80">
-				<Category :color="category.color" size="lg">
+				<Category :color="category.color" size="lg" :active="route.path === `/posts/categories/${category.slug}`">
 					{{ category.title }}
 				</Category>
 			</NuxtLink>

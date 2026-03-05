@@ -9,12 +9,16 @@ const isScrolled = computed(() => y.value > 50);
 </script>
 <template>
   <header
-    class="w-full mx-auto py-4 transition-all duration-300"
-    :class="isScrolled ? 'max-w-4xl px-4' : 'max-w-6xl lg:px-10'"
+    class="w-full mx-auto transition-all duration-300"
+    :class="isScrolled ? 'max-w-4xl px-4 py-0' : 'max-w-6xl lg:px-10 py-4'"
   >
     <div
-      class="flex items-center justify-between py-2 px-6 rounded-card border border-primary border-t-0 transition-all duration-300"
-      :class="isScrolled ? 'bg-default border-default' : 'border-transparent'"
+      class="flex items-center justify-between py-2 px-6 border transition-all duration-300"
+      :class="
+        isScrolled
+          ? 'bg-default border-primary/30 rounded-b-card rounded-t-none border-t-0 py-4'
+          : 'border-transparent rounded-card'
+      "
     >
       <NuxtLink href="/" class="py-2">
         <Logo class="h-6 text-highlighted" />

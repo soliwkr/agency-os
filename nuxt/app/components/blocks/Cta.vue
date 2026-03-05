@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import type { BlockButtonGroup, BlockCta, BackgroundType } from '~/types';
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   data: BlockCta;
   background?: BackgroundType;
-}>();
+}>(), {
+  background: 'elevated',
+});
 
 const { setAttr } = useVisualEditing();
 </script>
 <template>
   <BlockContainer :background="background">
-    <div class="relative overflow-hidden p-8 text-highlighted border md:px-10 md:py-8 border-primary/50 rounded-panel">
-      <div class="absolute inset-0 bg-gradient-to-br from-default via-muted to-primary" />
-      <div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
-      <div class="relative md:flex md:items-center md:justify-between md:space-x-4">
+    <div class="relative overflow-hidden p-8 text-highlighted border border-dashed md:px-10 md:py-8 border-primary/50 bg-default corner-marks">
+      <div class="md:flex md:items-center md:justify-between md:space-x-4">
         <div>
           <TypographyTitle v-if="data?.title" :data-directus="setAttr({ collection: 'block_cta', item: data.id, fields: 'title', mode: 'popover' })">{{ data.title }}</TypographyTitle>
           <TypographyHeadline v-if="data.headline" :content="data.headline" class="font-bold" :data-directus="setAttr({ collection: 'block_cta', item: data.id, fields: 'headline', mode: 'popover' })" />

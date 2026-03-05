@@ -8,8 +8,8 @@ defineProps<{
 const flipped = ref(false);
 </script>
 <template>
-	<div class="opacity-0 cursor-pointer select-none animate-fade-in" @click="flipped = !flipped">
-		<div class="relative w-full aspect-square overflow-hidden group rounded-card">
+	<div class="cursor-pointer select-none" @click="flipped = !flipped">
+		<div class="relative w-full aspect-square overflow-hidden group border border-dashed border-primary/30 rounded-card corner-marks-inset">
 			<!-- Front of Team Card -->
 			<NuxtImg
 				v-if="person.image"
@@ -43,11 +43,11 @@ const flipped = ref(false);
 				}"
 			>
 				<div class="relative p-4 space-y-2">
-					<p class="font-mono tracking-wider uppercase">Links</p>
+					<p class="font-mono tracking-wider uppercase text-sm">Links</p>
 					<NuxtLink
 						v-for="link in person.social_media"
 						:key="link?.service"
-						class="inline-flex w-full border border-inverted hover:border-inverted hover:text-inverted"
+						class="inline-flex w-full border border-dashed border-inverted/50 hover:border-inverted hover:text-inverted"
 						:href="link?.url"
 						target="_blank"
 					>
@@ -55,7 +55,7 @@ const flipped = ref(false);
 							<Icon class="w-8 h-8" :name="`uil:${link?.service}`" />
 						</div>
 						<p
-							class="flex flex-col justify-center py-2 pb-1 pl-3 pr-2 overflow-hidden text-lg font-semibold leading-none tracking-tight capitalize truncate md:py-3 text-bold font-display word-spacing-tight"
+							class="flex flex-col justify-center py-2 pb-1 pl-3 pr-2 overflow-hidden font-mono text-sm font-semibold leading-none tracking-tight uppercase truncate md:py-3"
 						>
 							{{ link?.service }}
 						</p>
@@ -67,9 +67,9 @@ const flipped = ref(false);
 				<TypographyHeadline v-if="person.name" :content="person.name" size="sm" class="text-inverted drop-shadow">
 					{{ person?.name }}
 				</TypographyHeadline>
-				<TypographyTitle v-if="person.job_title" class="text-inverted/50">
+				<p v-if="person.job_title" class="font-mono text-xs uppercase tracking-widest text-primary mt-1">
 					{{ person?.job_title }}
-				</TypographyTitle>
+				</p>
 			</div>
 
 			<div class="absolute bottom-0 left-0 right-0 h-1/3 opacity-80 bg-gradient-to-b from-transparent to-inverted"></div>

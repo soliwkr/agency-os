@@ -23,7 +23,7 @@ const { setAttr } = useVisualEditing();
 			<!-- Image -->
 			<div
 				v-if="data.image"
-				class="overflow-hidden border lg:relative lg:h-full border-default rounded-card"
+				class="overflow-hidden border-2 lg:relative lg:h-full border-primary/30 rounded-card"
 				:class="data.image_position === 'left' ? 'order-first lg:-ml-48 md:-ml-16' : 'lg:-mr-48 md:-mr-16 '"
 				:data-directus="setAttr({ collection: 'block_hero', item: data.id, fields: ['image', 'image_position'], mode: 'modal' })"
 			>

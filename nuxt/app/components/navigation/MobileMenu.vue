@@ -81,17 +81,12 @@ watch(
     </Motionable>
     <!-- Button -->
     <button
-      :class="{
-        'bg-primary': isOpen || !isOpen,
-      }"
-      class="fixed z-50 p-4 text-inverted transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-primary hover:bg-opacity-75 rounded-button"
+      class="fixed z-50 size-14 flex items-center justify-center text-inverted transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-primary hover:bg-opacity-75 rounded-button"
       @click="toggle"
     >
-      <div>
-        <span class="sr-only">Close</span>
-        <Icon v-if="!isOpen" name="heroicons:bars-3" class="w-6 h-6" />
-        <Icon v-if="isOpen" name="heroicons:x-mark" class="w-6 h-6" />
-      </div>
+      <span class="sr-only">{{ isOpen ? 'Close menu' : 'Open menu' }}</span>
+      <Icon v-if="!isOpen" name="heroicons:bars-3" class="size-6" />
+      <Icon v-if="isOpen" name="heroicons:x-mark" class="size-6" />
     </button>
   </div>
 </template>

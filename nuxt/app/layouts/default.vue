@@ -1,17 +1,14 @@
 <script setup lang="ts"></script>
 <template>
 	<div
-		class="relative flex flex-col min-h-screen antialiased transition duration-150 bg-default visual-effects"
+		class="relative flex flex-col min-h-screen antialiased transition duration-150 dot-grid"
 	>
 		<div class="sticky top-0 z-50 w-full mx-auto">
 			<NavigationTheHeader />
 		</div>
 
-		<div class="relative text-default">
+		<div class="relative text-default max-w-6xl w-full mx-auto bg-default border-x border-t border-dashed border-primary/30">
 			<slot />
-		</div>
-
-		<div class="relative w-full max-w-6xl px-2 pt-6 pb-12 mx-auto lg:px-16">
 			<NavigationTheFooter />
 		</div>
 

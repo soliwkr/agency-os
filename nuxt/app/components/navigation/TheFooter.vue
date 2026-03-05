@@ -25,7 +25,7 @@ const { data: form } = await useAsyncData(
 </script>
 <template>
 	<footer
-		class="relative px-8 py-8 bg-muted md:px-12 md:py-10 rounded-panel"
+		class="relative px-6 py-8 lg:px-16 lg:py-12 border-t border-dashed border-primary/30"
 		aria-labelledby="footer-heading"
 	>
 		<div class="mx-auto">

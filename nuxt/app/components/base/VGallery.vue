@@ -144,8 +144,8 @@ watch(isOpen, (val) => {
 						fade
 						:items="items"
 						:start-index="currentItemIdx"
-						:prev="{ size: 'xl', icon: 'material-symbols:arrow-back-rounded', variant: 'solid' }"
-						:next="{ size: 'xl', icon: 'material-symbols:arrow-forward-rounded', variant: 'solid' }"
+						:prev="{ size: 'xl', icon: 'material-symbols:arrow-back-rounded', variant: 'solid', color: 'primary', class: 'rounded-button' }"
+						:next="{ size: 'xl', icon: 'material-symbols:arrow-forward-rounded', variant: 'solid', color: 'primary', class: 'rounded-button' }"
 						:ui="{
 							root: 'w-full h-full',
 							viewport: 'h-full',

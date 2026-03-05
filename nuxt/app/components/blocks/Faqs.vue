@@ -46,7 +46,7 @@ function loadMore() {
 						item: 'border-none mb-2',
 						trigger: 'rounded-card px-6 py-4 font-medium font-display text-sm md:text-base data-[state=open]:bg-primary/20 data-[state=closed]:bg-muted focus:outline-none focus-visible:outline-primary',
 						label: 'text-highlighted',
-						body: 'px-6 pt-2 pb-6',
+						body: 'pt-2 pb-6',
 					}"
 					trailing-icon=""
 				>
@@ -57,8 +57,10 @@ function loadMore() {
 						/>
 					</template>
 					<template #body="{ item }">
-						<div class="prose text-left dark:prose-invert">
-							{{ item.content }}
+						<div class="corner-marks-bottom pb-2">
+							<div class="prose text-left dark:prose-invert px-6">
+								{{ item.content }}
+							</div>
 						</div>
 					</template>
 				</UAccordion>

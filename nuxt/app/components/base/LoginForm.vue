@@ -41,6 +41,7 @@
 				:loading="loading"
 				:disabled="!credentials.email"
 				size="lg"
+				color="primary"
 				label="Sign In"
 				trailing-icon="material-symbols:arrow-forward"
 				block

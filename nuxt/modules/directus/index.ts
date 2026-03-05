@@ -234,14 +234,6 @@ export default defineNuxtModule({
 			);
 			nuxt.options.appConfig.globals = defu(globals, nuxt.options.appConfig.globals);
 
-			// Set Nuxt UI primary color from CMS
-			if (globals?.primary_color || globals?.neutral_color) {
-				const colors: Record<string, string> = {};
-				if (globals.primary_color) colors.primary = globals.primary_color;
-				if (globals.neutral_color) colors.neutral = globals.neutral_color;
-				nuxt.options.appConfig.ui = defu({ colors }, nuxt.options.appConfig.ui);
-			}
-
 			log.success('Globals loaded into appConfig');
 
 			// Add title template to the app head for use with useHead composable

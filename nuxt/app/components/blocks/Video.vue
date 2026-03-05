@@ -25,10 +25,11 @@ const url = computed(() => {
 	<BlockContainer :background="background">
 		<TypographyTitle v-if="data.title" :data-directus="setAttr({ collection: 'block_video', item: data.id, fields: 'title', mode: 'popover' })">{{ data.title }}</TypographyTitle>
 		<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" :data-directus="setAttr({ collection: 'block_video', item: data.id, fields: 'headline', mode: 'popover' })" />
-		<div :data-directus="setAttr({ collection: 'block_video', item: data.id, fields: ['type', 'video_url', 'video_file'], mode: 'modal' })">
+		<div class="relative mt-6 corner-marks" :data-directus="setAttr({ collection: 'block_video', item: data.id, fields: ['type', 'video_url', 'video_file'], mode: 'modal' })">
+			<span class="corner-marks-alt" />
 			<VVideo
 				v-if="url"
-				class="relative mt-6 overflow-hidden border border-default rounded-card"
+				class="overflow-hidden rounded-card"
 				:url="url"
 				:title="data.title ?? undefined"
 			/>

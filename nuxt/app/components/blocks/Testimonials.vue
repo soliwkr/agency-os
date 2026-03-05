@@ -5,7 +5,7 @@ const props = withDefaults(defineProps<{
   data: BlockTestimonial;
   background?: BackgroundType;
 }>(), {
-  background: 'muted',
+  background: 'default',
 });
 
 const { setAttr } = useVisualEditing();
@@ -39,55 +39,53 @@ const testimonials = computed(() => {
           size: 'lg',
           square: true,
           icon: 'material-symbols:arrow-back-rounded',
-          variant: 'solid',
+          variant: 'outline',
           color: 'primary',
         }"
         :next="{
           size: 'lg',
           square: true,
           icon: 'material-symbols:arrow-forward-rounded',
-          variant: 'solid',
+          variant: 'outline',
           color: 'primary',
         }"
         :items="testimonials as Testimonial[]"
         :ui="{
           root: 'flex flex-col-reverse py-6',
           container: 'items-stretch',
-          item: 'basis-[350px] md:basis-[450px] lg:basis-[600px]',
+          item: 'basis-[350px] md:basis-[500px] lg:basis-[650px]',
           controls: 'relative flex items-center justify-end gap-4 px-6 lg:px-16 mb-6',
           arrows: 'flex gap-2 order-2',
           prev: 'static translate-0 rounded-lg',
           next: 'static translate-0 rounded-lg',
           dots: 'static flex-wrap gap-2',
-          dot: 'w-12 h-3 rounded-lg bg-muted data-[state=active]:bg-primary',
+          dot: 'w-8 h-3 rounded-none bg-elevated data-[state=active]:bg-primary',
         }"
         class="relative mt-4"
       >
         <div
-          class="relative flex flex-col justify-between shrink-0 p-8 bg-default shadow-md rounded-card overflow-hidden h-full"
+          class="relative flex flex-col justify-between shrink-0 p-8 md:p-10 border border-dashed border-primary/50 bg-default rounded-card h-full corner-marks"
         >
-          <DirectusIcon
-            name="material-symbols:format-quote-rounded"
-            class="absolute w-20 h-20 rotate-180 left-2 text-primary/20 top-2"
-          />
-          <TypographyProse v-if="testimonial?.content" :content="testimonial?.content" size="lg" class="relative" />
-          <div class="flex pt-6 mt-4 space-x-2 border-t border-default">
+          <div>
+            <TypographyProse v-if="testimonial?.content" :content="testimonial?.content" size="lg" />
+          </div>
+          <div class="flex pt-6 mt-6 space-x-3 border-t border-dashed border-primary/30">
             <NuxtImg
               v-if="(testimonial?.image as unknown as File)?.id"
-              class="inline-block w-16 h-16 border rounded-button"
+              class="inline-block w-14 h-14 ring-1 ring-primary/30 rounded-button"
               :src="(testimonial?.image as unknown as File)?.id"
               :alt="testimonial.title ?? ''"
             />
             <DirectusIcon
               v-else
               name="material-symbols:account-circle"
-              class="inline-block w-16 h-16 text-dimmed border rounded-button"
+              class="inline-block w-14 h-14 text-dimmed ring-1 ring-primary/30 rounded-button"
             />
-            <div class="relative">
-              <p v-if="testimonial.title" class="font-semibold text-primary font-display lg:text-2xl">
+            <div class="relative flex flex-col justify-center">
+              <p v-if="testimonial.title" class="font-semibold text-primary font-display lg:text-xl">
                 {{ testimonial.title }}
               </p>
-              <p class="text-sm text-default lg:text-lg">{{ testimonial.subtitle }} at {{ testimonial.company }}</p>
+              <p class="font-mono text-xs uppercase tracking-wider text-muted">{{ testimonial.subtitle }} at {{ testimonial.company }}</p>
             </div>
           </div>
         </div>

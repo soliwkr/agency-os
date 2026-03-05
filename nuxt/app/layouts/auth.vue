@@ -14,11 +14,8 @@ definePageMeta({
 				<slot />
 			</div>
 		</div>
-		<div class="relative flex-1 hidden bg-default border-l-2 border-primary/50 lg:block">
-			<div
-				class="absolute inset-0 bg-gradient-to-br from-default via-muted to-primary"
-			/>
-			<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
+		<div class="relative flex-1 hidden bg-default border-l-2 border-dashed border-primary/50 lg:block">
+			<div class="absolute inset-0 dot-grid opacity-30 dark:opacity-15" />
 		</div>
 	</div>
 </template>

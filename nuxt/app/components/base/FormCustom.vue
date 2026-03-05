@@ -26,6 +26,7 @@ const props = defineProps<{
 				:description="(item as any).description"
 				:class="widthClassMap[(item as any).width] || 'md:col-span-6'"
 				size="lg"
+				:ui="{ label: 'font-mono uppercase tracking-wider text-xs' }"
 			>
 				<UTextarea
 					v-if="(item as any).type === 'textarea'"
@@ -65,7 +66,11 @@ const props = defineProps<{
 			<UButton
 				type="submit"
 				size="lg"
+				color="primary"
+				variant="solid"
 				label="Submit"
+				class="font-mono uppercase tracking-wider"
+				block
 				@click.prevent="onSubmit?.()"
 			/>
 		</div>

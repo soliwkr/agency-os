@@ -75,8 +75,8 @@ export default defineNuxtConfig({
   // Font Configuration - handled by @nuxt/fonts (bundled with @nuxt/ui)
   fonts: {
     families: [
+      { name: 'Inter', provider: 'google' },
       { name: 'Geist', provider: 'google' },
-      { name: 'Source Serif 4', provider: 'google', weights: [400, 500, 600, 700, 800, 900] },
       { name: 'Fira Code', provider: 'google' },
       { name: 'Nothing You Could Do', provider: 'google' },
     ],

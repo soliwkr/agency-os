@@ -31,7 +31,7 @@ provide('blockTheme', theme);
 <template>
 	<section
 		:class="[
-			'py-8 lg:py-24',
+			'py-8 lg:py-24 border-t border-dashed border-primary/30 first:border-t-0',
 			backgroundClass,
 			theme === 'dark' ? 'text-inverted' : '',
 		]"

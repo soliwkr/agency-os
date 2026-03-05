@@ -28,7 +28,7 @@ const { fileUrl } = useFiles();
 						y: 0,
 					}"
 					:transition="{ delay: 0.25 + 0.1 * fileIdx }"
-					class="flex items-center justify-center p-8 border border-default rounded-card"
+					class="flex items-center justify-center p-8 bg-default corner-marks-inset"
 				>
 					<NuxtImg
 						v-if="(logo.directus_files_id as File)?.id"

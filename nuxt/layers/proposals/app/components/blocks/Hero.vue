@@ -11,10 +11,7 @@ defineProps<HeroProps>();
 </script>
 <template>
 	<div class="relative flex items-center justify-center w-full h-screen border-b-2 border-primary">
-		<div
-			class="absolute inset-0 bg-gradient-to-br from-default via-muted to-primary/70"
-		/>
-		<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
+		<div class="absolute inset-0 dot-grid opacity-20 dark:opacity-10" />
 
 		<div class="relative flex flex-col justify-center">
 			<Logo class="h-6 mx-auto text-default" />

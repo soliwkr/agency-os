@@ -1,7 +1,7 @@
 <script setup lang="ts">
 export interface ProseProps {
   content: string;
-  size?: 'sm' | 'md' | 'lg'; // @TODO: Rework the sizes
+  size?: 'sm' | 'md' | 'lg';
 }
 
 withDefaults(defineProps<ProseProps>(), {
@@ -55,7 +55,7 @@ onMounted(() => {
         'md:prose-base lg:prose-lg': size === 'md',
         'prose-lg lg:prose-xl': size === 'lg',
       },
-      'prose dark:prose-invert prose-img:rounded-lg prose-img:rounded-lg prose-img:border-2 prose-img:border-accented prose-headings:font-display prose-headings:font-semibold',
+      'prose',
     ]"
     v-html="content"
   />

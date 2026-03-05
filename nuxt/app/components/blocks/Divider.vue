@@ -15,6 +15,10 @@ const { setAttr } = useVisualEditing();
     <div v-if="data.title" class="shrink-0 mx-auto lg:mx-0" :data-directus="setAttr({ collection: 'block_divider', item: data.id, fields: 'title', mode: 'popover' })">
       <TypographyHeadline :content="data.title" />
     </div>
-    <div class="w-full h-px bg-(--ui-border)"></div>
+    <div class="flex items-center w-full">
+      <span class="text-primary font-mono text-xs leading-none select-none">+</span>
+      <div class="flex-1 border-t border-dashed border-primary/30"></div>
+      <span class="text-primary font-mono text-xs leading-none select-none">+</span>
+    </div>
   </BlockContainer>
 </template>

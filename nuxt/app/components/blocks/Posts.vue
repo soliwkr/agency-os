@@ -87,7 +87,7 @@ function goToPage(page: number) {
 </script>
 <template>
 	<BlockContainer :background="background">
-		<header v-if="data.title || data.headline" class="pb-6 border-b border-default" :data-directus="setAttr({ collection: 'block_posts', item: data.id, fields: ['title', 'headline', 'post_type', 'layout', 'limit', 'featured_post', 'show_search'], mode: 'modal' })">
+		<header v-if="data.title || data.headline" class="pb-6 border-b border-dashed border-primary/30" :data-directus="setAttr({ collection: 'block_posts', item: data.id, fields: ['title', 'headline', 'post_type', 'layout', 'limit', 'featured_post', 'show_search'], mode: 'modal' })">
 			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
 			<TypographyHeadline v-if="data.headline" :content="data.headline" />
 		</header>
@@ -96,7 +96,7 @@ function goToPage(page: number) {
 			<!-- Search + Featured Post (grid layout with show_search) -->
 			<div
 				v-if="data.show_search || data.featured_post"
-				class="relative grid w-full gap-12 pb-12 border-b-2 border-default md:grid-cols-2 lg:grid-cols-4"
+				class="relative grid w-full gap-12 pb-12 border-b border-dashed border-primary/30 md:grid-cols-2 lg:grid-cols-4"
 			>
 				<div v-if="data.show_search">
 					<TypographyTitle class="text-default">Search</TypographyTitle>
@@ -119,7 +119,7 @@ function goToPage(page: number) {
 							:key="post.id"
 							:post="post"
 							:class="[
-								'border-b border-default pb-6',
+								'border-b border-dashed border-primary/30 pb-6',
 								postIdx < 2 ? 'md:col-span-3' : 'md:col-span-2',
 							]"
 						/>
@@ -134,26 +134,24 @@ function goToPage(page: number) {
 						v-for="project in posts"
 						:key="project.id"
 						:href="`/posts/${project.slug}`"
-						class="relative block w-full mb-6 overflow-hidden transition duration-300 border border-default rounded-card"
+						class="block w-full overflow-hidden transition duration-300 border border-dashed border-primary/30 group"
 					>
-						<div class="relative h-56 overflow-hidden rounded-card group">
+						<div class="relative h-56 overflow-hidden">
 							<NuxtImg
 								v-if="project.image"
 								:src="project.image as string"
-								class="object-cover transition duration-300 group-hover:scale-110"
+								class="object-cover w-full h-full transition duration-300 saturate-0 group-hover:saturate-100"
 							/>
-							<div
-								class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-default/75 opacity-0 hover:opacity-100"
-							>
-								<div class="p-8">
-									<TypographyTitle v-if="project?.client">{{ project?.client }}</TypographyTitle>
-									<TypographyHeadline v-if="project?.title" :content="project.title" />
-									<div v-if="project?.built_with" class="flex flex-wrap gap-2 mt-2">
-										<UBadge v-for="(item, itemIdx) in project?.built_with" :key="itemIdx" size="md" color="neutral">
-											{{ item }}
-										</UBadge>
-									</div>
-								</div>
+						</div>
+						<div class="p-4 space-y-2 border-t border-dashed border-primary/30">
+							<span v-if="project?.client" class="block font-mono text-xs tracking-wider text-muted uppercase">
+								{{ project.client }}
+							</span>
+							<TypographyHeadline v-if="project?.title" :content="project.title" size="xs" as="h3" class="group-hover:text-primary" />
+							<div v-if="project?.built_with" class="flex flex-wrap gap-2 pt-1">
+								<UBadge v-for="(item, itemIdx) in project?.built_with" :key="itemIdx" size="md" color="neutral">
+									{{ item }}
+								</UBadge>
 							</div>
 						</div>
 					</NuxtLink>
@@ -161,9 +159,10 @@ function goToPage(page: number) {
 			</template>
 
 			<!-- Pagination -->
-			<nav v-if="totalPages > 1" class="flex items-center justify-center gap-2 pt-8">
+			<nav v-if="totalPages > 1" class="flex items-center justify-center gap-2 pt-8 mt-8 border-t border-dashed border-primary/30">
 				<UButton
-					variant="ghost"
+					variant="outline"
+					class="font-mono uppercase tracking-wider text-xs"
 					:disabled="currentPage <= 1"
 					@click="goToPage(currentPage - 1)"
 				>
@@ -172,13 +171,15 @@ function goToPage(page: number) {
 				<UButton
 					v-for="page in totalPages"
 					:key="page"
-					:variant="page === currentPage ? 'solid' : 'ghost'"
+					:variant="page === currentPage ? 'solid' : 'outline'"
+					class="font-mono"
 					@click="goToPage(page)"
 				>
 					{{ page }}
 				</UButton>
 				<UButton
-					variant="ghost"
+					variant="outline"
+					class="font-mono uppercase tracking-wider text-xs"
 					:disabled="currentPage >= totalPages"
 					@click="goToPage(currentPage + 1)"
 				>

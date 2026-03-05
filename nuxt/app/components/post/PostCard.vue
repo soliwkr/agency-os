@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Post, PostType, Category, Team } from '~/types';
+import type { Post, Category, Team } from '~/types';
 
 const props = withDefaults(
   defineProps<{
@@ -10,12 +10,6 @@ const props = withDefaults(
     direction: 'vertical',
   },
 );
-
-const iconMap: Record<PostType, string> = {
-  blog: 'material-symbols:article-outline-rounded',
-  video: 'material-symbols:video-library-outline-rounded',
-  project: 'material-symbols:trophy-outline-rounded',
-};
 
 const postCategory = computed(() => {
   return (unref(props.post.category) as Category) ?? null;
@@ -37,38 +31,23 @@ const postCategory = computed(() => {
           'w-full h-56': direction === 'vertical',
           'w-full h-56 md:w-72 md:h-72': direction === 'horizontal',
         },
-        'relative block overflow-hidden border border-default group rounded-card shrink-0',
+        'relative block overflow-hidden border border-dashed border-primary/30 group shrink-0',
       ]"
       :href="`/posts/${post.slug}`"
     >
       <NuxtImg
         v-if="post.image"
-        class="relative shrink-0 object-cover w-full h-full transition duration-300 saturate-0 group-hover:opacity-75"
+        class="relative shrink-0 object-cover w-full h-full transition duration-300 saturate-0 group-hover:saturate-100"
         :src="safeRelationId(post.image) as string"
         :alt="safeRelation(post.image)?.alt ?? ''"
       />
-      <div
-        class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-br from-transparent via-transparent to-primary group-hover:opacity-100"
-      />
-      <Category
-        v-if="postCategory"
-        size="lg"
-        :color="postCategory.color as string"
-        class="absolute bottom-0 left-0 mb-4 ml-4"
-      >
-        {{ postCategory.title }}
-      </Category>
-      <div v-if="post.type" class="absolute top-0 right-0 p-1.5 mt-4 mr-4 rounded-button bg-inverted/50">
-        <DirectusIcon
-          v-if="post.type"
-          :name="iconMap[post.type ?? 'blog'] ?? 'material-symbols:article-outline-rounded'"
-          class="w-6 h-6 text-inverted"
-        />
-      </div>
     </NuxtLink>
 
     <div class="flex flex-col justify-between h-full gap-3">
-      <NuxtLink class="space-y-4" :href="`/posts/${post.slug}`">
+      <NuxtLink class="space-y-2" :href="`/posts/${post.slug}`">
+        <span v-if="postCategory" class="font-mono text-xs uppercase tracking-wider text-primary">
+          {{ postCategory.title }}
+        </span>
         <TypographyHeadline
           v-if="post.title"
           :content="post.title"

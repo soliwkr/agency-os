@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { borderRadiusMap } from '~/theme';
-
 const { globals } = useAppConfig();
 const { fileUrl } = useFiles();
 
@@ -15,26 +13,6 @@ useSchemaOrg([
 		},
 	}),
 ]);
-
-const borderRadius = globals?.border_radius ?? 'lg';
-const radiusValues = borderRadiusMap[borderRadius] ?? borderRadiusMap.lg;
-
-useHead({
-	style: [
-		{
-			id: 'theme-vars',
-			innerHTML: `:root {
---ui-radius: ${radiusValues.button};
-${Object.entries(radiusValues)
-				.map(([key, value]) => `--border-radius-${key}: ${value};`)
-				.join('\n')}
---font-display: ${globals?.font_display ?? 'Source Serif 4'};
---font-sans: ${globals?.font_body ?? 'Geist'};
---font-code: ${globals?.font_monospace ?? 'Fira Code'};
---font-signature: Nothing You Could Do;}`,
-		},
-	],
-});
 </script>
 <template>
 	<UApp>

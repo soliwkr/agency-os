@@ -9,82 +9,69 @@ const { setAttr } = useVisualEditing();
 </script>
 <template>
 	<BlockContainer>
-		<header>
-			<div class="md:flex">
-				<!-- Post Image -->
-				<div class="relative w-full max-w-3xl" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'image', mode: 'modal' })">
-					<div
-						class="relative w-full mx-auto overflow-hidden bg-cover rounded-card h-[300px] md:h-[450px] outline-default"
-					>
-						<NuxtImg :src="page?.image" class="object-cover w-full h-full saturate-0 dark:brightness-90" alt="" />
-						<div class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-muted to-inverted" />
-					</div>
-				</div>
-
-				<!-- Post Meta -->
-				<div class="hidden p-8 mt-12 space-y-6 md:block">
-					<NuxtLink
-						v-if="page?.category"
-						:href="`/posts/categories/${page?.category.slug}`"
-						class="inline-block hover:opacity-90"
-					>
-						<Category size="lg" :color="page?.category.color">{{ page?.category.title }}</Category>
-					</NuxtLink>
-					<Author v-if="page?.author" :author="page.author" />
-					<div class="space-y-2">
-						<p class="flex text-muted">
-							<DirectusIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
-							{{ calculateReadTime(page?.content) }}
-						</p>
-						<p class="flex text-muted">
-							<DirectusIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
-							{{ getRelativeTime(page?.date_published) }}
-						</p>
-					</div>
+		<header class="max-w-4xl mx-auto">
+			<!-- Category + Meta Row -->
+			<div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+				<NuxtLink
+					v-if="page?.category"
+					:href="`/posts/categories/${page?.category.slug}`"
+					class="inline-block hover:opacity-90"
+				>
+					<Category size="lg" :color="page?.category.color">{{ page?.category.title }}</Category>
+				</NuxtLink>
+				<div class="flex items-center gap-4 font-mono text-xs tracking-wider text-muted uppercase">
+					<span class="flex items-center gap-1.5">
+						<DirectusIcon name="material-symbols:timer-outline-rounded" class="size-4" />
+						{{ calculateReadTime(page?.content) }}
+					</span>
+					<span class="flex items-center gap-1.5">
+						<DirectusIcon name="material-symbols:calendar-today-rounded" class="size-4" />
+						{{ getRelativeTime(page?.date_published) }}
+					</span>
 				</div>
 			</div>
 
-			<!-- Title Container -->
-			<div
-				class="relative w-full max-w-4xl p-2 px-8 py-8 mx-auto -mt-12 overflow-hidden text-highlighted border md:-mt-32 rounded-card border-primary md:px-16 md:py-12"
-			>
-				<div
-					class="absolute inset-0 bg-gradient-to-br from-default via-muted to-primary/50"
+			<!-- Title + Summary -->
+			<div class="mt-6 pb-8 border-b border-dashed border-primary/30">
+				<TypographyHeadline
+					:content="page?.title"
+					as="h1"
+					size="xl"
+					:data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'title', mode: 'popover' })"
 				/>
-				<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
-				<div class="relative">
-					<TypographyHeadline :content="page?.title" as="h1" size="lg" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'title', mode: 'popover' })" />
-					<TypographyProse :content="page?.summary" class="mt-2" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'summary', mode: 'popover' })" />
-				</div>
+				<TypographyProse
+					v-if="page?.summary"
+					:content="page?.summary"
+					class="mt-4"
+					size="lg"
+					:data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'summary', mode: 'popover' })"
+				/>
 			</div>
 
-			<div class="block px-6 mt-6 md:hidden">
-				<Author v-if="page?.author" :author="page.author" />
-				<div class="flex justify-between pb-4 mt-4 border-b border-default">
-					<div class="space-y-2">
-						<p class="flex text-muted">
-							<DirectusIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
-							{{ calculateReadTime(page?.content) }}
-						</p>
-						<p class="flex text-muted">
-							<DirectusIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
-							{{ getRelativeTime(page?.date_published) }}
-						</p>
-					</div>
-					<NuxtLink
-						v-if="page?.category"
-						:href="`/posts/categories/${page?.category.slug}`"
-						class="inline-block hover:opacity-90"
-					>
-						<Category size="lg" :color="page?.category.color">{{ page?.category.title }}</Category>
-					</NuxtLink>
-				</div>
+			<!-- Author -->
+			<div v-if="page?.author" class="py-6">
+				<Author :author="page.author" />
 			</div>
 		</header>
 
+		<!-- Hero Image -->
+		<div
+			class="relative max-w-4xl mx-auto overflow-hidden border border-dashed border-primary/30 corner-marks rounded-card"
+			:data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'image', mode: 'modal' })"
+		>
+			<div class="relative w-full h-[300px] md:h-[500px]">
+				<NuxtImg :src="page?.image" class="object-cover w-full h-full saturate-0 dark:brightness-90" alt="" />
+				<div class="absolute inset-0 mix-blend-multiply bg-gradient-to-b from-muted to-inverted" />
+			</div>
+		</div>
+
 		<!-- Article -->
 		<main class="w-full max-w-4xl mx-auto mt-12">
-			<TypographyProse ref="article" :content="page?.content" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'content', mode: 'drawer' })" />
+			<TypographyProse
+				ref="article"
+				:content="page?.content"
+				:data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'content', mode: 'drawer' })"
+			/>
 		</main>
 	</BlockContainer>
 </template>

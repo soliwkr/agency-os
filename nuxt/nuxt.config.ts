@@ -1,5 +1,5 @@
 // import { formatFonts } from './utils/fonts';
-import { theme } from './theme';
+import { theme } from './app/theme';
 
 export default defineNuxtConfig({
 	// https://nuxt.com/docs/api/configuration/nuxt-config
@@ -23,6 +23,10 @@ export default defineNuxtConfig({
 	],
 
 	css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
+
+	future: {
+		compatibilityVersion: 4,
+	},
 
 	modules: [
 		'@nuxt/image',
@@ -119,5 +123,5 @@ export default defineNuxtConfig({
 		transpile: ['v-perfect-signature'],
 	},
 
-	compatibilityDate: '2024-07-28',
+	compatibilityDate: '2025-03-01',
 });

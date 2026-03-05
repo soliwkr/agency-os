@@ -69,19 +69,19 @@ const taskStatuses = {
 
 const columns = [
 	{
-		key: 'name',
-		label: 'Name',
+		accessorKey: 'name',
+		header: 'Name',
 	},
 	{
-		key: 'milestones',
-		label: 'Status',
+		accessorKey: 'milestones',
+		header: 'Status',
 	},
 	{
-		key: 'due_date',
-		label: 'Target Date',
+		accessorKey: 'due_date',
+		header: 'Target Date',
 	},
 	{
-		key: 'actions',
+		accessorKey: 'actions',
 	},
 ];
 
@@ -135,17 +135,17 @@ const projectsShown = computed(() => {
 				</div>
 			</template>
 			<!-- Table -->
-			<UTable :columns="columns" :rows="projectsShown" column-attribute="label">
-				<template #name-data="{ row }">
+			<UTable :columns="columns" :data="projectsShown" column-attribute="label">
+				<template #name-cell="{ row }">
 					<UButton variant="link" :to="`/portal/projects/${row.id}`" size="xl" :padded="false">
 						{{ row.name }}
 					</UButton>
 				</template>
-				<template #due_date-data="{ row }">
+				<template #due_date-cell="{ row }">
 					<VText size="xs">{{ getFriendlyDate(row.due_date) }}</VText>
 					<VText size="xs" text-color="light">{{ getRelativeTime(row.due_date) }}</VText>
 				</template>
-				<template #milestones-data="{ row }">
+				<template #milestones-cell="{ row }">
 					<ul class="flex items-center">
 						<template v-for="({ isComplete, isCurrent, icon }, i) in row.tasks" :key="i">
 							<li :class="[i !== row.tasks.length - 1 ? '' : '', 'relative']">
@@ -157,8 +157,8 @@ const projectsShown = computed(() => {
 									}"
 									class="relative flex items-center justify-center flex-shrink-0 rounded-card"
 								>
-									<UIcon v-if="isComplete" name="i-heroicons-check" class="w-4 text-white" />
-									<UIcon
+									<DirectusIcon v-if="isComplete" name="i-heroicons-check" class="w-4 text-white" />
+									<DirectusIcon
 										v-else-if="icon && isCurrent"
 										:name="icon"
 										class="fill-current"
@@ -174,7 +174,7 @@ const projectsShown = computed(() => {
 						</template>
 					</ul>
 				</template>
-				<template #actions-data="{ row }">
+				<template #actions-cell="{ row }">
 					<UButton
 						:to="`/portal/projects/${row.id}`"
 						color="primary"

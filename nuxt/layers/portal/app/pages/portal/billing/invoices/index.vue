@@ -93,35 +93,35 @@ const statusOptions = [
 
 const columns = [
 	{
-		key: 'invoice_number',
-		label: '#',
+		accessorKey: 'invoice_number',
+		header: '#',
 		sortable: true,
 	},
 	{
-		key: 'status',
-		label: 'Status',
+		accessorKey: 'status',
+		header: 'Status',
 	},
 	{
-		key: 'due_date',
-		label: 'Due Date',
+		accessorKey: 'due_date',
+		header: 'Due Date',
 		sortable: true,
 	},
 	{
-		key: 'contact',
-		label: 'Contact',
+		accessorKey: 'contact',
+		header: 'Contact',
 	},
 	{
-		key: 'total',
-		label: 'Total',
+		accessorKey: 'total',
+		header: 'Total',
 		sortable: true,
 	},
 	{
-		key: 'amount_due',
-		label: 'Amount Due',
+		accessorKey: 'amount_due',
+		header: 'Amount Due',
 		sortable: true,
 	},
 	{
-		key: 'actions',
+		accessorKey: 'actions',
 	},
 ];
 
@@ -178,9 +178,9 @@ function clearFilters() {
 				<div class="flex items-center justify-between gap-3">
 					<UInput v-model="search" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." type="text" />
 					<div class="flex gap-3">
-						<USelect v-model="status" :options="statusOptions" placeholder="Invoice Status" />
+						<USelect v-model="status" :items="statusOptions" placeholder="Invoice Status" />
 						<UButton
-							color="white"
+							color="neutral" variant="outline"
 							size="xs"
 							:disabled="!search && !status"
 							icon="material-symbols:filter-alt-off-outline-rounded"
@@ -192,7 +192,7 @@ function clearFilters() {
 				</div>
 			</template>
 			<!-- Table -->
-			<UTable v-auto-animate :columns="columns" :rows="invoices" column-attribute="label" :loading="pending">
+			<UTable v-auto-animate :columns="columns" :data="invoices" column-attribute="label" :loading="pending">
 				<!-- Empty State -->
 				<template #empty-state>
 					<div class="w-1/4 mx-auto text-center">
@@ -200,7 +200,7 @@ function clearFilters() {
 						<TypographyHeadline content="Looks like there's nothing here." size="xs" />
 						<UButton
 							v-if="search || status"
-							color="white"
+							color="neutral" variant="outline"
 							size="xs"
 							icon="material-symbols:filter-alt-off-outline-rounded"
 							class="mt-4"
@@ -211,21 +211,21 @@ function clearFilters() {
 					</div>
 				</template>
 				<!-- Columns -->
-				<template #invoice_number-data="{ row }">
+				<template #invoice_number-cell="{ row }">
 					<UButton variant="outline" :to="`/portal/billing/invoices/${row.id}`" :padding="false">
 						{{ row.invoice_number }}
 					</UButton>
 				</template>
-				<template #amount_due-data="{ row }">
+				<template #amount_due-cell="{ row }">
 					{{ formatCurrency(row.amount_due) }}
 				</template>
-				<template #total-data="{ row }">
+				<template #total-cell="{ row }">
 					{{ formatCurrency(row.total) }}
 				</template>
-				<template #contact-data="{ row }">
+				<template #contact-cell="{ row }">
 					<UserBadge :user="row.contact" size="sm" />
 				</template>
-				<template #status-data="{ row }">
+				<template #status-cell="{ row }">
 					<UBadge
 						:label="row.status"
 						:color="row.status === 'unpaid' ? 'rose' : 'primary'"
@@ -233,7 +233,7 @@ function clearFilters() {
 						class="capitalize"
 					/>
 				</template>
-				<template #due_date-data="{ row }">
+				<template #due_date-cell="{ row }">
 					<VText size="xs">
 						{{
 							getFriendlyDate(row.due_date, {
@@ -243,7 +243,7 @@ function clearFilters() {
 					</VText>
 					<VText size="xs" text-color="light">{{ getRelativeTime(row.due_date) }}</VText>
 				</template>
-				<template #actions-data="{ row }">
+				<template #actions-cell="{ row }">
 					<UButton
 						:to="`/portal/billing/invoices/${row.id}`"
 						color="primary"

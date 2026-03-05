@@ -40,28 +40,28 @@ const {
 
 const lineItemColumns = [
 	{
-		key: 'line_item_number',
-		label: 'Line #',
+		accessorKey: 'line_item_number',
+		header: 'Line #',
 	},
 	{
-		key: 'item_name',
-		label: 'Item',
+		accessorKey: 'item_name',
+		header: 'Item',
 	},
 	{
-		key: 'quantity',
-		label: 'Quantity',
+		accessorKey: 'quantity',
+		header: 'Quantity',
 	},
 	{
-		key: 'unit_price',
-		label: 'Unit Price',
+		accessorKey: 'unit_price',
+		header: 'Unit Price',
 	},
 	{
-		key: 'line_amount',
-		label: 'Line Amount',
+		accessorKey: 'line_amount',
+		header: 'Line Amount',
 	},
 	{
-		key: 'tax_amount',
-		label: 'Tax Amount',
+		accessorKey: 'tax_amount',
+		header: 'Tax Amount',
 	},
 ];
 
@@ -104,7 +104,7 @@ const billingAddress = computed(() => {
 					Pay Invoice
 				</UButton>
 				<div v-if="isPaid" class="inline-flex items-center gap-2 px-4 py-2 border rounded-button border-primary">
-					<UIcon name="material-symbols:price-check-rounded" class="w-8 h-8 text-primary" />
+					<DirectusIcon name="material-symbols:price-check-rounded" class="w-8 h-8 text-primary" />
 					<VText size="lg" class="font-bold uppercase font-display">Paid</VText>
 				</div>
 			</template>
@@ -135,7 +135,7 @@ const billingAddress = computed(() => {
 					<p v-if="globals?.phone">
 						<UButton
 							:to="createTel(globals.phone)"
-							color="gray"
+							color="neutral"
 							variant="link"
 							:padded="false"
 							icon="material-symbols:phone-android-outline-rounded"
@@ -146,7 +146,7 @@ const billingAddress = computed(() => {
 					<p v-if="globals?.email">
 						<UButton
 							:to="createMailto(globals.email, { subject: `Invoice #${invoice?.invoice_number}` })"
-							color="gray"
+							color="neutral"
 							variant="link"
 							:padded="false"
 							icon="material-symbols:alternate-email-rounded"
@@ -179,14 +179,14 @@ const billingAddress = computed(() => {
 			<section id="line-items">
 				<TypographyHeadline content="Line Items" size="xs" />
 				<VDivider />
-				<UTable :columns="lineItemColumns" :rows="invoice?.line_items">
-					<template #unit_price-data="{ row }">
+				<UTable :columns="lineItemColumns" :data="invoice?.line_items">
+					<template #unit_price-cell="{ row }">
 						{{ formatCurrency(row.unit_price) }}
 					</template>
-					<template #line_amount-data="{ row }">
+					<template #line_amount-cell="{ row }">
 						{{ formatCurrency(row.line_amount) }}
 					</template>
-					<template #tax_amount-data="{ row }">
+					<template #tax_amount-cell="{ row }">
 						<p>{{ formatCurrency(row.tax_amount) }}</p>
 						<p class="text-xs">{{ row.tax_rate.name }}</p>
 					</template>

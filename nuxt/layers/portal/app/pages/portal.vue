@@ -29,7 +29,7 @@ function useCommandPalette() {
 
 const sidebarNavigation = {
 	top: [
-		{ name: 'Search', click: () => (showCommandPalette.value = true), icon: 'material-symbols:search-rounded' },
+		{ name: 'Search', onClick: () => (showCommandPalette.value = true), icon: 'material-symbols:search-rounded' },
 		{ name: 'Dashboard', href: '/portal', icon: 'material-symbols:home-outline-rounded' },
 		{ name: 'Projects', href: '/portal/projects', icon: 'material-symbols:tab-group-outline-rounded' },
 		{ name: 'Files', href: '/portal/files', icon: 'material-symbols:folder-outline-rounded' },
@@ -44,11 +44,11 @@ const userNavigation = [
 		{
 			label: 'Your Profile',
 			icon: 'i-heroicons-user-circle',
-			click: () => {
+			onClick: () => {
 				navigateTo('/portal/account#profile');
 			},
 		},
-		{ label: 'Sign out', icon: 'i-heroicons-arrow-left-on-rectangle', click: () => logout() },
+		{ label: 'Sign out', icon: 'i-heroicons-arrow-left-on-rectangle', onClick: () => logout() },
 	],
 ];
 
@@ -77,9 +77,9 @@ const mobileMenuOpen = ref(false);
 									'group flex w-full flex-col items-center rounded-card py-3 px-2 text-xs font-bold ',
 								]"
 								:aria-current="item.current ? 'page' : undefined"
-								@click="item.click ? item.click() : undefined"
+								@click="item.onClick ? item.onClick() : undefined"
 							>
-								<UIcon
+								<DirectusIcon
 									:name="item.icon"
 									:class="[item.current ? 'text-white' : 'text-gray-300 group-hover:text-white', 'h-6 w-6']"
 									aria-hidden="true"
@@ -98,7 +98,7 @@ const mobileMenuOpen = ref(false);
 								]"
 								:aria-current="item.current ? 'page' : undefined"
 							>
-								<UIcon
+								<DirectusIcon
 									:name="item.icon"
 									:class="[item.current ? 'text-white' : 'text-gray-300 group-hover:text-white', 'h-6 w-6']"
 									aria-hidden="true"
@@ -181,7 +181,7 @@ const mobileMenuOpen = ref(false);
 											]"
 											:aria-current="item.current ? 'page' : undefined"
 										>
-											<UIcon
+											<DirectusIcon
 												:name="item.icon"
 												:class="[item.current ? 'text-white' : 'text-gray-300 group-hover:text-white', 'mr-3 h-6 w-6']"
 												aria-hidden="true"
@@ -215,10 +215,9 @@ const mobileMenuOpen = ref(false);
 		</div>
 
 		<!-- Meta layer -->
-		<UModal v-model="showCommandPalette">
+		<UModal v-model:open="showCommandPalette">
 			<PortalSearch @close="showCommandPalette = false" />
 		</UModal>
-		<UNotifications />
 	</div>
 </template>
 

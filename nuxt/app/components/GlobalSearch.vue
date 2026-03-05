@@ -72,8 +72,8 @@ const groups = computed(() => {
 });
 
 function onSelect(option: any) {
-	if (option.click) {
-		option.click();
+	if (option.onClick) {
+		option.onClick();
 	} else if (option.to) {
 		navigateTo(option.to);
 	} else if (option.href) {
@@ -127,14 +127,14 @@ const ui = {
 </script>
 <template>
 	<div>
-		<UButton icon="material-symbols:search-rounded" color="white" size="lg" @click="isOpen = true">
+		<UButton icon="material-symbols:search-rounded" color="neutral" variant="outline" size="lg" @click="isOpen = true">
 			Search
 			<div class="flex items-center gap-0.5">
 				<UKbd>⌘</UKbd>
 				<UKbd>K</UKbd>
 			</div>
 		</UButton>
-		<UModal v-model="isOpen">
+		<UModal v-model:open="isOpen">
 			<UCommandPalette :loading="loading" :groups="groups" :ui="ui" @update:model-value="onSelect" />
 		</UModal>
 	</div>

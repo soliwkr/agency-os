@@ -26,7 +26,7 @@ defineProps<{
 				class="relative text-4xl italic leading-tight text-gray-900 font-display md:leading-tight dark:text-gray-100 md:text-6xl text-wrap-[balance] dark:drop-shadow"
 				v-html="data.content"
 			/>
-			<UIcon
+			<DirectusIcon
 				name="material-symbols:format-quote-rounded"
 				class="absolute w-20 h-20 rotate-180 -left-8 text-primary/20 -top-8"
 			/>

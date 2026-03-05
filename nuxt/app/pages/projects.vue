@@ -109,7 +109,7 @@ useServerSeoMeta({
 								<TypographyTitle v-if="project?.client">{{ project?.client }}</TypographyTitle>
 								<TypographyHeadline v-if="project?.title" :content="project.title" />
 								<div v-if="project?.built_with" class="flex flex-wrap gap-2 mt-2">
-									<UBadge v-for="(item, itemIdx) in project?.built_with" :key="itemIdx" size="md" color="black">
+									<UBadge v-for="(item, itemIdx) in project?.built_with" :key="itemIdx" size="md" color="neutral">
 										{{ item }}
 									</UBadge>
 								</div>

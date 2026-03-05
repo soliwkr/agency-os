@@ -46,7 +46,7 @@ const galleryItems = computed(() => {
 					<div>
 						<TypographyTitle>Built With</TypographyTitle>
 						<div v-for="(item, itemIdx) in page?.built_with" :key="itemIdx" class="mt-2">
-							<UBadge size="lg" color="black">{{ item }}</UBadge>
+							<UBadge size="lg" color="neutral">{{ item }}</UBadge>
 						</div>
 					</div>
 					<div>

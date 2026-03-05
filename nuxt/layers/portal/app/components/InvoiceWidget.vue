@@ -32,16 +32,16 @@ const totalAmountDue = computed(() => {
 
 const columns = [
 	{
-		key: 'invoice_number',
-		label: '#',
+		accessorKey: 'invoice_number',
+		header: '#',
 	},
 	{
-		key: 'due_date',
-		label: 'Due Date',
+		accessorKey: 'due_date',
+		header: 'Due Date',
 	},
 	{
-		key: 'amount_due',
-		label: 'Amount Due',
+		accessorKey: 'amount_due',
+		header: 'Amount Due',
 	},
 ];
 </script>
@@ -54,14 +54,14 @@ const columns = [
 			</dd>
 		</div>
 
-		<UTable :columns="columns" :rows="invoices as any">
-			<template #invoice_number-data="{ row }">
+		<UTable :columns="columns" :data="invoices as any">
+			<template #invoice_number-cell="{ row }">
 				<UButton variant="outline" :to="`/portal/billing/invoices/${row.id}`">{{ row.invoice_number }}</UButton>
 			</template>
-			<template #due_date-data="{ row }">
+			<template #due_date-cell="{ row }">
 				<p class="capitalize">{{ getFriendlyDate(row.due_date) }}</p>
 			</template>
-			<template #amount_due-data="{ row }">
+			<template #amount_due-cell="{ row }">
 				<p class="capitalize">{{ formatCurrency(row.amount_due) }}</p>
 			</template>
 		</UTable>

@@ -10,7 +10,7 @@ const { progress, scrollToTop } = useScroll();
 				class="absolute inset-0 flex items-center justify-center"
 				@click="() => scrollToTop()"
 			>
-				<UIcon name="material-symbols:arrow-upward-rounded" class="w-4 h-4 text-primary/75 hover:text-gray-500" />
+				<DirectusIcon name="material-symbols:arrow-upward-rounded" class="w-4 h-4 text-primary/75 hover:text-gray-500" />
 			</button>
 		</div>
 		<span

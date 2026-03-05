@@ -59,7 +59,7 @@ const postCategory = computed(() => {
 				{{ postCategory.title }}
 			</Category>
 			<div v-if="post.type" class="absolute top-0 right-0 p-1.5 mt-4 mr-4 rounded-button bg-gray-900/50">
-				<UIcon
+				<DirectusIcon
 					v-if="post.type"
 					:name="iconMap[post.type ?? 'blog'] ?? 'material-symbols:article-outline-rounded'"
 					class="w-6 h-6 text-white"

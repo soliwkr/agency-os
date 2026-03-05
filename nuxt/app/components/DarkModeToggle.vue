@@ -23,7 +23,7 @@ const isDark = computed({
 		<UButton
 			:icon="isDark ? 'material-symbols:mode-night' : 'material-symbols:light-mode'"
 			variant="ghost"
-			color="gray"
+			color="neutral"
 			aria-label="Theme"
 			size="lg"
 			:class="[bg === 'dark' ? 'text-white' : '']"

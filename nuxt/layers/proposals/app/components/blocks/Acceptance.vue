@@ -165,7 +165,7 @@ async function submitForm() {
 							{{ form.success_message || 'Success! Your form has been submitted.' }}
 						</VAlert>
 					</div>
-					<UForm
+					<DirectusForm
 						v-if="!success"
 						v-model="formData"
 						:form="{
@@ -174,7 +174,7 @@ async function submitForm() {
 						type="form"
 						:on-submit="submitForm"
 						:submit-label="form.submit_label"
-					></UForm>
+					></DirectusForm>
 				</div>
 			</div>
 		</div>

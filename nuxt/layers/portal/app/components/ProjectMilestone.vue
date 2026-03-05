@@ -11,9 +11,9 @@
 				class="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-button"
 			>
 				<!-- Show check if complete -->
-				<UIcon v-if="isComplete" name="heroicons:check" class="w-8 h-8 text-white fill-current" solid />
+				<DirectusIcon v-if="isComplete" name="heroicons:check" class="w-8 h-8 text-white fill-current" solid />
 				<!-- Else show the icon from the step -->
-				<UIcon
+				<DirectusIcon
 					v-else-if="icon"
 					:name="icon"
 					class="w-6 h-6 fill-current"

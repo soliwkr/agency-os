@@ -33,11 +33,11 @@ const props = defineProps<PostVideoProps>();
 					</NuxtLink>
 					<div class="inline-flex gap-4">
 						<p class="flex text-gray-500 dark:text-gray-300">
-							<UIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
+							<DirectusIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
 							{{ calculateReadTime(page?.content) }}
 						</p>
 						<p class="flex text-gray-500 dark:text-gray-300">
-							<UIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
+							<DirectusIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
 							{{ getRelativeTime(page?.date_published) }}
 						</p>
 					</div>

@@ -87,7 +87,7 @@ onUnmounted(() => {
 				<div
 					class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
 				>
-					<UIcon name="material-symbols:zoom-in-rounded" class="w-12 h-12 text-primary" />
+					<DirectusIcon name="material-symbols:zoom-in-rounded" class="w-12 h-12 text-primary" />
 				</div>
 			</div>
 		</button>

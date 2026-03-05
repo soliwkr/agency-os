@@ -51,13 +51,13 @@ function loadMore() {
 								{{ item.label }}
 							</span>
 							<span class="flex items-center">
-								<UIcon
+								<DirectusIcon
 									v-if="!open"
 									name="material-symbols:add-rounded"
 									class="w-8 h-8 rounded-full fill-current text-primary"
 								/>
 
-								<UIcon
+								<DirectusIcon
 									v-if="open"
 									name="material-symbols:remove-rounded"
 									class="w-8 h-8 rounded-full fill-current text-primary"

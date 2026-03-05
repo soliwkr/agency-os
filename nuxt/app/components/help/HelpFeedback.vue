@@ -90,7 +90,8 @@ async function handleSubmission(rating?: number) {
 						v-for="item in ratingOptions"
 						:key="item.value"
 						size="lg"
-						color="white"
+						color="neutral"
+						variant="outline"
 						@click="handleSubmission(item.value)"
 					>
 						<span>{{ item.label }}</span>

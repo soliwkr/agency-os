@@ -44,33 +44,33 @@ const {
 
 const columns = [
 	{
-		key: 'name',
-		label: 'Name',
+		accessorKey: 'name',
+		header: 'Name',
 		sortable: true,
 	},
 	{
-		key: 'due_date',
-		label: 'Due Date',
+		accessorKey: 'due_date',
+		header: 'Due Date',
 		sortable: true,
 	},
 	{
-		key: 'status',
-		label: 'Status',
+		accessorKey: 'status',
+		header: 'Status',
 		sortable: true,
 	},
 	{
-		key: 'type',
-		label: 'Type',
+		accessorKey: 'type',
+		header: 'Type',
 		sortable: true,
 	},
 	{
-		key: 'assigned_to',
-		label: 'Assigned To',
+		accessorKey: 'assigned_to',
+		header: 'Assigned To',
 		sortable: true,
 	},
 
 	{
-		key: 'actions',
+		accessorKey: 'actions',
 	},
 ];
 
@@ -103,11 +103,11 @@ const tasksShown = computed(() => {
 		<UInput v-model="searchQuery" type="text" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
 	</div>
 	<!-- Table -->
-	<UTable :columns="columns" :rows="tasksShown" column-attribute="label">
-		<template #name-data="{ row }">
+	<UTable :columns="columns" :data="tasksShown" column-attribute="label">
+		<template #name-cell="{ row }">
 			<UButton variant="link" :padded="false" @click="openTask(row.id)">{{ row.name }}</UButton>
 		</template>
-		<template #due_date-data="{ row }">
+		<template #due_date-cell="{ row }">
 			<p class="font-medium text-gray-900">
 				{{
 					getFriendlyDate(row.due_date, {
@@ -117,19 +117,19 @@ const tasksShown = computed(() => {
 			</p>
 			<p class="text-xs capitalize">{{ getRelativeTime(row.due_date) }}</p>
 		</template>
-		<template #type-data="{ row }">
+		<template #type-cell="{ row }">
 			<UBadge class="capitalize" variant="subtle">{{ row.type }}</UBadge>
 		</template>
-		<template #assigned_to-data="{ row }">
+		<template #assigned_to-cell="{ row }">
 			<UserBadge v-if="row.assigned_to" :user="row.assigned_to" size="sm" />
 		</template>
-		<template #actions-data="{ row }">
+		<template #actions-cell="{ row }">
 			<UButton icon="i-heroicons-arrow-right" color="primary" size="sm" variant="outline" @click="openTask(row.id)" />
 		</template>
 	</UTable>
 	<!-- Task Item -->
 	<USlideover
-		v-model="showTask"
+		v-model:open="showTask"
 		:ui="{
 			width: 'max-w-xl',
 		}"

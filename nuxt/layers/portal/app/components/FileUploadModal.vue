@@ -11,7 +11,7 @@ const showUploadModal = ref(false);
 	<UButton icon="material-symbols:upload-file-outline" size="lg" @click="showUploadModal = !showUploadModal">
 		Upload Files
 	</UButton>
-	<UModal v-model="showUploadModal">
+	<UModal v-model:open="showUploadModal">
 		<UCard>
 			<template #header>
 				<TypographyHeadline content="Upload File" size="xs" />

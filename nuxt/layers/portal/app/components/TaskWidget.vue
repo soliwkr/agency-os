@@ -51,12 +51,12 @@ const { data, pending, error, refresh } = await useAsyncData(
 
 const columns = [
 	{
-		key: 'name',
-		label: 'Name',
+		accessorKey: 'name',
+		header: 'Name',
 	},
 	{
-		key: 'due_date',
-		label: 'Due Date',
+		accessorKey: 'due_date',
+		header: 'Due Date',
 	},
 ];
 
@@ -89,20 +89,20 @@ async function openTask(id: string) {
 			</dd>
 		</div>
 
-		<UTable :columns="columns" :rows="tasks">
-			<template #name-data="{ row }">
+		<UTable :columns="columns" :data="tasks">
+			<template #name-cell="{ row }">
 				<UButton variant="link" class="max-w-[250px]" :padded="false" @click="openTask(row.id)">
 					<span class="truncate">{{ row.name ?? 'Task with no name' }}</span>
 				</UButton>
 			</template>
-			<template #due_date-data="{ row }">
+			<template #due_date-cell="{ row }">
 				<p class="capitalize">{{ getRelativeTime(row.due_date) }}</p>
 			</template>
 		</UTable>
 		<UPagination v-model="page" :max="5" :page-count="rowsPerPage" :total="count" />
 		<!-- Task Item -->
 		<USlideover
-			v-model="showTask"
+			v-model:open="showTask"
 			:ui="{
 				width: 'max-w-xl',
 			}"

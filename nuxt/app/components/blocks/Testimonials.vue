@@ -130,7 +130,7 @@ function handleNavButton(direction: 'left' | 'right') {
 					:class="['snap-center']"
 					class="relative w-[350px] md:w[450px] lg:w-[600px] flex flex-col justify-between flex-shrink-0 p-8 bg-white dark:bg-gray-900 shadow-md rounded-card overflow-hidden"
 				>
-					<UIcon
+					<DirectusIcon
 						name="material-symbols:format-quote-rounded"
 						class="absolute w-20 h-20 rotate-180 left-2 text-primary/20 top-2"
 					/>
@@ -143,7 +143,7 @@ function handleNavButton(direction: 'left' | 'right') {
 							:src="(testimonial?.image as unknown as File)?.id"
 							:alt="testimonial.title ?? ''"
 						/>
-						<UIcon
+						<DirectusIcon
 							v-else
 							name="material-symbols:account-circle"
 							class="inline-block w-16 h-16 text-gray-300 border rounded-button"

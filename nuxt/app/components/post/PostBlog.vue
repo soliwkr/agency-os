@@ -31,11 +31,11 @@ defineProps<PostBlogProps>();
 					<Author v-if="page?.author" :author="page.author" />
 					<div class="space-y-2">
 						<p class="flex text-gray-500 dark:text-gray-300">
-							<UIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
+							<DirectusIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
 							{{ calculateReadTime(page?.content) }}
 						</p>
 						<p class="flex text-gray-500 dark:text-gray-300">
-							<UIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
+							<DirectusIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
 							{{ getRelativeTime(page?.date_published) }}
 						</p>
 					</div>
@@ -61,11 +61,11 @@ defineProps<PostBlogProps>();
 				<div class="flex justify-between pb-4 mt-4 border-b dark:border-gray-700">
 					<div class="space-y-2">
 						<p class="flex text-gray-500 dark:text-gray-300">
-							<UIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
+							<DirectusIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
 							{{ calculateReadTime(page?.content) }}
 						</p>
 						<p class="flex text-gray-500 dark:text-gray-300">
-							<UIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
+							<DirectusIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
 							{{ getRelativeTime(page?.date_published) }}
 						</p>
 					</div>

@@ -29,16 +29,16 @@ const {
 
 const columns = [
 	{
-		key: 'name',
-		label: 'Name',
+		accessorKey: 'name',
+		header: 'Name',
 	},
 	{
-		key: 'status',
-		label: 'Status',
+		accessorKey: 'status',
+		header: 'Status',
 	},
 	{
-		key: 'date_created',
-		label: 'Date Created',
+		accessorKey: 'date_created',
+		header: 'Date Created',
 	},
 ];
 
@@ -126,8 +126,8 @@ const selectedStatus = ref<string | null>('open');
 				<!-- <USelectMenu v-model="selectedStatus" :options="todoStatus" multiple placeholder="Status" class="w-40" /> -->
 			</div>
 
-			<UTable :columns="columns" :rows="conversations as any" column-attribute="label">
-				<template #name-data="{ row }">
+			<UTable :columns="columns" :data="conversations as any" column-attribute="label">
+				<template #name-cell="{ row }">
 					<div
 						:class="{
 							'bg-primary-50 dark:bg-primary-900': selectedConversationId === row.id,
@@ -136,7 +136,7 @@ const selectedStatus = ref<string | null>('open');
 						<UButton variant="link" @click="openConversation(row.id)">{{ row.title }}</UButton>
 					</div>
 				</template>
-				<template #status-data="{ row }">
+				<template #status-cell="{ row }">
 					<UBadge class="capitalize" variant="subtle">{{ row.status }}</UBadge>
 				</template>
 			</UTable>

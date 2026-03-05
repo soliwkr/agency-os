@@ -6,13 +6,13 @@
 			class="mb-4"
 			title="Oops! Something went wrong."
 			:description="error"
-			color="rose"
+			color="error"
 			variant="outline"
 			icon="material-symbols:warning-rounded"
 		/>
 
 		<form class="grid gap-4" @submit.prevent="attemptLogin">
-			<UFormGroup label="Email" required>
+			<UFormField label="Email" required>
 				<UInput
 					v-model="credentials.email"
 					type="email"
@@ -22,8 +22,8 @@
 					label="Work Email"
 					placeholder="john@example.com"
 				/>
-			</UFormGroup>
-			<UFormGroup label="Password" required>
+			</UFormField>
+			<UFormField label="Password" required>
 				<UInput
 					v-model="credentials.password"
 					type="password"
@@ -33,7 +33,7 @@
 					label="Password"
 					placeholder="Your Password"
 				/>
-			</UFormGroup>
+			</UFormField>
 			<UButton
 				type="submit"
 				:loading="loading"
@@ -48,7 +48,7 @@
 		<!-- @TODO Remove password once magic link authentication is added -->
 		<!-- <div class="mt-6">
 			<VText>
-				<UIcon name="material-symbols:info-rounded" class="mr-2" />
+				<DirectusIcon name="material-symbols:info-rounded" class="mr-2" />
 				<span>What about a password?</span>
 			</VText>
 			<VText text-color="light" size="xs" class="mt-2">

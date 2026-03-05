@@ -144,10 +144,10 @@ const emit = defineEmits(['close']);
 		>
 			<div class="flex items-center justify-between pb-4 border-b dark:border-gray-700">
 				<div class="w-full">
-					<USelectMenu v-slot="{ open }" v-model="selected" :options="availableStatuses as any">
+					<USelectMenu v-slot="{ open }" v-model="selected" :items="availableStatuses as any">
 						<UButton :leading-icon="taskStatus?.icon" :color="taskStatus?.color">
 							{{ taskStatus?.label }}
-							<UIcon
+							<DirectusIcon
 								name="i-heroicons-chevron-right-20-solid"
 								class="w-5 h-5 transition-transform"
 								:class="[open && 'transform rotate-90']"
@@ -200,7 +200,7 @@ const emit = defineEmits(['close']);
 			</div>
 			<div v-if="task?.form">
 				<VLabel label="Form" />
-				<UForm :form="task.form as Form" />
+				<DirectusForm :form="task.form as Form" />
 			</div>
 			<div v-if="task?.embed_url">
 				<VLabel label="Embed" />

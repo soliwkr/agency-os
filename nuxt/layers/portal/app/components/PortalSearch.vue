@@ -17,22 +17,22 @@ const actions = [
 	{
 		id: 'projects',
 		label: 'Go to Projects',
-		click: () => navigateTo('/portal/projects'),
+		onClick: () => navigateTo('/portal/projects'),
 	},
 	{
 		id: 'files',
 		label: 'Go to Files',
-		click: () => navigateTo('/portal/files'),
+		onClick: () => navigateTo('/portal/files'),
 	},
 	{
 		id: 'invoices',
 		label: 'Go to Invoices',
-		click: () => navigateTo('/portal/billing/invoices'),
+		onClick: () => navigateTo('/portal/billing/invoices'),
 	},
 	{
 		id: 'acccount',
 		label: 'Go to My Account',
-		click: () => navigateTo('/portal/account'),
+		onClick: () => navigateTo('/portal/account'),
 	},
 ];
 
@@ -82,8 +82,8 @@ const groups = computed(() => {
 });
 
 function onSelect(option: any) {
-	if (option.click) {
-		option.click();
+	if (option.onClick) {
+		option.onClick();
 	} else if (option.to) {
 		navigateTo(option.to);
 	} else if (option.href) {

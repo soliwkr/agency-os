@@ -3,14 +3,16 @@ export interface PostBlogProps {
 	page: any;
 }
 
-defineProps<PostBlogProps>();
+const props = defineProps<PostBlogProps>();
+
+const { setAttr } = useVisualEditing();
 </script>
 <template>
 	<BlockContainer>
 		<header>
 			<div class="md:flex">
 				<!-- Post Image -->
-				<div class="relative w-full max-w-3xl">
+				<div class="relative w-full max-w-3xl" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'image', mode: 'modal' })">
 					<div
 						class="relative w-full mx-auto overflow-hidden bg-cover rounded-card h-[300px] md:h-[450px] outline-default"
 					>
@@ -51,8 +53,8 @@ defineProps<PostBlogProps>();
 				/>
 				<div class="absolute inset-0 opacity-50 grain-bg dark:opacity-10" />
 				<div class="relative">
-					<TypographyHeadline :content="page?.title" as="h1" size="lg" />
-					<TypographyProse :content="page?.summary" class="mt-2" />
+					<TypographyHeadline :content="page?.title" as="h1" size="lg" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'title', mode: 'popover' })" />
+					<TypographyProse :content="page?.summary" class="mt-2" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'summary', mode: 'popover' })" />
 				</div>
 			</div>
 
@@ -82,7 +84,7 @@ defineProps<PostBlogProps>();
 
 		<!-- Article -->
 		<main class="w-full max-w-4xl mx-auto mt-12">
-			<TypographyProse ref="article" :content="page?.content" />
+			<TypographyProse ref="article" :content="page?.content" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'content', mode: 'drawer' })" />
 		</main>
 	</BlockContainer>
 </template>

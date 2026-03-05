@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import type { BlockTeam, Team } from '~/types';
+import type { BlockTeam, Team, BackgroundType } from '~/types';
 import { useIntersectionObserver, useResizeObserver } from '@vueuse/core';
 
-defineProps<{
+const props = defineProps<{
 	data: BlockTeam;
+	background?: BackgroundType;
 }>();
+
+const { setAttr } = useVisualEditing();
 
 const { data: team }: { data: Ref<Team[]> } = await useAsyncData(
 	'team',
@@ -78,13 +81,13 @@ const duration = computed(() => {
 </script>
 <template>
 	<section>
-		<BlockContainer>
+		<BlockContainer :background="background">
 			<div class="flex flex-col mx-auto lg:flex-row">
 				<!-- Text -->
 				<div class="flex flex-col pr-4 lg:w-3/5">
-					<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-					<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
-					<TypographyProse v-if="data.content" :content="data.content" class="mt-4" />
+					<TypographyTitle v-if="data.title" :data-directus="setAttr({ collection: 'block_team', item: data.id, fields: 'title', mode: 'popover' })">{{ data.title }}</TypographyTitle>
+					<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" :data-directus="setAttr({ collection: 'block_team', item: data.id, fields: 'headline', mode: 'popover' })" />
+					<TypographyProse v-if="data.content" :content="data.content" class="mt-4" :data-directus="setAttr({ collection: 'block_team', item: data.id, fields: 'content', mode: 'popover' })" />
 				</div>
 
 				<!-- Team -->

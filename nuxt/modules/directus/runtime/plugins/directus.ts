@@ -15,10 +15,11 @@ export default defineNuxtPlugin((nuxtApp) => {
 	// ** Live Preview Bits **
 	// Check if we are in preview mode
 	const preview = route.query.preview && route.query.preview === 'true';
+	const visualEditing = route.query['visual-editing'] === 'true';
 	const token = route.query.token as string | undefined;
 
-	// If we are in preview mode, we need to use the token from the query string
-	if (preview && token) {
+	// If we are in preview or visual editing mode, use the token from the query string
+	if ((preview || visualEditing) && token) {
 		directus.setToken(token);
 
 		nuxtApp.hook('page:finish', () => {

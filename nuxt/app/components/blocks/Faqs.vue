@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import type { AccordionItem } from '@nuxt/ui';
-import type { BlockFaq, BlockFaqQuestion } from '~/types';
+import type { BlockFaq, BlockFaqQuestion, BackgroundType } from '~/types';
 
 const props = defineProps<{
 	data: BlockFaq;
+	background?: BackgroundType;
 }>();
+
+const { setAttr } = useVisualEditing();
 
 const offset = ref(0);
 const limit = ref(5);
@@ -25,7 +28,7 @@ function loadMore() {
 </script>
 
 <template>
-	<BlockContainer>
+	<BlockContainer :background="background">
 		<div
 			:class="[
 				{
@@ -33,9 +36,9 @@ function loadMore() {
 				},
 			]"
 		>
-			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
-			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
-			<div class="pt-6 mt-6">
+			<TypographyTitle v-if="data.title" :data-directus="setAttr({ collection: 'block_faqs', item: data.id, fields: 'title', mode: 'popover' })">{{ data.title }}</TypographyTitle>
+			<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" :data-directus="setAttr({ collection: 'block_faqs', item: data.id, fields: 'headline', mode: 'popover' })" />
+			<div class="pt-6 mt-6" :data-directus="setAttr({ collection: 'block_faqs', item: data.id, fields: 'faqs', mode: 'modal' })">
 				<UAccordion
 					v-if="faqs"
 					:items="faqs"

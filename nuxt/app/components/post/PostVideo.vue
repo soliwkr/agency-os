@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import type { BlockGalleryFile } from '~/types';
-
 export interface PostVideoProps {
 	page: any;
 }
 
 const props = defineProps<PostVideoProps>();
+
+const { setAttr } = useVisualEditing();
 </script>
 <template>
 	<div class="py-12">
 		<div
 			class="relative flex items-center justify-center w-full overflow-hidden bg-inverted border-t-2 border-b-2 border-primary/50"
+			:data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'video_url', mode: 'modal' })"
 		>
 			<VVideo :url="page?.video_url" class="max-w-5xl" />
 		</div>
@@ -18,8 +19,8 @@ const props = defineProps<PostVideoProps>();
 		<BlockContainer>
 			<!-- Main -->
 			<main class="flex flex-col gap-4">
-				<TypographyHeadline :content="page?.title" as="h1" size="lg" />
-				<TypographyProse :content="page?.summary" />
+				<TypographyHeadline :content="page?.title" as="h1" size="lg" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'title', mode: 'popover' })" />
+				<TypographyProse :content="page?.summary" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'summary', mode: 'popover' })" />
 				<div
 					class="pb-4 space-y-4 border-b md:space-y-0 md:flex md:justify-between md:items-center border-default"
 				>
@@ -43,7 +44,7 @@ const props = defineProps<PostVideoProps>();
 					</div>
 				</div>
 				<article>
-					<TypographyProse ref="article" :content="page?.content" />
+					<TypographyProse ref="article" :content="page?.content" :data-directus="setAttr({ collection: 'posts', item: page?.id, fields: 'content', mode: 'drawer' })" />
 				</article>
 			</main>
 		</BlockContainer>

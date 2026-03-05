@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import type { BlockPosts, Post } from '~/types';
+import type { BlockPosts, Post, BackgroundType } from '~/types';
 
 const props = defineProps<{
 	data: BlockPosts;
+	background?: BackgroundType;
 }>();
 
+const { setAttr } = useVisualEditing();
 const route = useRoute();
 
 const currentPage = computed(() => {
@@ -84,8 +86,8 @@ function goToPage(page: number) {
 }
 </script>
 <template>
-	<BlockContainer>
-		<header v-if="data.title || data.headline" class="pb-6 border-b border-default">
+	<BlockContainer :background="background">
+		<header v-if="data.title || data.headline" class="pb-6 border-b border-default" :data-directus="setAttr({ collection: 'block_posts', item: data.id, fields: ['title', 'headline', 'post_type', 'layout', 'limit', 'featured_post', 'show_search'], mode: 'modal' })">
 			<TypographyTitle v-if="data.title">{{ data.title }}</TypographyTitle>
 			<TypographyHeadline v-if="data.headline" :content="data.headline" />
 		</header>

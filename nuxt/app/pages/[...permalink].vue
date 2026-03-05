@@ -23,7 +23,10 @@ const pageFilter = computed(() => {
 	return { permalink: { _eq: finalPath } };
 });
 
-const { data: page } = await useAsyncData(
+const { isVisualEditingEnabled, apply, setAttr } = useVisualEditing();
+const config = useRuntimeConfig();
+
+const { data: page, refresh } = await useAsyncData(
 	path,
 	() => {
 		return useDirectus(
@@ -37,6 +40,7 @@ const { data: page } = await useAsyncData(
 							'id',
 							'collection',
 							'hide_block',
+							'background',
 							{
 								item: {
 									block_hero: [
@@ -246,16 +250,79 @@ useServerSeoMeta({
 	ogTitle: () => unref(metadata)?.title,
 	ogDescription: () => unref(metadata)?.description,
 });
+
+// Visual Editing
+function applyVisualEditing() {
+	apply({
+		onSaved: async () => {
+			await refresh();
+		},
+	});
+}
+
+function applyVisualEditingButton() {
+	apply({
+		elements: document.querySelector('#visual-editing-button') as HTMLElement,
+		customClass: 'visual-editing-button-class',
+		onSaved: async () => {
+			await refresh();
+			await nextTick();
+			applyVisualEditing();
+		},
+	});
+}
+
+onMounted(() => {
+	if (!isVisualEditingEnabled.value) return;
+	applyVisualEditingButton();
+	applyVisualEditing();
+});
 </script>
 <template>
-	<NuxtErrorBoundary>
-		<!-- Render the page using the PageBuilder component -->
-		<PageBuilder v-if="page" :page="page as Page" />
+	<div class="relative">
+		<NuxtErrorBoundary>
+			<!-- Render the page using the PageBuilder component -->
+			<PageBuilder v-if="page" :page="page as Page" />
 
-		<template #error="{ error }">
-			<BlockContainer>
-				<UAlert color="error" variant="outline" :description="String(error)" />
-			</BlockContainer>
-		</template>
-	</NuxtErrorBoundary>
+			<template #error="{ error }">
+				<BlockContainer>
+					<UAlert color="error" variant="outline" :description="String(error)" />
+				</BlockContainer>
+			</template>
+		</NuxtErrorBoundary>
+
+		<div
+			v-if="isVisualEditingEnabled && page"
+			class="fixed z-60 w-full bottom-4 left-0 right-0 p-4 flex justify-center items-center gap-2"
+		>
+			<UButton
+				id="visual-editing-button"
+				variant="subtle"
+				:data-directus="setAttr({ collection: 'pages', item: (page as Page).id, fields: ['blocks'], mode: 'modal' })"
+			>
+				<UIcon name="i-heroicons-pencil" />
+				Edit All Blocks
+			</UButton>
+		</div>
+	</div>
 </template>
+
+<style>
+.directus-visual-editing-overlay.visual-editing-button-class .directus-visual-editing-edit-button {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	transform: none;
+	background: transparent;
+}
+
+.directus-visual-editing-overlay.visual-editing-button-class {
+	opacity: 0 !important;
+	z-index: 70 !important;
+}
+
+.directus-visual-editing-overlay {
+	z-index: 40 !important;
+}
+</style>

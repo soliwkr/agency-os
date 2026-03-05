@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
-import type { BlockLogocloud, BlockLogocloudFile, File } from '~/types';
+import type { BlockLogocloud, BlockLogocloudFile, File, BackgroundType } from '~/types';
 
-defineProps<{
+const props = defineProps<{
 	data: BlockLogocloud;
+	background?: BackgroundType;
 }>();
 
+const { setAttr } = useVisualEditing();
 const { fileUrl } = useFiles();
 </script>
 <template>
-	<BlockContainer>
-		<TypographyTitle v-if="data?.title">{{ data?.title }}</TypographyTitle>
-		<TypographyHeadline v-if="data?.headline" :content="data?.headline" size="lg" />
-		<div class="flow-root mt-8 lg:mt-10">
+	<BlockContainer :background="background">
+		<TypographyTitle v-if="data?.title" :data-directus="setAttr({ collection: 'block_logocloud', item: data.id, fields: 'title', mode: 'popover' })">{{ data?.title }}</TypographyTitle>
+		<TypographyHeadline v-if="data?.headline" :content="data?.headline" size="lg" :data-directus="setAttr({ collection: 'block_logocloud', item: data.id, fields: 'headline', mode: 'popover' })" />
+		<div class="flow-root mt-8 lg:mt-10" :data-directus="setAttr({ collection: 'block_logocloud', item: data.id, fields: 'logos', mode: 'modal' })">
 			<div v-if="data.logos && data.logos.length > 0" class="grid gap-4 md:grid-cols-4 md:gap-8">
 				<motion.div
 					v-for="(logo, fileIdx) in data?.logos as BlockLogocloudFile[]"

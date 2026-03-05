@@ -10,7 +10,9 @@ const componentMap: Record<PostType, any> = {
 	video: resolveComponent('PostVideo'),
 };
 
-const { data: page } = await useAsyncData(
+const { isVisualEditingEnabled, apply } = useVisualEditing();
+
+const { data: page, refresh } = await useAsyncData(
 	path,
 	() => {
 		return useDirectus(
@@ -19,6 +21,7 @@ const { data: page } = await useAsyncData(
 				filter: { slug: { _eq: params.slug as string } },
 				limit: 1,
 				fields: [
+					'id',
 					'title',
 					'summary',
 					'slug',
@@ -98,6 +101,16 @@ useServerSeoMeta({
 	description: unref(metadata)?.description,
 	ogTitle: unref(metadata)?.title,
 	ogDescription: unref(metadata)?.description,
+});
+
+// Visual Editing
+onMounted(() => {
+	if (!isVisualEditingEnabled.value) return;
+	apply({
+		onSaved: async () => {
+			await refresh();
+		},
+	});
 });
 </script>
 

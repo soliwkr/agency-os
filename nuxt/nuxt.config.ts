@@ -1,5 +1,11 @@
 export default defineNuxtConfig({
-  routeRules: {},
+  routeRules: {
+    '/**': {
+      headers: {
+        'Content-Security-Policy': `frame-ancestors 'self' ${process.env.DIRECTUS_URL || 'http://localhost:8055'}`,
+      },
+    },
+  },
 
   extends: [
     './layers/proposals', // Proposals module
@@ -13,7 +19,7 @@ export default defineNuxtConfig({
     '~/components',
   ],
 
-  css: ['~/assets/css/tailwind.css', '~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/typography.css'],
 
   future: {
     compatibilityVersion: 4,
@@ -28,14 +34,11 @@ export default defineNuxtConfig({
     '@vueuse/nuxt', // https://vueuse.org/
   ],
 
-  experimental: {
-    componentIslands: true,
-    asyncContext: true,
-  },
-
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+      directusUrl: process.env.DIRECTUS_URL || 'http://localhost:8055',
+      enableVisualEditing: process.env.NUXT_PUBLIC_ENABLE_VISUAL_EDITING !== 'false',
     },
   },
 
@@ -72,9 +75,9 @@ export default defineNuxtConfig({
   // Font Configuration - handled by @nuxt/fonts (bundled with @nuxt/ui)
   fonts: {
     families: [
-      { name: 'Inter', provider: 'google' },
+      { name: 'Geist', provider: 'google' },
+      { name: 'Source Serif 4', provider: 'google', weights: [400, 500, 600, 700, 800, 900] },
       { name: 'Fira Code', provider: 'google' },
-      { name: 'Poppins', provider: 'google', weights: [400, 500, 600, 700, 800, 900] },
       { name: 'Nothing You Could Do', provider: 'google' },
     ],
   },

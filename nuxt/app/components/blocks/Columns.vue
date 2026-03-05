@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
-import type { BlockButtonGroup, BlockColumn, BlockColumnRow } from '~/types';
+import type { BlockButtonGroup, BlockColumn, BlockColumnRow, BackgroundType } from '~/types';
 
-defineProps<{
+const props = defineProps<{
 	data: BlockColumn;
+	background?: BackgroundType;
 }>();
+
+const { setAttr } = useVisualEditing();
 </script>
 
 <template>
-	<BlockContainer>
-		<TypographyTitle v-if="data?.title">{{ data?.title }}</TypographyTitle>
-		<TypographyHeadline v-if="data?.headline" :content="data?.headline" />
-		<div class="mt-12 space-y-16">
+	<BlockContainer :background="background">
+		<TypographyTitle v-if="data?.title" :data-directus="setAttr({ collection: 'block_columns', item: data.id, fields: 'title', mode: 'popover' })">{{ data?.title }}</TypographyTitle>
+		<TypographyHeadline v-if="data?.headline" :content="data?.headline" :data-directus="setAttr({ collection: 'block_columns', item: data.id, fields: 'headline', mode: 'popover' })" />
+		<div class="mt-12 space-y-16" :data-directus="setAttr({ collection: 'block_columns', item: data.id, fields: 'rows', mode: 'modal' })">
 			<div
 				v-for="row in data?.rows as BlockColumnRow[]"
 				:key="row?.id"
@@ -26,9 +29,9 @@ defineProps<{
 				<motion.div
 					v-if="row.image"
 					class="order-first block w-full h-full overflow-hidden border border-default rounded-card"
-					:initial="{ opacity: 0, scale: 0.5, y: 0 }"
-					:whileInView="{ opacity: 1, scale: 1, y: 0 }"
-					:transition="{ duration: 1, delay: 0.25 }"
+					:initial="{ opacity: 0, y: 24 }"
+					:whileInView="{ opacity: 1, y: 0 }"
+					:transition="{ duration: 0.5, delay: 0.1 }"
 					:class="[
 						{
 							'lg:order-last': row?.image_position === 'right',

@@ -148,22 +148,20 @@ async function submitForm() {
 <template>
 	<BlockContainer>
 		<div
-			class="relative max-w-3xl p-8 mx-auto overflow-hidden text-gray-900 bg-transparent bg-gray-100 border-2 dark:bg-gray-800 border-primary rounded-xl"
+			class="relative max-w-3xl p-8 mx-auto overflow-hidden text-default bg-transparent bg-muted border-2 border-primary rounded-xl"
 		>
 			<div class="space-y-2 text-center">
 				<span class="px-3 py-4 rounded-lg bg-primary">
-					<Icon name="solar:check-read-outline" class="w-12 h-12 text-white" />
+					<Icon name="solar:check-read-outline" class="w-12 h-12 text-inverted" />
 				</span>
 				<TypographyHeadline content="Accept Proposal" />
-				<p class="dark:text-gray-200">To accept this document, fill out the form and click the button below.</p>
+				<p class="text-toned">To accept this document, fill out the form and click the button below.</p>
 			</div>
 			<div class="mt-8">
 				<div v-auto-animate>
 					<div class="mb-4">
-						<VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
-						<VAlert v-if="success" type="success">
-							{{ form.success_message || 'Success! Your form has been submitted.' }}
-						</VAlert>
+						<UAlert v-if="error" color="error" variant="outline" :description="`Oops! ${error}`" />
+						<UAlert v-if="success" color="success" variant="outline" :description="form.success_message || 'Success! Your form has been submitted.'" />
 					</div>
 					<DirectusForm
 						v-if="!success"

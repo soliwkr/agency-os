@@ -56,11 +56,13 @@ watch(
 <template>
 	<div v-auto-animate>
 		<div class="mb-4">
-			<VAlert v-if="error" type="error">Oops! {{ error }}</VAlert>
-			<VAlert v-if="form.on_success === 'message' && success" type="success">
-				<div v-if="form.success_message" v-dompurify-html="form.success_message"></div>
-				<p v-else>Success! Your form has been submitted.</p>
-			</VAlert>
+			<UAlert v-if="error" color="error" variant="outline" :description="`Oops! ${error}`" />
+			<UAlert v-if="form.on_success === 'message' && success" color="success" variant="outline">
+				<template #description>
+					<div v-if="form.success_message" v-dompurify-html="form.success_message"></div>
+					<p v-else>Success! Your form has been submitted.</p>
+				</template>
+			</UAlert>
 		</div>
 		<div>
 			<FormCustom

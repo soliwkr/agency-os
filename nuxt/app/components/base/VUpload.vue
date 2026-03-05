@@ -159,7 +159,7 @@ function useUpload() {
 			:class="[
 				'dropzone',
 				{
-					'border-primary bg-primary-50 dark:bg-primary !text-primary dark:border-primary':
+					'border-primary bg-primary/10 !text-primary':
 						dragging,
 					'hover:border-primary hover:text-primary':
 						!dragging && !uploading,
@@ -203,12 +203,12 @@ function useUpload() {
 					v-if="uploading"
 					class="absolute inset-0 flex items-center justify-center bg-default/90 rounded-md"
 				>
-					<VLoading class="w-16 h-16 text-primary dark:text-primary" />
+					<VLoading class="w-16 h-16 text-primary" />
 				</div>
 			</transition>
 		</div>
 		<!-- Show an alert if there's an error  -->
-		<VAlert v-if="error" type="error" class="mt-2">{{ error }}</VAlert>
+		<UAlert v-if="error" color="error" variant="outline" :description="String(error)" class="mt-2" />
 		<!-- File List -->
 		<ul class="mt-2 space-y-2">
 			<li v-for="(file, fileIdx) in files" :key="file.id">
@@ -219,7 +219,7 @@ function useUpload() {
 						<button @click="deleteImage(fileIdx)">
 							<Icon
 								name="heroicons:trash"
-								class="w-5 h-5 text-red-500 stroke-current hover:text-red-600 flex-shrink-none"
+								class="w-5 h-5 text-error stroke-current hover:text-error/80 flex-shrink-none"
 							/>
 						</button>
 					</span>

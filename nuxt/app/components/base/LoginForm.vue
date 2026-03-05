@@ -15,6 +15,7 @@
 			<UFormField label="Email" required>
 				<UInput
 					v-model="credentials.email"
+					class="w-full"
 					type="email"
 					:disabled="loading"
 					size="lg"
@@ -26,6 +27,7 @@
 			<UFormField label="Password" required>
 				<UInput
 					v-model="credentials.password"
+					class="w-full"
 					type="password"
 					:disabled="loading"
 					size="lg"

@@ -28,6 +28,17 @@ function toggleHelp() {
 	isHelpOpen.value = !isHelpOpen.value;
 }
 
+// Close on escape key
+function close() {
+	isOpen.value = false;
+}
+
+useEventListener('keydown', (e: KeyboardEvent) => {
+	if (e.key === 'Escape' && isOpen.value) {
+		close();
+	}
+});
+
 // Scroll carousel to the correct slide when lightbox opens
 watch(isOpen, (val) => {
 	if (val) {
@@ -78,11 +89,10 @@ watch(isOpen, (val) => {
 	>
 		<div
 			v-if="isOpen"
-			class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-inverted/75"
-			@keydown.escape="toggle"
-			tabindex="0"
+			class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-default/95"
+			@click.self="close"
 		>
-			<div class="relative flex flex-col items-center justify-center w-full h-full max-w-7xl">
+			<div class="relative flex flex-col items-center justify-center w-full h-full max-w-7xl" @click.self="close">
 				<!-- Help Button -->
 				<div
 					v-auto-animate
@@ -115,10 +125,10 @@ watch(isOpen, (val) => {
 					</div>
 				</div>
 				<!-- Close Button -->
-				<UButton class="absolute z-50 top-4 right-4" icon="material-symbols:close-rounded" size="xl" @click="toggle" />
+				<UButton class="absolute z-50 top-4 right-4" icon="material-symbols:close-rounded" size="xl" @click="close" />
 
 				<!-- Image Carousel -->
-				<div class="relative flex flex-col items-center justify-center w-full h-full p-20 mx-auto">
+				<div class="relative flex flex-col items-center justify-center w-full h-full p-20 mx-auto" @click.self="close">
 					<p
 						v-if="currentItem.description"
 						class="inline-block px-6 py-2 text-sm text-inverted bg-inverted rounded-t-xl"

@@ -29,6 +29,7 @@ const props = defineProps<{
 			>
 				<UTextarea
 					v-if="(item as any).type === 'textarea'"
+					class="w-full"
 					:model-value="state?.[(item as any).name]"
 					:placeholder="(item as any).placeholder"
 					@update:model-value="(v: any) => { if (state) state[(item as any).name] = v }"
@@ -52,6 +53,7 @@ const props = defineProps<{
 				/>
 				<UInput
 					v-else
+					class="w-full"
 					:model-value="state?.[(item as any).name]"
 					:placeholder="(item as any).placeholder"
 					:type="(item as any).type"

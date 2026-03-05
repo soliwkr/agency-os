@@ -34,7 +34,7 @@ const blocks = computed(() => {
 <template>
 	<div id="content" class="mx-auto">
 		<template v-for="block in blocks" :key="block.id">
-			<component :is="componentMap[block.collection]" v-if="block && block.collection" :data="block.item" />
+			<component :is="componentMap[block.collection]" v-if="block && block.collection" :data="block.item" :background="block.background ?? 'default'" />
 		</template>
 	</div>
 </template>

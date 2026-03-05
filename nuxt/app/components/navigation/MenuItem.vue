@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import type { RouteLocationRaw } from '#vue-router';
 import type { NavigationItem } from '~~/types';
 
@@ -9,13 +8,13 @@ const props = defineProps<{
 	item: NavigationItem;
 }>();
 
-const popover: Ref<any> = ref(null);
+const popoverOpen = ref(false);
 
 // If route changes close the menu
 watch(
 	() => route.path,
 	() => {
-		return popover.value?.();
+		popoverOpen.value = false;
 	},
 );
 </script>
@@ -30,29 +29,15 @@ watch(
 		{{ item.title }}
 	</NuxtLink>
 
-	<Popover v-else v-slot="{ close }" class="relative" as="div">
-		<PopoverButton
-			:ref="
-				() => {
-					popover = close;
-				}
-			"
-			class="menu-link"
-		>
+	<UPopover v-else v-model:open="popoverOpen" class="relative">
+		<button class="menu-link">
 			{{ item.title }}
 			<Icon name="heroicons:chevron-down" class="flex-none w-5 ml-1 text-gray-400" aria-hidden="true" />
-		</PopoverButton>
+		</button>
 
-		<transition
-			enter-active-class="transition duration-200 ease-out"
-			enter-from-class="translate-y-1 opacity-0"
-			enter-to-class="translate-y-0 opacity-100"
-			leave-active-class="transition duration-150 ease-in"
-			leave-from-class="translate-y-0 opacity-100"
-			leave-to-class="translate-y-1 opacity-0"
-		>
-			<PopoverPanel
-				class="absolute z-10 w-screen max-w-md mt-4 overflow-hidden bg-gray-800 shadow-lg rounded-panel top-full"
+		<template #content>
+			<div
+				class="w-screen max-w-md overflow-hidden bg-gray-800 shadow-lg rounded-panel"
 			>
 				<div class="p-4">
 					<NuxtLink
@@ -80,9 +65,9 @@ watch(
 						</div>
 					</NuxtLink>
 				</div>
-			</PopoverPanel>
-		</transition>
-	</Popover>
+			</div>
+		</template>
+	</UPopover>
 </template>
 
 <style lang="postcss">

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { File } from '~/types';
-import { TransitionRoot } from '@headlessui/vue';
 
 export interface GalleryProps {
 	items: File[];
@@ -93,16 +92,15 @@ onUnmounted(() => {
 		</button>
 	</div>
 	<!-- Gallery Modal -->
-	<TransitionRoot
-		:show="isOpen"
-		enter="ease-out duration-300"
-		enter-from="opacity-0"
-		enter-to="opacity-100"
-		leave="ease-in duration-200"
-		leave-from="opacity-100"
-		leave-to="opacity-0"
+	<Transition
+		enter-active-class="ease-out duration-300"
+		enter-from-class="opacity-0"
+		enter-to-class="opacity-100"
+		leave-active-class="ease-in duration-200"
+		leave-from-class="opacity-100"
+		leave-to-class="opacity-0"
 	>
-		<div class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gray-900 bg-opacity-75">
+		<div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gray-900 bg-opacity-75">
 			<div class="relative flex flex-col items-center justify-center w-full h-full max-w-7xl">
 				<!-- Help Button -->
 				<div
@@ -167,5 +165,5 @@ onUnmounted(() => {
 				</div>
 			</div>
 		</div>
-	</TransitionRoot>
+	</Transition>
 </template>

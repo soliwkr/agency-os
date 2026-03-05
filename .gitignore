@@ -14,3 +14,5 @@ directus/data
 directus/uploads
 directus/extensions
 .directus-template-cli
+.claude/plans
+.directus/

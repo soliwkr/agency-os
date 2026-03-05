@@ -232,7 +232,7 @@ export default defineNuxtModule({
 					],
 				}),
 			);
-			nuxt.options.appConfig.globals = defu(nuxt.options.appConfig.globals, globals);
+			nuxt.options.appConfig.globals = defu(globals, nuxt.options.appConfig.globals);
 
 			// Set Nuxt UI primary color from CMS
 			if (globals?.primary_color || globals?.neutral_color) {

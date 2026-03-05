@@ -13,13 +13,11 @@ defineProps<{
 				opacity: 0,
 				y: 100,
 			}"
-			:visibleOnce="{
+			:whileInView="{
 				opacity: 1,
 				y: 0,
-				transition: {
-					delay: 250,
-				},
 			}"
+			:transition="{ delay: 0.25 }"
 			class="relative"
 		>
 			<div

@@ -41,25 +41,23 @@ watch(
 	<div class="md:hidden">
 		<!-- Menu -->
 		<Motionable
-			v-motion
 			as="div"
-			name="menu"
 			:show="isOpen"
 			:initial="{ opacity: 0, y: 400, scale: 0.9 }"
-			:enter="{
+			:animate="{
 				opacity: 1,
 				y: 0,
 				scale: 1,
 				transition: {
-					duration: 300,
+					duration: 0.3,
 				},
 			}"
-			:leave="{
+			:exit="{
 				opacity: 0,
 				y: 400,
 				scale: 0.9,
 				transition: {
-					duration: 300,
+					duration: 0.3,
 				},
 			}"
 			class="fixed inset-0 z-50 flex flex-col w-full h-full bg-gray-50 dark:bg-gray-800"

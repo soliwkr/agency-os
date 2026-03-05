@@ -1,10 +1,4 @@
 import type { Form as FormType } from '~/types';
-import Form from '#ui/components/forms/Form.vue';
-import FormGroup from '#ui/components/forms/FormGroup.vue';
-import Input from '#ui/components/forms/Input.vue';
-import Textarea from '#ui/components/forms/Textarea.vue';
-import Checkbox from '#ui/components/forms/Checkbox.vue';
-import Button from '#ui/components/elements/Button.vue';
 import VUpload from '~/components/base/VUpload.vue';
 import VSignature from '~/components/base/VSignature.vue';
 
@@ -23,15 +17,15 @@ function renderInput(item: { [key: string]: any }, name: string, state: any) {
 
 	switch (item.type) {
 		case 'textarea':
-			return h(Textarea, { ...commonProps, placeholder: item.placeholder });
+			return h(resolveComponent('UTextarea'), { ...commonProps, placeholder: item.placeholder });
 		case 'file':
 			return h(VUpload, { ...commonProps, placeholder: item.placeholder });
 		case 'signature':
 			return h(VSignature, { ...commonProps, placeholder: item.placeholder });
 		case 'checkbox':
-			return h(Checkbox, commonProps);
+			return h(resolveComponent('UCheckbox'), commonProps);
 		default:
-			return h(Input, { ...commonProps, placeholder: item.placeholder, type: item.type });
+			return h(resolveComponent('UInput'), { ...commonProps, placeholder: item.placeholder, type: item.type });
 	}
 }
 
@@ -54,12 +48,12 @@ export default defineComponent({
 	},
 	setup(props) {
 		const groups = props?.schema?.map((item) => {
-			const { name, label, placeholder, width, description } = item as { [key: string]: any };
+			const { name, label, description } = item as { [key: string]: any };
 
 			// @ts-ignore
 			const cssClass = widthClassMap[item.width] || 'md:col-span-6';
 
-			return h(FormGroup, { name, label, description, class: cssClass, size: 'lg' }, () => [
+			return h(resolveComponent('UFormField'), { name, label, description, class: cssClass, size: 'lg' }, () => [
 				// @ts-ignore
 				renderInput(item, name, props.state),
 			]);
@@ -74,7 +68,7 @@ export default defineComponent({
 			h(
 				'div',
 				{ class: 'md:col-span-6' },
-				h(Button, {
+				h(resolveComponent('UButton'), {
 					type: 'submit',
 					size: 'lg',
 					label: 'Submit',
@@ -88,6 +82,6 @@ export default defineComponent({
 		);
 
 		// @ts-ignore
-		return () => h(Form, { state: props.state, validate: props.validate }, () => groups);
+		return () => h(resolveComponent('UForm'), { state: props.state, validate: props.validate }, () => groups);
 	},
 });

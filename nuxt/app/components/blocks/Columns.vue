@@ -27,9 +27,8 @@ defineProps<{
 					v-motion
 					class="order-first block w-full h-full overflow-hidden border dark:border-gray-700 rounded-card"
 					:initial="{ opacity: 0, scale: 0.5, y: 0 }"
-					:visibleOnce="{ opacity: 1, scale: 1, y: 0 }"
-					:duration="1000"
-					:delay="250"
+					:whileInView="{ opacity: 1, scale: 1, y: 0 }"
+					:transition="{ duration: 1, delay: 0.25 }"
 					:class="[
 						{
 							'lg:order-last': row?.image_position === 'right',

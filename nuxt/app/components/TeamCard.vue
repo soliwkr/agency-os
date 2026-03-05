@@ -21,8 +21,6 @@ const flipped = ref(false);
 			/>
 			<!-- Back of Team Card -->
 			<Motionable
-				v-motion
-				name="team"
 				:show="flipped"
 				class="absolute inset-0 p-2 -m-2 overflow-hidden bg-primary/80 backdrop-blur-sm"
 				:initial="{
@@ -31,13 +29,13 @@ const flipped = ref(false);
 					x: 200,
 					scale: 0.9,
 				}"
-				:enter="{
+				:animate="{
 					opacity: 1,
 					scale: 1,
 					x: 0,
 					y: 0,
 				}"
-				:leave="{
+				:exit="{
 					opacity: 0,
 					scale: 0.9,
 					x: 200,

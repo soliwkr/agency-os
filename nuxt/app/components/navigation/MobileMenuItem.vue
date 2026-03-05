@@ -19,25 +19,23 @@ const emit = defineEmits(['close']);
 			<Icon v-if="item.children.length > 0" name="heroicons:plus" class="w-6 h-6 text-primary" />
 		</button>
 		<Motionable
-			v-motion
 			as="div"
-			name="submenu"
 			:show="subMenuOpen"
 			:initial="{ opacity: 0, x: 400, scale: 0.9 }"
-			:enter="{
+			:animate="{
 				opacity: 1,
 				scale: 1,
 				x: 0,
 				transition: {
-					duration: 300,
+					duration: 0.3,
 				},
 			}"
-			:leave="{
+			:exit="{
 				opacity: 0,
 				x: 400,
 				scale: 0.9,
 				transition: {
-					duration: 300,
+					duration: 0.3,
 				},
 			}"
 			class="fixed inset-0 z-50 flex flex-col items-center justify-center w-full h-full bg-gray-50 dark:bg-gray-800"

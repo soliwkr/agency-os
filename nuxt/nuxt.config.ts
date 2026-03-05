@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 		'@nuxt/image', // https://image.nuxt.com
 		'@nuxtjs/seo', // https://nuxtseo.com
 		'@formkit/auto-animate/nuxt',
-		'motion-v/nuxt', // https://motion.vueuse.org
+		'motion-v/nuxt', // https://motion.dev
 		'@vueuse/nuxt', // https://vueuse.org/
 	],
 
@@ -62,6 +62,11 @@ export default defineNuxtConfig({
 	},
 
 	devtools: { enabled: true },
+
+	// Motion V Configuration
+	motionV: {
+		directives: true,
+	},
 
 	// Image Configuration - https://image.nuxt.com/providers/directus
 	image: {

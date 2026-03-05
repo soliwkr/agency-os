@@ -21,11 +21,11 @@ const { fileUrl } = useFiles();
 						opacity: 0,
 						y: 100,
 					}"
-					:visibleOnce="{
+					:whileInView="{
 						opacity: 1,
 						y: 0,
 					}"
-					:delay="250 + 100 * fileIdx"
+					:transition="{ delay: 0.25 + 0.1 * fileIdx }"
 					class="flex items-center justify-center p-8 border rounded-card dark:border-gray-700 dark:bg-gray-200"
 				>
 					<NuxtImg

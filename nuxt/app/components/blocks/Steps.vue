@@ -23,15 +23,12 @@ const steps = computed(() => {
 						scale: 1,
 						x: isEven(stepIdx) ? -200 : 200,
 					}"
-					:visibleOnce="{
+					:whileInView="{
 						opacity: 1,
 						x: 0,
 						scale: 1,
-						transition: {
-							duration: 300,
-						},
 					}"
-					:delay="300"
+					:transition="{ duration: 0.3, delay: 0.3 }"
 					:class="[
 						{
 							'mr-8 md:mr-24': isEven(stepIdx),

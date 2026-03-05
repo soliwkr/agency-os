@@ -1,3 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+	--font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+	--font-display: var(--font-display), ui-serif, Georgia, serif;
+	--font-mono: var(--font-mono), ui-monospace, monospace;
+	--font-signature: var(--font-signature), cursive, sans-serif;
+
+	--radius-card: var(--border-radius-card);
+	--radius-button: var(--border-radius-button);
+	--radius-input: var(--border-radius-input);
+	--radius-panel: var(--border-radius-panel);
+
+	--animate-fade-in: fade-in 0.5s linear forwards;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

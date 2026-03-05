@@ -1,14 +1,7 @@
-// import { formatFonts } from './utils/fonts';
 import { theme } from './app/theme';
 
 export default defineNuxtConfig({
-	// https://nuxt.com/docs/api/configuration/nuxt-config
-
-	routeRules: {
-		// '/**': {
-		// 	prerender: true,
-		// },
-	},
+	routeRules: {},
 
 	extends: [
 		'./layers/proposals', // Proposals module
@@ -29,20 +22,17 @@ export default defineNuxtConfig({
 	},
 
 	modules: [
-		'@nuxt/image',
-		'@nuxt/ui', // https://ui.nuxt.com
-		'@nuxtjs/color-mode', // https://color-mode.nuxtjs.org
-		'@nuxtjs/google-fonts', // https://google-fonts.nuxtjs.org
+		'@nuxt/ui', // https://ui.nuxt.com (includes @nuxt/icon and @nuxt/fonts)
+		'@nuxt/image', // https://image.nuxt.com
 		'@nuxtjs/seo', // https://nuxtseo.com
 		'@formkit/auto-animate/nuxt',
-		'@vueuse/motion/nuxt', // https://motion.vueuse.org/nuxt.html
+		'motion-v/nuxt', // https://motion.vueuse.org
 		'@vueuse/nuxt', // https://vueuse.org/
-		'@nuxt/icon', // https://github.com/nuxt-modules/icon
 	],
 
 	experimental: {
 		componentIslands: true,
-		asyncContext: true, // https://nuxt.com/docs/guide/going-further/experimental-features#asynccontext
+		asyncContext: true,
 	},
 
 	runtimeConfig: {
@@ -59,25 +49,19 @@ export default defineNuxtConfig({
 		},
 		auth: {
 			enabled: true,
-			enableGlobalAuthMiddleware: false, // Enable auth middleware on every page
-			userFields: ['*', { contacts: ['*'] }], // Select user fields
+			enableGlobalAuthMiddleware: false,
+			userFields: ['*', { contacts: ['*'] }],
 			redirect: {
-				login: '/auth/signin', // Path to redirect when login is required
-				logout: '/', // Path to redirect after logout
-				home: '/portal', // Path to redirect after successful login
-				resetPassword: '/auth/reset-password', // Path to redirect for password reset
-				callback: '/auth/callback', // Path to redirect after login with provider
+				login: '/auth/signin',
+				logout: '/',
+				home: '/portal',
+				resetPassword: '/auth/reset-password',
+				callback: '/auth/callback',
 			},
 		},
 	},
 
-	// Nuxt DevTools - https://devtools.nuxtjs.org/
 	devtools: { enabled: true },
-
-	// Color Mode Configuration - https://color-mode.nuxtjs.org/
-	colorMode: {
-		classSuffix: '', // This is so we play nice with TailwindCSS
-	},
 
 	// Image Configuration - https://image.nuxt.com/providers/directus
 	image: {
@@ -87,11 +71,14 @@ export default defineNuxtConfig({
 		},
 	},
 
-	// Google Fonts Configuration - https://google-fonts.nuxtjs.org/
-	googleFonts: {
-		families: theme.googleFonts,
-		display: 'swap',
-		download: true,
+	// Font Configuration - handled by @nuxt/fonts (bundled with @nuxt/ui)
+	fonts: {
+		families: [
+			{ name: 'Inter', provider: 'google' },
+			{ name: 'Fira Code', provider: 'google' },
+			{ name: 'Poppins', provider: 'google', weights: [400, 500, 600, 700, 800, 900] },
+			{ name: 'Nothing You Could Do', provider: 'google' },
+		],
 	},
 
 	// OG Image Configuration - https://nuxtseo.com/og-image/getting-started/installation
@@ -101,22 +88,11 @@ export default defineNuxtConfig({
 			width: 1200,
 			height: 630,
 		},
-		// @TODO: Fix font families for OG Image
-		// fonts: formatFonts(fontFamilies),
 	},
 
-	// Sitemap Configuration - https://nuxtseo.com/sitemap/getting-started/how-it-works
+	// Sitemap Configuration
 	sitemap: {
 		sources: ['/api/_sitemap-urls'],
-	},
-
-	postcss: {
-		plugins: {
-			'postcss-import': {},
-			'tailwindcss/nesting': {},
-			tailwindcss: {},
-			autoprefixer: {},
-		},
 	},
 
 	build: {

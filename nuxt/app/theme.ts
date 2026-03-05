@@ -1,10 +1,7 @@
 export interface Theme {
 	primary: string;
-	gray: string;
+	neutral: string;
 	borderRadius: 'none' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | 'full';
-	googleFonts: {
-		[key: string]: boolean | number[];
-	};
 	fonts: {
 		display: string;
 		sans: string;
@@ -15,14 +12,8 @@ export interface Theme {
 
 export const theme = {
 	primary: 'violet',
-	gray: 'slate',
+	neutral: 'slate',
 	borderRadius: 'lg',
-	googleFonts: {
-		Inter: true,
-		'Fira Code': true,
-		Poppins: [400, 500, 600, 700, 800, 900],
-		'Nothing You Could Do': true,
-	},
 	fonts: {
 		display: 'Poppins',
 		sans: 'Inter',

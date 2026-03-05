@@ -7,11 +7,12 @@ html {
 }
 
 .grain-bg {
-	background-image: url('~~/assets/img/noise.png');
+	background-image: url('~/assets/img/noise.png');
 }
 
 ::selection {
-	@apply bg-primary text-white;
+	background-color: var(--ui-primary);
+	color: white;
 }
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */

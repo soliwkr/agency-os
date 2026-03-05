@@ -12,7 +12,7 @@ import { defu } from 'defu';
 import { joinURL } from 'ufo';
 import { fileURLToPath } from 'url';
 
-import type { Globals, Schema } from '../../types';
+import type { Globals, Schema } from '../../app/types';
 
 const log = useLogger();
 
@@ -21,7 +21,7 @@ export default defineNuxtModule({
 		name: 'agencyos-nuxt-directus',
 		configKey: 'directus',
 		compatibility: {
-			nuxt: '^3.0.0',
+			nuxt: '^3.0.0 || ^4.0.0',
 		},
 
 		defaults: {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { progress, scrollToTop } = useScroll();
+const { progress, scrollToTop } = useScrollProgress();
 </script>
 <template>
 	<div class="flex items-center">

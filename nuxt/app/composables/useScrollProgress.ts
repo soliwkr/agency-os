@@ -1,6 +1,6 @@
 import { useThrottleFn } from '@vueuse/core';
 
-export default function useScroll() {
+export default function useScrollProgress() {
 	const progress = ref(0);
 
 	const updateProgress = useThrottleFn(() => {

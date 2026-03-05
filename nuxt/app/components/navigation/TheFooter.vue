@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from '#vue-router';
-import type { NavigationItem } from '~~/types';
+import type { NavigationItem } from '~/types';
 
 const { globals } = useAppConfig();
 

@@ -5,8 +5,8 @@
 			:key="stat.name"
 			class="flex flex-wrap items-baseline justify-between px-4 py-10 gap-x-4 gap-y-2 sm:px-6 xl:px-8"
 		>
-			<dt class="font-display text-sm font-medium leading-6 text-gray-500">{{ stat.name }}</dt>
-			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-gray-900">
+			<dt class="font-display text-sm font-medium leading-6 text-muted">{{ stat.name }}</dt>
+			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-highlighted">
 				{{ stat.value }}
 			</dd>
 		</div>

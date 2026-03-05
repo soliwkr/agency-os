@@ -81,7 +81,7 @@ const milestones = computed(() => {
 		<UCard class="mt-8">
 			<!-- Project Team -->
 			<TypographyHeadline content="Team" size="xs" />
-			<div class="grid divide-y-2 md:divide-y-0 md:divide-x-2 md:grid-cols-2 dark:divide-gray-700">
+			<div class="grid divide-y-2 md:divide-y-0 md:divide-x-2 md:grid-cols-2 divide-default">
 				<div class="p-4 space-y-4">
 					<Logo class="h-6" />
 					<p class="text-sm font-bold">{{ /* @TODO */ 'Company Name' }}</p>

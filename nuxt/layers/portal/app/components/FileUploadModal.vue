@@ -12,25 +12,27 @@ const showUploadModal = ref(false);
 		Upload Files
 	</UButton>
 	<UModal v-model:open="showUploadModal">
-		<UCard>
-			<template #header>
-				<TypographyHeadline content="Upload File" size="xs" />
-			</template>
-			<VUpload
-				:folder-id="folderId"
-				multiple
-				@success="
-					() => {
-						showUploadModal = false;
-						refreshNuxtData('folder-detail-' + folderId);
-					}
-				"
-			></VUpload>
-			<template #footer>
-				<div class="flex justify-end gap-x-4">
-					<UButton color="primary" @click="showUploadModal = false">Done</UButton>
-				</div>
-			</template>
-		</UCard>
+		<template #content>
+			<UCard>
+				<template #header>
+					<TypographyHeadline content="Upload File" size="xs" />
+				</template>
+				<VUpload
+					:folder-id="folderId"
+					multiple
+					@success="
+						() => {
+							showUploadModal = false;
+							refreshNuxtData('folder-detail-' + folderId);
+						}
+					"
+				></VUpload>
+				<template #footer>
+					<div class="flex justify-end gap-x-4">
+						<UButton color="primary" @click="showUploadModal = false">Done</UButton>
+					</div>
+				</template>
+			</UCard>
+		</template>
 	</UModal>
 </template>

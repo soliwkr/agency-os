@@ -46,27 +46,27 @@ const columns = [
 	{
 		accessorKey: 'name',
 		header: 'Name',
-		sortable: true,
+
 	},
 	{
 		accessorKey: 'due_date',
 		header: 'Due Date',
-		sortable: true,
+
 	},
 	{
 		accessorKey: 'status',
 		header: 'Status',
-		sortable: true,
+
 	},
 	{
 		accessorKey: 'type',
 		header: 'Type',
-		sortable: true,
+
 	},
 	{
 		accessorKey: 'assigned_to',
 		header: 'Assigned To',
-		sortable: true,
+
 	},
 
 	{
@@ -99,32 +99,32 @@ const tasksShown = computed(() => {
 </script>
 <template>
 	<!-- Filters -->
-	<div class="flex items-center justify-between gap-3 pb-3 border-b dark:border-gray-700">
+	<div class="flex items-center justify-between gap-3 pb-3 border-b border-default">
 		<UInput v-model="searchQuery" type="text" icon="i-heroicons-magnifying-glass-20-solid" placeholder="Search..." />
 	</div>
 	<!-- Table -->
-	<UTable :columns="columns" :data="tasksShown" column-attribute="label">
+	<UTable :columns="columns" :data="tasksShown">
 		<template #name-cell="{ row }">
-			<UButton variant="link" :padded="false" @click="openTask(row.id)">{{ row.name }}</UButton>
+			<UButton variant="link" :padded="false" @click="openTask(row.original.id)">{{ row.original.name }}</UButton>
 		</template>
 		<template #due_date-cell="{ row }">
-			<p class="font-medium text-gray-900">
+			<p class="font-medium text-highlighted">
 				{{
-					getFriendlyDate(row.due_date, {
+					getFriendlyDate(row.original.due_date, {
 						monthAbbr: true,
 					})
 				}}
 			</p>
-			<p class="text-xs capitalize">{{ getRelativeTime(row.due_date) }}</p>
+			<p class="text-xs capitalize">{{ getRelativeTime(row.original.due_date) }}</p>
 		</template>
 		<template #type-cell="{ row }">
-			<UBadge class="capitalize" variant="subtle">{{ row.type }}</UBadge>
+			<UBadge class="capitalize" variant="subtle">{{ row.original.type }}</UBadge>
 		</template>
 		<template #assigned_to-cell="{ row }">
-			<UserBadge v-if="row.assigned_to" :user="row.assigned_to" size="sm" />
+			<UserBadge v-if="row.original.assigned_to" :user="row.original.assigned_to" size="sm" />
 		</template>
 		<template #actions-cell="{ row }">
-			<UButton icon="i-heroicons-arrow-right" color="primary" size="sm" variant="outline" @click="openTask(row.id)" />
+			<UButton icon="i-heroicons-arrow-right" color="primary" size="sm" variant="outline" @click="openTask(row.original.id)" />
 		</template>
 	</UTable>
 	<!-- Task Item -->
@@ -134,6 +134,8 @@ const tasksShown = computed(() => {
 			width: 'max-w-xl',
 		}"
 	>
-		<PortalTask v-if="selectedTaskId" :task-id="selectedTaskId" class="overflow-y-auto" @close="showTask = false" />
+		<template #content>
+			<PortalTask v-if="selectedTaskId" :task-id="selectedTaskId" class="overflow-y-auto" @close="showTask = false" />
+		</template>
 	</USlideover>
 </template>

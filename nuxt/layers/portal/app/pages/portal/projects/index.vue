@@ -43,7 +43,7 @@ const taskStatuses = {
 	pending: {
 		label: 'Pending',
 		icon: 'i-heroicons-clock-20-solid',
-		color: 'gray',
+		color: 'neutral',
 	},
 	active: {
 		label: 'Active',
@@ -135,29 +135,29 @@ const projectsShown = computed(() => {
 				</div>
 			</template>
 			<!-- Table -->
-			<UTable :columns="columns" :data="projectsShown" column-attribute="label">
+			<UTable :columns="columns" :data="projectsShown" >
 				<template #name-cell="{ row }">
-					<UButton variant="link" :to="`/portal/projects/${row.id}`" size="xl" :padded="false">
-						{{ row.name }}
+					<UButton variant="link" :to="`/portal/projects/${row.original.id}`" size="xl" :padded="false">
+						{{ row.original.name }}
 					</UButton>
 				</template>
 				<template #due_date-cell="{ row }">
-					<VText size="xs">{{ getFriendlyDate(row.due_date) }}</VText>
-					<VText size="xs" text-color="light">{{ getRelativeTime(row.due_date) }}</VText>
+					<VText size="xs">{{ getFriendlyDate(row.original.due_date) }}</VText>
+					<VText size="xs" text-color="light">{{ getRelativeTime(row.original.due_date) }}</VText>
 				</template>
 				<template #milestones-cell="{ row }">
 					<ul class="flex items-center">
-						<template v-for="({ isComplete, isCurrent, icon }, i) in row.tasks" :key="i">
-							<li :class="[i !== row.tasks.length - 1 ? '' : '', 'relative']">
+						<template v-for="({ isComplete, isCurrent, icon }, i) in row.original.tasks" :key="i">
+							<li :class="[i !== row.original.tasks.length - 1 ? '' : '', 'relative']">
 								<div
 									:class="{
 										'border-primary border-dashed h-10 w-10 border-2': isCurrent && !isComplete,
 										'bg-primary w-5 h-5': isComplete,
-										'dark:border-gray-700 border-gray-300 border-2 w-5 h-5': !isCurrent && !isComplete,
+										'border-default border-2 w-5 h-5': !isCurrent && !isComplete,
 									}"
 									class="relative flex items-center justify-center flex-shrink-0 rounded-card"
 								>
-									<DirectusIcon v-if="isComplete" name="i-heroicons-check" class="w-4 text-white" />
+									<DirectusIcon v-if="isComplete" name="i-heroicons-check" class="w-4 text-inverted" />
 									<DirectusIcon
 										v-else-if="icon && isCurrent"
 										:name="icon"
@@ -168,15 +168,15 @@ const projectsShown = computed(() => {
 									/>
 								</div>
 							</li>
-							<li v-if="i !== row.tasks.length - 1" class="w-3" aria-hidden="true">
-								<div class="h-0.5 w-full" :class="[isComplete ? 'bg-primary' : 'bg-gray-200 dark:bg-gray-700']" />
+							<li v-if="i !== row.original.tasks.length - 1" class="w-3" aria-hidden="true">
+								<div class="h-0.5 w-full" :class="[isComplete ? 'bg-primary' : 'bg-muted']" />
 							</li>
 						</template>
 					</ul>
 				</template>
 				<template #actions-cell="{ row }">
 					<UButton
-						:to="`/portal/projects/${row.id}`"
+						:to="`/portal/projects/${row.original.id}`"
 						color="primary"
 						variant="outline"
 						icon="i-heroicons-arrow-right"

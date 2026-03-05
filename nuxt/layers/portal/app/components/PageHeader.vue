@@ -10,7 +10,7 @@ export interface PageHeaderProps {
 defineProps<PageHeaderProps>();
 </script>
 <template>
-	<header class="px-4 py-3 border-b md:flex md:items-center md:justify-between dark:border-gray-700">
+	<header class="px-4 py-3 border-b border-default md:flex md:items-center md:justify-between">
 		<div class="flex-shrink-0 min-w-0">
 			<VBreadcrumbs v-if="breadcrumbs" :items="breadcrumbs" />
 			<TypographyHeadline v-if="title" :content="title" />

@@ -71,7 +71,7 @@ const possibleActions = (file: File) => {
 	>
 		<div class="flex items-center justify-between w-full gap-2">
 			<div class="flex items-center gap-2">
-				<DirectusIcon :name="getFileIcon(file?.type)" class="flex-shrink-0 w-6 h-6 text-gray-500" />
+				<DirectusIcon :name="getFileIcon(file?.type)" class="flex-shrink-0 w-6 h-6 text-muted" />
 				<p class="text-xs line-clamp-2">{{ file.filename_download }}</p>
 			</div>
 			<UDropdownMenu :items="possibleActions(file)">
@@ -87,10 +87,10 @@ const possibleActions = (file: File) => {
 				class="object-cover object-center w-full rounded-card aspect-square bg-checkerboard dark:brightness-90"
 			/>
 			<div v-else class="flex items-center justify-center h-full">
-				<DirectusIcon :name="getFileIcon(file.type)" class="w-24 h-24 text-gray-500/30" />
+				<DirectusIcon :name="getFileIcon(file.type)" class="w-24 h-24 text-muted/30" />
 			</div>
 			<div
-				class="absolute inset-0 flex flex-col items-center justify-center gap-8 transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
+				class="absolute inset-0 flex flex-col items-center justify-center gap-8 transition-opacity duration-300 bg-default/75 opacity-0 hover:opacity-100"
 			>
 				<div class="flex gap-6">
 					<UButton v-if="file.type.startsWith('image')" icon="material-symbols:zoom-in-rounded" size="xl" />

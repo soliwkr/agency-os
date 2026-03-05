@@ -71,7 +71,7 @@ const files = computed(() => {
 						}"
 					>
 						<div class="flex gap-2">
-							<DirectusIcon name="material-symbols:folder" class="w-6 h-6 text-gray-500" />
+							<DirectusIcon name="material-symbols:folder" class="w-6 h-6 text-muted" />
 							<p class="text-sm truncate">{{ folder.name }}</p>
 						</div>
 					</UCard>

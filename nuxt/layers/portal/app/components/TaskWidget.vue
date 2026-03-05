@@ -81,22 +81,22 @@ async function openTask(id: string) {
 }
 </script>
 <template>
-	<div class="px-4 py-10 bg-white border border-gray-300 rounded-panel dark:border-gray-700 dark:bg-gray-900">
+	<div class="px-4 py-10 bg-default border border-default rounded-panel">
 		<div>
-			<dt class="font-medium leading-6 text-gray-500 font-display dark:text-gray-300">Open Tasks</dt>
-			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-gray-900 dark:text-white">
+			<dt class="font-medium leading-6 text-muted font-display">Open Tasks</dt>
+			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-highlighted">
 				{{ count }} tasks
 			</dd>
 		</div>
 
 		<UTable :columns="columns" :data="tasks">
 			<template #name-cell="{ row }">
-				<UButton variant="link" class="max-w-[250px]" :padded="false" @click="openTask(row.id)">
-					<span class="truncate">{{ row.name ?? 'Task with no name' }}</span>
+				<UButton variant="link" class="max-w-[250px]" :padded="false" @click="openTask(row.original.id)">
+					<span class="truncate">{{ row.original.name ?? 'Task with no name' }}</span>
 				</UButton>
 			</template>
 			<template #due_date-cell="{ row }">
-				<p class="capitalize">{{ getRelativeTime(row.due_date) }}</p>
+				<p class="capitalize">{{ getRelativeTime(row.original.due_date) }}</p>
 			</template>
 		</UTable>
 		<UPagination v-model="page" :max="5" :page-count="rowsPerPage" :total="count" />
@@ -107,7 +107,9 @@ async function openTask(id: string) {
 				width: 'max-w-xl',
 			}"
 		>
-			<PortalTask :task-id="selectedTaskId ?? ''" class="overflow-y-auto" @close="showTask = false" />
+			<template #content>
+				<PortalTask v-if="selectedTaskId" :task-id="selectedTaskId" class="overflow-y-auto" @close="showTask = false" />
+			</template>
 		</USlideover>
 	</div>
 </template>

@@ -18,7 +18,7 @@ const { data, pending, error, refresh } = await useAsyncData(
 			unref(search) && {
 				search: unref(search),
 			},
-			unref(status) && {
+			unref(status) && unref(status) !== 'all' && {
 				filter: {
 					status: {
 						_eq: unref(status),
@@ -50,7 +50,7 @@ const { data, pending, error, refresh } = await useAsyncData(
 					count: ['*'],
 				},
 				filter: {
-					...(unref(status) && {
+					...(unref(status) && unref(status) !== 'all' && {
 						status: {
 							_eq: unref(status),
 						},
@@ -87,7 +87,7 @@ const statusOptions = [
 	},
 	{
 		label: 'All',
-		value: '',
+		value: 'all',
 	},
 ];
 
@@ -95,7 +95,7 @@ const columns = [
 	{
 		accessorKey: 'invoice_number',
 		header: '#',
-		sortable: true,
+
 	},
 	{
 		accessorKey: 'status',
@@ -104,7 +104,7 @@ const columns = [
 	{
 		accessorKey: 'due_date',
 		header: 'Due Date',
-		sortable: true,
+
 	},
 	{
 		accessorKey: 'contact',
@@ -113,12 +113,12 @@ const columns = [
 	{
 		accessorKey: 'total',
 		header: 'Total',
-		sortable: true,
+
 	},
 	{
 		accessorKey: 'amount_due',
 		header: 'Amount Due',
-		sortable: true,
+
 	},
 	{
 		accessorKey: 'actions',
@@ -192,9 +192,9 @@ function clearFilters() {
 				</div>
 			</template>
 			<!-- Table -->
-			<UTable v-auto-animate :columns="columns" :data="invoices" column-attribute="label" :loading="pending">
+			<UTable v-auto-animate :columns="columns" :data="invoices" :loading="pending">
 				<!-- Empty State -->
-				<template #empty-state>
+				<template #empty>
 					<div class="w-1/4 mx-auto text-center">
 						<img src="~/assets/illustrations/tokyo-attention-sign.svg" alt="Empty State" />
 						<TypographyHeadline content="Looks like there's nothing here." size="xs" />
@@ -212,23 +212,23 @@ function clearFilters() {
 				</template>
 				<!-- Columns -->
 				<template #invoice_number-cell="{ row }">
-					<UButton variant="outline" :to="`/portal/billing/invoices/${row.id}`" :padding="false">
-						{{ row.invoice_number }}
+					<UButton variant="outline" :to="`/portal/billing/invoices/${row.original.id}`" :padding="false">
+						{{ row.original.invoice_number }}
 					</UButton>
 				</template>
 				<template #amount_due-cell="{ row }">
-					{{ formatCurrency(row.amount_due) }}
+					{{ formatCurrency(row.original.amount_due) }}
 				</template>
 				<template #total-cell="{ row }">
-					{{ formatCurrency(row.total) }}
+					{{ formatCurrency(row.original.total) }}
 				</template>
 				<template #contact-cell="{ row }">
-					<UserBadge :user="row.contact" size="sm" />
+					<UserBadge :user="row.original.contact" size="sm" />
 				</template>
 				<template #status-cell="{ row }">
 					<UBadge
-						:label="row.status"
-						:color="row.status === 'unpaid' ? 'rose' : 'primary'"
+						:label="row.original.status"
+						:color="row.original.status === 'unpaid' ? 'rose' : 'primary'"
 						size="xs"
 						class="capitalize"
 					/>
@@ -236,16 +236,16 @@ function clearFilters() {
 				<template #due_date-cell="{ row }">
 					<VText size="xs">
 						{{
-							getFriendlyDate(row.due_date, {
+							getFriendlyDate(row.original.due_date, {
 								monthAbbr: true,
 							})
 						}}
 					</VText>
-					<VText size="xs" text-color="light">{{ getRelativeTime(row.due_date) }}</VText>
+					<VText size="xs" text-color="light">{{ getRelativeTime(row.original.due_date) }}</VText>
 				</template>
 				<template #actions-cell="{ row }">
 					<UButton
-						:to="`/portal/billing/invoices/${row.id}`"
+						:to="`/portal/billing/invoices/${row.original.id}`"
 						color="primary"
 						variant="outline"
 						icon="i-heroicons-arrow-right"

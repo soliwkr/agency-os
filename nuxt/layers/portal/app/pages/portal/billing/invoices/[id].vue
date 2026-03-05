@@ -111,7 +111,7 @@ const billingAddress = computed(() => {
 		</PortalPageHeader>
 
 		<main
-			class="relative flex flex-col p-8 mt-8 space-y-8 bg-white border rounded-panel dark:bg-gray-900 dark:border-gray-700"
+			class="relative flex flex-col p-8 mt-8 space-y-8 bg-default border border-default rounded-panel"
 		>
 			<section class="relative flex flex-col gap-8 md:justify-between md:flex-row">
 				<div id="invoice-details" class="space-y-1">
@@ -181,20 +181,20 @@ const billingAddress = computed(() => {
 				<VDivider />
 				<UTable :columns="lineItemColumns" :data="invoice?.line_items">
 					<template #unit_price-cell="{ row }">
-						{{ formatCurrency(row.unit_price) }}
+						{{ formatCurrency(row.original.unit_price) }}
 					</template>
 					<template #line_amount-cell="{ row }">
-						{{ formatCurrency(row.line_amount) }}
+						{{ formatCurrency(row.original.line_amount) }}
 					</template>
 					<template #tax_amount-cell="{ row }">
-						<p>{{ formatCurrency(row.tax_amount) }}</p>
-						<p class="text-xs">{{ row.tax_rate.name }}</p>
+						<p>{{ formatCurrency(row.original.tax_amount) }}</p>
+						<p class="text-xs">{{ row.original.tax_rate.name }}</p>
 					</template>
 				</UTable>
 			</section>
 
 			<section id="totals" class="md:flex md:justify-end">
-				<div class="w-full px-3 py-3 mt-8 border rounded-panel dark:border-gray-700 lg:mt-0 md:max-w-[300px]">
+				<div class="w-full px-3 py-3 mt-8 border border-default rounded-panel lg:mt-0 md:max-w-[300px]">
 					<div class="flex items-baseline justify-between py-1">
 						<VText text-color="light">Subtotal</VText>
 						<VText>{{ formatCurrency(invoice?.subtotal) }}</VText>
@@ -206,7 +206,7 @@ const billingAddress = computed(() => {
 					<VDivider />
 					<div class="flex items-baseline justify-between py-2">
 						<VText class="font-bold">Total</VText>
-						<VText class="text-xl font-bold text-primary-600">{{ formatCurrency(invoice?.total) }}</VText>
+						<VText class="text-xl font-bold text-primary">{{ formatCurrency(invoice?.total) }}</VText>
 					</div>
 					<div class="flex items-baseline justify-between py-1">
 						<VText text-color="light">Amount Due</VText>

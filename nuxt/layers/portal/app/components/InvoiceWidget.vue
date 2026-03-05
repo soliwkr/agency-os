@@ -46,23 +46,23 @@ const columns = [
 ];
 </script>
 <template>
-	<div class="w-full px-4 py-10 bg-white border rounded-panel dark:border-gray-700 dark:bg-gray-900">
+	<div class="w-full px-4 py-10 bg-default border border-default rounded-panel">
 		<div>
-			<dt class="font-medium leading-6 text-gray-500 font-display dark:text-gray-300">Open Invoices</dt>
-			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-gray-900 dark:text-white">
+			<dt class="font-medium leading-6 text-muted font-display">Open Invoices</dt>
+			<dd class="flex-none w-full text-3xl font-medium leading-10 tracking-tight text-highlighted">
 				{{ totalAmountDue ? formatCurrency(totalAmountDue) : 'N/A' }}
 			</dd>
 		</div>
 
 		<UTable :columns="columns" :data="invoices as any">
 			<template #invoice_number-cell="{ row }">
-				<UButton variant="outline" :to="`/portal/billing/invoices/${row.id}`">{{ row.invoice_number }}</UButton>
+				<UButton variant="outline" :to="`/portal/billing/invoices/${row.original.id}`">{{ row.original.invoice_number }}</UButton>
 			</template>
 			<template #due_date-cell="{ row }">
-				<p class="capitalize">{{ getFriendlyDate(row.due_date) }}</p>
+				<p class="capitalize">{{ getFriendlyDate(row.original.due_date) }}</p>
 			</template>
 			<template #amount_due-cell="{ row }">
-				<p class="capitalize">{{ formatCurrency(row.amount_due) }}</p>
+				<p class="capitalize">{{ formatCurrency(row.original.amount_due) }}</p>
 			</template>
 		</UTable>
 	</div>

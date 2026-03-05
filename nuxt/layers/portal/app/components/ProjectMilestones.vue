@@ -30,7 +30,7 @@ withDefaults(defineProps<ProjectMilestonesProps>(), {});
 				<div v-if="index !== steps.length - 1" class="mt-6 md:mt-8">
 					<Icon
 						name="i-heroicons-arrow-long-right"
-						:class="step.isComplete ? 'text-primary-700 dark:text-primary' : 'text-gray-700 dark:text-gray-500'"
+						:class="step.isComplete ? 'text-primary' : 'text-toned'"
 						class="w-8 h-8 fill-current"
 						solid
 					/>

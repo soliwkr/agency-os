@@ -127,12 +127,12 @@ const groupedActivity = computed<GroupedActivity[]>(() => {
 						<div class="relative pb-8">
 							<span
 								v-if="itemIdx !== date.activity.length - 1"
-								class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-300 dark:bg-gray-700"
+								class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-accented"
 								aria-hidden="true"
 							/>
 							<div class="relative flex space-x-3">
 								<div>
-									<span :class="['h-8 w-8 rounded-full flex items-center justify-center bg-gray-500 ']">
+									<span :class="['h-8 w-8 rounded-full flex items-center justify-center bg-accented ']">
 										<Icon
 											:name="
 												item.type === 'milestone'
@@ -141,7 +141,7 @@ const groupedActivity = computed<GroupedActivity[]>(() => {
 														? 'heroicons:document-text'
 														: 'heroicons:document'
 											"
-											class="w-5 h-5 text-white"
+											class="w-5 h-5 text-inverted"
 											aria-hidden="true"
 										/>
 									</span>
@@ -157,7 +157,7 @@ const groupedActivity = computed<GroupedActivity[]>(() => {
 											Milestone - {{ item.item.name }} - {{ item.action }}
 										</template>
 									</div>
-									<div class="text-sm text-right text-gray-500 whitespace-nowrap">
+									<div class="text-sm text-right text-muted whitespace-nowrap">
 										{{ getRelativeTime(item.timestamp) }}
 									</div>
 								</div>

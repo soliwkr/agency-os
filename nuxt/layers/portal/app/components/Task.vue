@@ -49,7 +49,9 @@ async function updateTask(id: string, item: Partial<OsTask>) {
 	}
 }
 
-await fetchTask(props.taskId);
+if (props.taskId) {
+	await fetchTask(props.taskId);
+}
 
 const taskStatus = computed(() => {
 	const status: TaskStatusKey | undefined = task.value?.status;
@@ -83,7 +85,7 @@ const taskStatuses: Record<TaskStatusKey, TaskStatusDetail> = {
 	pending: {
 		label: 'Pending',
 		icon: 'i-heroicons-clock-20-solid',
-		color: 'gray',
+		color: 'neutral',
 		sort: 1,
 	},
 	active: {
@@ -140,9 +142,9 @@ const emit = defineEmits(['close']);
 <template>
 	<div class="w-full">
 		<UContainer
-			class="sticky top-0 z-20 py-4 space-y-4 bg-white shadow-lg shadow-white dark:bg-gray-900 backdrop-blur-md dark:shadow-gray-900"
+			class="sticky top-0 z-20 py-4 space-y-4 bg-default shadow-lg backdrop-blur-md"
 		>
-			<div class="flex items-center justify-between pb-4 border-b dark:border-gray-700">
+			<div class="flex items-center justify-between pb-4 border-b border-default">
 				<div class="w-full">
 					<USelectMenu v-slot="{ open }" v-model="selected" :items="availableStatuses as any">
 						<UButton :leading-icon="taskStatus?.icon" :color="taskStatus?.color">
@@ -179,7 +181,7 @@ const emit = defineEmits(['close']);
 				<div class="">
 					<VLabel label="Due Date" />
 					<div class="flex space-x-1.5">
-						<DateDisplay :date="task?.due_date as string" size="sm" />
+						<DateDisplay :date="task?.due_date ?? null" size="sm" />
 					</div>
 				</div>
 			</div>
@@ -206,7 +208,7 @@ const emit = defineEmits(['close']);
 				<VLabel label="Embed" />
 				<iframe
 					:src="transformUrlToIframeSrc(task.embed_url)"
-					class="w-full h-[550px] overflow-hidden border border-gray-300 dark:border-gray-700 rounded-panel"
+					class="w-full h-[550px] overflow-hidden border border-accented rounded-panel"
 				/>
 			</div>
 		</UContainer>

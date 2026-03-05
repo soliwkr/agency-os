@@ -1,26 +1,36 @@
 <script setup lang="ts">
+import { useWindowScroll } from '@vueuse/core';
+
 const { globals } = useAppConfig();
 const navigation = computed(() => globals?.header_navigation ?? []);
+
+const { y } = useWindowScroll();
+const isScrolled = computed(() => y.value > 50);
 </script>
 <template>
-	<header class="relative w-full mx-auto space-y-4 md:flex md:items-center md:space-y-0 md:gap-x-4">
-		<div class="flex items-center bg-inverted justify-between py-2 px-6 md:flex-1 rounded-card">
-			<NuxtLink href="/" class="py-2">
-				<Logo class="h-6 text-inverted" />
-				<span v-if="globals?.title" class="sr-only">{{ globals.title }}</span>
-			</NuxtLink>
-			<nav class="hidden md:flex md:space-x-4 lg:space-x-6" aria-label="Global">
-				<NavigationMenuItem v-for="item in navigation" :key="item.id" :item="item" />
-			</nav>
-			<div class="flex items-center justify-end flex-shrink-0 space-x-2">
-				<DarkModeToggle class="hidden text-inverted/75 md:block hover:text-inverted" bg="dark" />
-			</div>
-		</div>
-
-		<div class="hidden h-full gap-4 md:flex">
-			<UButton to="/contact-us" color="primary" size="xl">Let's Talk</UButton>
-			<UButton to="/portal" color="primary" variant="ghost" size="xl">Login</UButton>
-		</div>
-		<NavigationMobileMenu v-if="navigation.length" :items="navigation" />
-	</header>
+  <header
+    class="w-full mx-auto py-4 transition-all duration-300"
+    :class="isScrolled ? 'max-w-4xl px-4' : 'max-w-6xl lg:px-10'"
+  >
+    <div
+      class="flex items-center justify-between py-2 px-6 rounded-card border border-primary border-t-0 transition-all duration-300"
+      :class="isScrolled ? 'bg-default border-default' : 'border-transparent'"
+    >
+      <NuxtLink href="/" class="py-2">
+        <Logo class="h-6 text-highlighted" />
+        <span v-if="globals?.title" class="sr-only">{{ globals.title }}</span>
+      </NuxtLink>
+      <nav class="hidden md:flex md:space-x-4 lg:space-x-6" aria-label="Global">
+        <NavigationMenuItem v-for="item in navigation" :key="item.id" :item="item" />
+      </nav>
+      <div class="flex items-center justify-end shrink-0 space-x-2">
+        <DarkModeToggle class="hidden text-muted md:flex items-center hover:text-highlighted" />
+        <div class="hidden gap-2 md:flex">
+          <UButton to="/portal" color="primary" variant="ghost" size="xl">Login</UButton>
+          <UButton to="/contact-us" color="primary" size="xl">Let's Talk</UButton>
+        </div>
+      </div>
+    </div>
+    <NavigationMobileMenu v-if="navigation.length" :items="navigation" />
+  </header>
 </template>

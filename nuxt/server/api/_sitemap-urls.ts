@@ -1,4 +1,4 @@
-import type { Post, Page, HelpCollection, HelpArticle, SEO } from '~/types';
+import type { Post, Page, SEO } from '~/types';
 
 async function getPosts() {
 	const posts = await directusServer.request(
@@ -96,65 +96,12 @@ async function getCategories() {
 	return entries;
 }
 
-async function getHelpArticles() {
-	const articles = await directusServer.request(
-		readItems('help_articles', {
-			fields: ['id', 'slug', 'date_updated'],
-			// @ts-ignore
-			filter: {
-				status: {
-					_eq: 'published',
-				},
-			},
-			limit: -1,
-		}),
-	);
-
-	const entries = articles.map((article) => {
-		return {
-			loc: `/help/articles/${article.slug}`,
-			lastmod: article.date_updated,
-			changefreq: 'daily',
-			priority: 0.5,
-		};
-	});
-
-	return entries;
-}
-
-async function getHelpCollections() {
-	const collections = await directusServer.request(
-		readItems('help_collections', {
-			fields: ['id', 'slug'],
-			// @ts-ignore
-			filter: {
-				articles: {
-					_nnull: true,
-				},
-			},
-			limit: -1,
-		}),
-	);
-
-	const entries = collections.map((collection) => {
-		return {
-			loc: `/help/collections/${collection.slug}`,
-			changefreq: 'daily',
-			priority: 0.5,
-		};
-	});
-
-	return entries;
-}
-
 export default defineEventHandler(async () => {
-	const [posts, pages, categories, help_articles, help_collections] = await Promise.all([
+	const [posts, pages, categories] = await Promise.all([
 		getPosts(),
 		getPages(),
 		getCategories(),
-		getHelpArticles(),
-		getHelpCollections(),
 	]);
 
-	return [...posts, ...pages, ...categories, ...help_articles, ...help_collections];
+	return [...posts, ...pages, ...categories];
 });

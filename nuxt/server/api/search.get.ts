@@ -66,15 +66,6 @@ function mapResults(collection: string, results: GlobalSearchResult[]) {
 				type: 'category',
 				urlPattern: '/posts/categories/:slug',
 			}),
-		help_articles: (article: any) =>
-			mapEntity({
-				entity: article,
-				title: article.title,
-				type: 'article',
-				urlPattern: '/help/articles/:slug',
-				description: '',
-				image: '',
-			}),
 	};
 
 	return results.map((result: GlobalSearchResult) => {
@@ -104,7 +95,7 @@ export default cachedEventHandler(
 				!collections ||
 				!Array.isArray(collections) ||
 				collections.every(
-					(collection: string) => !['posts', 'projects', 'pages', 'categories', 'help_articles'].includes(collection),
+					(collection: string) => !['posts', 'projects', 'pages', 'categories'].includes(collection),
 				)
 			) {
 				throw new Error('Invalid or missing collections param');

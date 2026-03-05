@@ -1,5 +1,17 @@
 import type { User } from '../system';
 
+export interface Inbox {
+	data?: { [key: string]: any } | null;
+	date_created?: string | null;
+	date_updated?: string | null;
+	form?: (string | Form) | null;
+	id?: string;
+	sort?: number | null;
+	status?: string;
+	user_created?: string | User | null;
+	user_updated?: string | User | null;
+}
+
 export interface Form {
 	date_created?: string | null;
 	date_updated?: string | null;

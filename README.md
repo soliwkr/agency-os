@@ -1,5 +1,5 @@
 <a href="https://directus.io" target="_blank">
-  <img alt="Agency OS - Complete Nuxt3 + Directus project" src="./public/logos/agencyos.png">
+  <img alt="Agency OS - Complete Nuxt3 + Directus project" src="./nuxt/public/logos/agencyos.png">
   <h1 align="center">AgencyOS</h1>
 </a>
 
@@ -106,8 +106,34 @@ complete their project
 
 # **🚧 Installation and Development**
 
-There are two main pieces to AgencyOS - the backend and APIs powered by [Directus](https://directus.io) and the frontend
-website and application powered by [Nuxt](https://nuxt.com).
+AgencyOS includes a Directus backend and a Nuxt 3 frontend.
+
+## Quick Start (Recommended)
+
+The fastest way to get started is with the Directus Template CLI:
+
+```bash
+npx directus-template-cli@latest init --template=https://github.com/directus-labs/agency-os
+```
+
+This sets up both the Directus backend and Nuxt frontend for you.
+
+## Project Structure
+
+```
+agency-os/
+├── directus/          # Directus backend (Docker + template data)
+│   ├── docker-compose.yaml
+│   ├── .env.example
+│   └── template/      # Extracted Directus schema and content
+├── nuxt/              # Nuxt 3 frontend
+│   ├── package.json
+│   └── ...
+├── package.json       # Root config (directus:template metadata)
+└── README.md
+```
+
+## Manual Setup
 
 ## **🐰 Directus - Backend + Headless CMS**
 
@@ -146,13 +172,10 @@ has been tested and verified to work against the docker-compose.yaml file includ
 many different SQL database vendors, but we ONLY test this project against PostgreSQL.
 
 ```bash
-# Navigate to the .directus directory
-$ cd .directus
-
-# Run docker compose
-$ docker compose up
-
-# Docker does it's thing and your Directus project will be available at http://localhost:8055/ or http://0.0.0.0:8055/
+cd directus
+cp .env.example .env
+docker compose up -d
+# Directus will be available at http://localhost:8055/
 ```
 
 You can find more [install instructions using Docker here](https://docs.directus.io/self-hosted/quickstart.html) on the
@@ -198,49 +221,26 @@ few minutes for the template script to run if you’re using a remotely hosted D
 
 For your website and client portal, AgencyOS uses Nuxt as the frontend framework of choice.
 
-### **1 - Clone the repo**
+### **1 - Set up your .env file**
 
-[Use This Template](https://github.com/directus-community/agency-os/generate)
-
-_Or from the terminal_
-
-`git clone https://github.com/directus-community/agency-os.git your-project`
-
-Navigate to the project
-
-`cd your-project`
-
-### **2 - Fix your .env file**
-
-- Change the filename `env.example` to `.env`
-- Add the url to your Directus instance
-- Add the static token for your admin user you generated above
-
-Your `.env` file should look similar to this.
-
-```env
-# Directus Setup
-DIRECTUS_URL="https://your-instance.directus.app"
-DIRECTUS_SERVER_TOKEN="your_directus_server_token_for_server_only_routes"
-SITE_URL="http://localhost:3000"
-
-# Stripe Setup (If you want to allow payments within the portal)
-STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxx
-STRIPE_PUBLISHABLE_KEY=pk_xxxxxxxxxxxxxxx
-STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxx
+```bash
+cd nuxt
+cp .env.example .env
 ```
 
-### **3 - Install your dependencies**
+Update the `.env` with your Directus URL and token.
+
+### **2 - Install your dependencies**
 
 `pnpm i`
 
-### **4 - Start the development server**
+### **3 - Start the development server**
 
 `pnpm dev`
 
 [http://localhost:3000](http://localhost:3000/)
 
-### **5 - Build for production when you're ready**
+### **4 - Build for production when you're ready**
 
 `pnpm build`
 
@@ -287,7 +287,7 @@ official [Directus Docker Guide](https://docs.directus.io/self-hosted/docker-gu
 
 # 🧰 Tech Stack
 
-<a href="https://nuxt.com" target="_blank"><img src="./public/logos/nuxt3.svg" height="40" /></a>
+<a href="https://nuxt.com" target="_blank"><img src="./nuxt/public/logos/nuxt3.svg" height="40" /></a>
 
 ## Nuxt
 
@@ -298,7 +298,7 @@ development simple and powerful. The leading Vue framework that handles routing,
 
 <br />
 
-<a href="https://directus.io" target="_blank"><img src="./public/logos/directus.svg" height="50" /></a>
+<a href="https://directus.io" target="_blank"><img src="./nuxt/public/logos/directus.svg" height="50" /></a>
 
 ## Directus
 

@@ -17,7 +17,7 @@ import type {
 } from './blocks';
 import type {
 	Globals,
-	Navigation,
+	NavigationItem,
 	Redirect,
 	SEO,
 	ProjectsSettings,
@@ -26,8 +26,7 @@ import type {
 	Event,
 	Metric,
 } from './meta';
-import type { Page, PageBlock, Category, Form, Post, Team, Testimonial } from './content';
-import type { Inbox, HelpArticle, HelpCollection, HelpFeedback } from './help';
+import type { Page, PageBlock, Category, Form, Inbox, Post, Team, Testimonial } from './content';
 import type { File, User } from './system';
 import type {
 	Conversation,
@@ -124,17 +123,13 @@ export interface Schema {
 	os_tasks: OsTask[];
 	os_tax_rates: OsTaxRate[];
 
-	// Help
-	help_collections: HelpCollection[];
-	help_articles: HelpArticle[];
-	help_feedback: HelpFeedback[];
 	inbox: Inbox[];
 	conversations: Conversation[];
 	messages: Message[];
 
 	// Meta
 	globals: Globals;
-	navigation: Navigation[];
+	navigation_items: NavigationItem[];
 	redirects: Redirect[];
 	seo: SEO[];
 	projects_settings: ProjectsSettings;

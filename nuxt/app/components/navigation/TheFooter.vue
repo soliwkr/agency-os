@@ -3,40 +3,7 @@ import type { RouteLocationRaw } from '#vue-router';
 import type { NavigationItem } from '~/types';
 
 const { globals } = useAppConfig();
-
-const { data: navigation } = await useAsyncData('footerNav', () => {
-	return useDirectus(
-		readItem('navigation', 'footer', {
-			fields: [
-				{
-					items: [
-						'id',
-						'title',
-						'icon',
-						'label',
-						'type',
-						'url',
-						'has_children',
-						{
-							page: ['permalink', 'title'],
-							children: [
-								'id',
-								'title',
-								'icon',
-								'label',
-								'type',
-								'url',
-								{
-									page: ['permalink', 'title'],
-								},
-							],
-						},
-					],
-				},
-			],
-		}),
-	);
-});
+const navigation = computed(() => (globals?.footer_navigation ?? []) as NavigationItem[]);
 
 const { data: form } = await useAsyncData(
 	'newsletterForm',
@@ -82,7 +49,7 @@ const { data: form } = await useAsyncData(
 				<div class="mt-4">
 					<TypographyTitle>Menu</TypographyTitle>
 					<ul role="list" class="grid gap-2 mt-2 md:grid-cols-2">
-						<li v-for="item in navigation?.items as NavigationItem[]" :key="item.id">
+						<li v-for="item in navigation" :key="item.id">
 							<NuxtLink
 								:to="getNavItemUrl(item) as RouteLocationRaw"
 								class="font-medium text-default hover:text-highlighted"

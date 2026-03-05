@@ -1,50 +1,6 @@
 <script setup lang="ts">
-const { theme, globals } = useAppConfig();
-
-const {
-	data: navigation,
-	pending,
-	error,
-} = await useAsyncData(
-	'mainNavigation',
-	() => {
-		return useDirectus(
-			readItem('navigation', 'main', {
-				fields: [
-					{
-						items: [
-							'id',
-							'has_children',
-							'title',
-							'icon',
-							'label',
-							'type',
-							'url',
-							{
-								page: ['permalink', 'title'],
-								children: [
-									'id',
-									'title',
-									'has_children',
-									'icon',
-									'label',
-									'type',
-									'url',
-									{
-										page: ['permalink', 'title'],
-									},
-								],
-							},
-						],
-					},
-				],
-			}),
-		);
-	},
-	{
-		transform: (data) => data,
-	},
-);
+const { globals } = useAppConfig();
+const navigation = computed(() => globals?.header_navigation ?? []);
 </script>
 <template>
 	<header class="relative w-full mx-auto space-y-4 md:flex md:items-center md:space-y-0 md:gap-x-4">
@@ -54,7 +10,7 @@ const {
 				<span v-if="globals?.title" class="sr-only">{{ globals.title }}</span>
 			</NuxtLink>
 			<nav class="hidden md:flex md:space-x-4 lg:space-x-6" aria-label="Global">
-				<NavigationMenuItem v-for="item in navigation?.items" :key="item.id" :item="item" />
+				<NavigationMenuItem v-for="item in navigation" :key="item.id" :item="item" />
 			</nav>
 			<div class="flex items-center justify-end flex-shrink-0 space-x-2">
 				<DarkModeToggle class="hidden text-inverted/75 md:block hover:text-inverted" bg="dark" />
@@ -65,6 +21,6 @@ const {
 			<UButton to="/contact-us" color="primary" size="xl">Let's Talk</UButton>
 			<UButton to="/portal" color="primary" variant="ghost" size="xl">Login</UButton>
 		</div>
-		<NavigationMobileMenu v-if="navigation" :navigation="navigation" />
+		<NavigationMobileMenu v-if="navigation.length" :items="navigation" />
 	</header>
 </template>

@@ -198,8 +198,50 @@ export default defineNuxtModule({
 
 		try {
 			// Add Globals
-			const globals = await directus.request<Omit<Globals, 'id' | 'url'>>(readSingleton('globals'));
+			const navItemFields = [
+				'id',
+				'has_children',
+				'title',
+				'icon',
+				'label',
+				'type',
+				'url',
+				'open_in_new_tab',
+				{ page: ['permalink', 'title'] },
+				{
+					children: [
+						'id',
+						'title',
+						'has_children',
+						'icon',
+						'label',
+						'type',
+						'url',
+						'open_in_new_tab',
+						{ page: ['permalink', 'title'] },
+					],
+				},
+			] as const;
+
+			const globals = await directus.request<Omit<Globals, 'id' | 'url'>>(
+				readSingleton('globals', {
+					fields: [
+						'*',
+						{ header_navigation: navItemFields },
+						{ footer_navigation: navItemFields },
+					],
+				}),
+			);
 			nuxt.options.appConfig.globals = defu(nuxt.options.appConfig.globals, globals);
+
+			// Set Nuxt UI primary color from CMS
+			if (globals?.primary_color || globals?.neutral_color) {
+				const colors: Record<string, string> = {};
+				if (globals.primary_color) colors.primary = globals.primary_color;
+				if (globals.neutral_color) colors.neutral = globals.neutral_color;
+				nuxt.options.appConfig.ui = defu({ colors }, nuxt.options.appConfig.ui);
+			}
+
 			log.success('Globals loaded into appConfig');
 
 			// Add title template to the app head for use with useHead composable

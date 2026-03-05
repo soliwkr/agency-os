@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps({
-	navigation: {
-		type: Object,
+	items: {
+		type: Array,
 		required: true,
 	},
 });
@@ -74,7 +74,7 @@ watch(
 				<DarkModeToggle class="flex-shrink-0" />
 			</div>
 			<div class="flex flex-col justify-center h-full px-6 space-y-4">
-				<NavigationMobileMenuItem v-for="item in navigation.items" :key="item.id" :item="item" @close="toggle" />
+				<NavigationMobileMenuItem v-for="item in items" :key="item.id" :item="item" @close="toggle" />
 
 				<UButton href="/contact-us" variant="solid" size="xl" class="font-display">Let's Talk</UButton>
 			</div>
@@ -84,7 +84,7 @@ watch(
 			:class="{
 				'bg-primary': isOpen || !isOpen,
 			}"
-			class="fixed z-50 p-4 text-white transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-primary hover:bg-opacity-75 rounded-button"
+			class="fixed z-50 p-4 text-inverted transition duration-300 shadow-md md:hidden bottom-4 right-4 bg-primary hover:bg-opacity-75 rounded-button"
 			@click="toggle"
 		>
 			<div>

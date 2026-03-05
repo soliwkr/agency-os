@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { borderRadiusMap } from '~/theme';
 
-const { globals, theme } = useAppConfig();
+const { globals } = useAppConfig();
 const { fileUrl } = useFiles();
 
 // JSON-LD
 useSchemaOrg([
 	defineOrganization({
 		name: globals?.title ?? 'AgencyOS',
-		logo: globals?.logo_on_light_bg ? fileUrl(globals?.logo_on_light_bg) : '/logos/agencyos.png',
+		logo: globals?.logo ? fileUrl(globals?.logo as string) : '/logos/agencyos.png',
 		sameAs: () => {
 			const socialLinks = globals?.social_links ?? [];
 			return socialLinks.map((link) => link.url);
@@ -16,15 +16,20 @@ useSchemaOrg([
 	}),
 ]);
 
+const borderRadius = globals?.border_radius ?? 'lg';
+const radiusValues = borderRadiusMap[borderRadius] ?? borderRadiusMap.lg;
+
 useHead({
 	style: [
 		{
-			id: 'border-radius',
-			innerHTML: `:root {${Object.entries(borderRadiusMap[theme.borderRadius])
+			id: 'theme-vars',
+			innerHTML: `:root {${Object.entries(radiusValues)
 				.map(([key, value]) => `--border-radius-${key}: ${value};`)
-				.join('\n')}\n${Object.entries(theme.fonts)
-				.map(([key, value]) => `--font-${key}: ${value};`)
-				.join('\n')}`,
+				.join('\n')}
+--font-display: ${globals?.font_display ?? 'Poppins'};
+--font-sans: ${globals?.font_body ?? 'Inter'};
+--font-code: ${globals?.font_monospace ?? 'Fira Code'};
+--font-signature: Nothing You Could Do;}`,
 		},
 	],
 });

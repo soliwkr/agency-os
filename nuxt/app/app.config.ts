@@ -1,11 +1,16 @@
-import { theme } from '~/theme';
-
 export default defineAppConfig({
-	theme,
+	globals: {
+		primary_color: 'violet',
+		neutral_color: 'slate',
+		border_radius: 'lg',
+		font_display: 'Poppins',
+		font_body: 'Inter',
+		font_monospace: 'Fira Code',
+	},
 	ui: {
 		colors: {
-			primary: theme.primary,
-			neutral: theme.neutral,
+			primary: 'violet',
+			neutral: 'slate',
 		},
 	},
 });

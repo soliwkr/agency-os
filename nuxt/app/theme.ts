@@ -1,28 +1,4 @@
-export interface Theme {
-	primary: string;
-	neutral: string;
-	borderRadius: 'none' | 'sm' | 'base' | 'md' | 'lg' | 'xl' | 'full';
-	fonts: {
-		display: string;
-		sans: string;
-		code: string;
-		signature: string;
-	};
-}
-
-export const theme = {
-	primary: 'violet',
-	neutral: 'slate',
-	borderRadius: 'lg',
-	fonts: {
-		display: 'Poppins',
-		sans: 'Inter',
-		code: 'Fira Code',
-		signature: 'Nothing You Could Do',
-	},
-} as Theme;
-
-export const borderRadiusMap = {
+export const borderRadiusMap: Record<string, Record<string, string>> = {
 	none: {
 		card: '0px',
 		button: '0px',
@@ -41,7 +17,6 @@ export const borderRadiusMap = {
 		input: '0.25rem',
 		panel: '0.25rem',
 	},
-
 	md: {
 		card: '0.375rem',
 		button: '0.375rem',

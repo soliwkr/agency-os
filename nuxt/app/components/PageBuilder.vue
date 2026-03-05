@@ -17,6 +17,7 @@ const componentMap: Record<BlockType, any> = {
 	block_steps: resolveComponent('BlocksSteps'),
 	block_columns: resolveComponent('BlocksColumns'),
 	block_divider: resolveComponent('BlocksDivider'),
+	block_posts: resolveComponent('BlocksPosts'),
 };
 
 const props = defineProps<{

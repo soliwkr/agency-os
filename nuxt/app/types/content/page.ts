@@ -1,6 +1,5 @@
 import type { SEO } from '../meta';
 import type { User } from '../system';
-import type { Post } from '../content';
 import type {
 	BlockColumn,
 	BlockCta,
@@ -16,6 +15,7 @@ import type {
 	BlockTeam,
 	BlockTestimonial,
 	BlockVideo,
+	BlockPosts,
 	BlockType,
 } from '../blocks';
 
@@ -53,6 +53,7 @@ export interface PageBlock {
 				| BlockTeam
 				| BlockTestimonial
 				| BlockVideo
+			| BlockPosts
 		  )[]
 		| null;
 	pages_id?: (string | Page) | null;
@@ -60,17 +61,3 @@ export interface PageBlock {
 	hide_block?: boolean | null;
 }
 
-export interface PagesProjects {
-	id?: string;
-	title?: string | null;
-	headline?: string | null | undefined;
-	seo: (string | SEO) | null;
-}
-
-export interface PagesBlog {
-	id?: string;
-	title?: string | null;
-	headline?: string | null;
-	featured_post?: (string | Post) | null;
-	seo: (string | SEO) | null;
-}

@@ -13,6 +13,7 @@ import type {
 	BlockTeam,
 	BlockTestimonial,
 	BlockVideo,
+	BlockPosts,
 } from './blocks';
 import type {
 	Globals,
@@ -25,7 +26,7 @@ import type {
 	Event,
 	Metric,
 } from './meta';
-import type { Page, PageBlock, Category, Form, Post, Team, Testimonial, PagesProjects, PagesBlog } from './content';
+import type { Page, PageBlock, Category, Form, Post, Team, Testimonial } from './content';
 import type { Inbox, HelpArticle, HelpCollection, HelpFeedback } from './help';
 import type { File, User } from './system';
 import type {
@@ -74,8 +75,6 @@ export interface Schema {
 	posts: Post[];
 	team: Team[];
 	testimonials: Testimonial[];
-	pages_projects: PagesProjects;
-	pages_blog: PagesBlog;
 
 	// Blocks
 	block_columns: BlockColumn[];
@@ -92,6 +91,7 @@ export interface Schema {
 	block_team: BlockTeam[];
 	block_testimonial: BlockTestimonial[];
 	block_video: BlockVideo[];
+	block_posts: BlockPosts[];
 
 	// OS
 	contacts: Contact[];

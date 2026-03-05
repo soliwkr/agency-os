@@ -1,4 +1,4 @@
-import type { Post, Page, HelpCollection, HelpArticle, PagesBlog, PagesProjects, SEO } from '~/types';
+import type { Post, Page, HelpCollection, HelpArticle, SEO } from '~/types';
 
 async function getPosts() {
 	const posts = await directusServer.request(
@@ -147,52 +147,14 @@ async function getHelpCollections() {
 	return entries;
 }
 
-async function getBlogAndProjctPages() {
-	const blogPage = await directusServer.request(
-		readSingleton('pages_blog', {
-			fields: [
-				{
-					seo: ['canonical_url', 'sitemap_change_frequency', 'sitemap_priority'],
-				},
-			],
-		}),
-	);
-
-	const projectPage = await directusServer.request(
-		readSingleton('pages_projects', {
-			fields: [
-				{
-					seo: ['canonical_url', 'sitemap_change_frequency', 'sitemap_priority'],
-				},
-			],
-		}),
-	);
-
-	const entries = [
-		{
-			loc: '/posts',
-			changefreq: blogPage.seo?.sitemap_change_frequency || 'monthly',
-			priority: blogPage.seo?.sitemap_priority || 0.5,
-		},
-		{
-			loc: '/projects',
-			changefreq: projectPage.seo?.sitemap_change_frequency || 'monthly',
-			priority: projectPage.seo?.sitemap_priority || 0.5,
-		},
-	];
-
-	return entries;
-}
-
 export default defineEventHandler(async () => {
-	const [posts, pages, categories, help_articles, help_collections, misc_pages] = await Promise.all([
+	const [posts, pages, categories, help_articles, help_collections] = await Promise.all([
 		getPosts(),
 		getPages(),
-		getBlogAndProjctPages(),
 		getCategories(),
 		getHelpArticles(),
 		getHelpCollections(),
 	]);
 
-	return [...posts, ...pages, ...misc_pages, ...categories, ...help_articles, ...help_collections];
+	return [...posts, ...pages, ...categories, ...help_articles, ...help_collections];
 });

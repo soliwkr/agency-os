@@ -13,6 +13,7 @@ import type { BlockTeam } from './block-team';
 import type { BlockTestimonial } from './block-testimonial';
 import type { BlockVideo } from './block-video';
 import type { BlockDivider } from './block-divider';
+import type { BlockPosts } from './block-posts';
 
 export type BlockType =
 	| 'block_columns'
@@ -29,7 +30,8 @@ export type BlockType =
 	| 'block_team'
 	| 'block_testimonials'
 	| 'block_video'
-	| 'block_divider';
+	| 'block_divider'
+	| 'block_posts';
 
 export type Block =
 	| BlockColumn
@@ -46,4 +48,5 @@ export type Block =
 	| BlockTeam
 	| BlockTestimonial
 	| BlockVideo
-	| BlockDivider;
+	| BlockDivider
+	| BlockPosts;

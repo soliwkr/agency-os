@@ -37,7 +37,7 @@ const postCategory = computed(() => {
 					'w-full h-56': direction === 'vertical',
 					'w-full h-56 md:w-72 md:h-72': direction === 'horizontal',
 				},
-				'relative block overflow-hidden border dark:border-gray-700 group rounded-card flex-shrink-0',
+				'relative block overflow-hidden border border-default group rounded-card flex-shrink-0',
 			]"
 			:href="`/posts/${post.slug}`"
 		>
@@ -58,7 +58,7 @@ const postCategory = computed(() => {
 			>
 				{{ postCategory.title }}
 			</Category>
-			<div v-if="post.type" class="absolute top-0 right-0 p-1.5 mt-4 mr-4 rounded-button bg-gray-900/50">
+			<div v-if="post.type" class="absolute top-0 right-0 p-1.5 mt-4 mr-4 rounded-button bg-inverted/50">
 				<DirectusIcon
 					v-if="post.type"
 					:name="iconMap[post.type ?? 'blog'] ?? 'material-symbols:article-outline-rounded'"

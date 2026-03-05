@@ -110,19 +110,19 @@ useServerSeoMeta({
 </script>
 <template>
 	<BlockContainer>
-		<header class="pb-6 border-b-2 border-gray-300 dark:border-gray-700">
+		<header class="pb-6 border-b-2 border-default">
 			<TypographyTitle>{{ category.title }}</TypographyTitle>
 			<TypographyHeadline :content="category.headline" />
 			<div></div>
 		</header>
 		<section class="relative items-center w-full py-12 space-y-12">
 			<div
-				class="relative grid gap-12 pb-12 border-b-2 border-gray-300 md:grid-cols-2 lg:grid-cols-4 dark:border-gray-700"
+				class="relative grid gap-12 pb-12 border-b-2 border-default md:grid-cols-2 lg:grid-cols-4"
 			>
 				<div>
-					<TypographyTitle as="p" class="text-gray-700 dark:text-gray-400">Search</TypographyTitle>
+					<TypographyTitle as="p" class="text-default">Search</TypographyTitle>
 					<GlobalSearch :collections="['posts']" class="flex" />
-					<TypographyTitle as="p" class="mt-8 text-gray-700 dark:text-gray-400">Categories</TypographyTitle>
+					<TypographyTitle as="p" class="mt-8 text-default">Categories</TypographyTitle>
 					<Categories />
 				</div>
 				<div class="space-y-4 lg:col-span-3">
@@ -132,7 +132,7 @@ useServerSeoMeta({
 							v-for="post in posts"
 							:key="post.id"
 							:post="post"
-							class="col-span-2 pb-6 border-b border-gray-300 dark:border-gray-700"
+							class="col-span-2 pb-6 border-b border-default"
 						/>
 					</div>
 				</div>

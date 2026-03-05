@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<DateDisplayProps>(), {
 		:class="[
 			{
 				'border-primary-500': color === 'primary',
-				'border-gray-500': color === 'gray',
+				'border-accented': color === 'gray',
 				'border-amber-500': color === 'amber',
 			},
 			'overflow-hidden text-center border rounded-lg',
@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<DateDisplayProps>(), {
 				},
 				{
 					'bg-primary-500': color === 'primary',
-					'bg-gray-500': color === 'gray',
+					'bg-accented': color === 'gray',
 					'bg-amber-500': color === 'amber',
 				},
 				'font-semibold text-white uppercase',

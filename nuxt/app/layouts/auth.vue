@@ -23,14 +23,12 @@ definePageMeta({
 	</div>
 </template>
 <style>
-html {
-	@apply h-full;
-}
-body {
-	@apply h-full;
+html,
+body,
+#__nuxt {
+	height: 100%;
 }
 #__nuxt {
-	@apply h-full;
-	@apply overflow-y-auto !important;
+	overflow-y: auto !important;
 }
 </style>

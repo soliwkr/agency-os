@@ -101,18 +101,18 @@ useServerSeoMeta({
 </script>
 <template>
 	<BlockContainer>
-		<header class="pb-6 border-b border-gray-300 dark:border-gray-700">
+		<header class="pb-6 border-b border-default">
 			<TypographyTitle>{{ page?.title }}</TypographyTitle>
 			<TypographyHeadline :content="page?.headline" />
 		</header>
 		<section class="relative w-full py-12 space-y-12">
 			<div
-				class="relative grid w-full gap-12 pb-12 border-b-2 border-gray-300 md:grid-cols-2 lg:grid-cols-4 dark:border-gray-700"
+				class="relative grid w-full gap-12 pb-12 border-b-2 border-default md:grid-cols-2 lg:grid-cols-4"
 			>
 				<div>
-					<TypographyTitle class="text-gray-700 dark:text-gray-400">Search</TypographyTitle>
+					<TypographyTitle class="text-default">Search</TypographyTitle>
 					<GlobalSearch :collections="['posts']" class="flex" />
-					<TypographyTitle class="mt-8 text-gray-700 dark:text-gray-400">Categories</TypographyTitle>
+					<TypographyTitle class="mt-8 text-default">Categories</TypographyTitle>
 					<Categories class="" />
 				</div>
 				<div class="space-y-4 lg:col-span-3">
@@ -128,7 +128,7 @@ useServerSeoMeta({
 						:key="post.id"
 						:post="post"
 						:class="[
-							'border-b border-gray-300 pb-6 dark:border-gray-700',
+							'border-b border-default pb-6',
 							// Make the first two posts span two columns
 							postIdx < 2 ? 'md:col-span-3' : 'md:col-span-2',
 						]"

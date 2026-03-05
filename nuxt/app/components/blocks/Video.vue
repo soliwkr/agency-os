@@ -25,7 +25,7 @@ const url = computed(() => {
 		<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 		<VVideo
 			v-if="url"
-			class="relative mt-6 overflow-hidden border dark:border-gray-700 rounded-card"
+			class="relative mt-6 overflow-hidden border border-default rounded-card"
 			:url="url"
 			:title="data.title ?? undefined"
 		/>

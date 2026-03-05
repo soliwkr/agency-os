@@ -54,7 +54,7 @@ const styleProp = computed(() => {
 		:style="styleProp"
 		:class="[
 			'inline-flex items-center font-display font-medium rounded-button',
-			badgeColor === 'gray' ? `bg-gray-100 text-gray-800` : '',
+			badgeColor === 'gray' ? `bg-elevated text-highlighted` : '',
 			badgeColor === 'green' ? `bg-green-100 text-green-800` : '',
 			badgeColor === 'purple' ? `bg-purple-100 text-purple-800` : '',
 			badgeColor === 'blue' ? `bg-blue-100 text-blue-800` : '',
@@ -69,7 +69,7 @@ const styleProp = computed(() => {
 			size === 'lg' ? ' px-2.5 py-0.5' : '',
 
 			{
-				' bg-gray-100 text-gray-800': !props.color,
+				' bg-elevated text-highlighted': !props.color,
 			},
 		]"
 	>

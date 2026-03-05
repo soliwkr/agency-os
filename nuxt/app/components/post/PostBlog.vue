@@ -30,11 +30,11 @@ defineProps<PostBlogProps>();
 					</NuxtLink>
 					<Author v-if="page?.author" :author="page.author" />
 					<div class="space-y-2">
-						<p class="flex text-gray-500 dark:text-gray-300">
+						<p class="flex text-muted">
 							<DirectusIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
 							{{ calculateReadTime(page?.content) }}
 						</p>
-						<p class="flex text-gray-500 dark:text-gray-300">
+						<p class="flex text-muted">
 							<DirectusIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
 							{{ getRelativeTime(page?.date_published) }}
 						</p>
@@ -44,7 +44,7 @@ defineProps<PostBlogProps>();
 
 			<!-- Title Container -->
 			<div
-				class="relative w-full max-w-4xl p-2 px-8 py-8 mx-auto -mt-12 overflow-hidden text-gray-900 border md:-mt-32 rounded-card border-primary md:px-16 md:py-12"
+				class="relative w-full max-w-4xl p-2 px-8 py-8 mx-auto -mt-12 overflow-hidden text-highlighted border md:-mt-32 rounded-card border-primary md:px-16 md:py-12"
 			>
 				<div
 					class="absolute inset-0 bg-gradient-to-br from-white via-gray-300 to-primary dark:from-gray-700 dark:via-gray-900 dark:to-primary/50"
@@ -58,13 +58,13 @@ defineProps<PostBlogProps>();
 
 			<div class="block px-6 mt-6 md:hidden">
 				<Author v-if="page?.author" :author="page.author" />
-				<div class="flex justify-between pb-4 mt-4 border-b dark:border-gray-700">
+				<div class="flex justify-between pb-4 mt-4 border-b border-default">
 					<div class="space-y-2">
-						<p class="flex text-gray-500 dark:text-gray-300">
+						<p class="flex text-muted">
 							<DirectusIcon name="material-symbols:timer-outline-rounded" class="w-6 h-6 mr-2" />
 							{{ calculateReadTime(page?.content) }}
 						</p>
-						<p class="flex text-gray-500 dark:text-gray-300">
+						<p class="flex text-muted">
 							<DirectusIcon name="material-symbols:calendar-today-rounded" class="w-6 h-6 mr-2" />
 							{{ getRelativeTime(page?.date_published) }}
 						</p>

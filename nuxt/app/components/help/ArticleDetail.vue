@@ -57,7 +57,7 @@ const {
 			</article>
 		</div>
 
-		<hr class="mt-12 dark:border-gray-700" />
+		<hr class="mt-12 border-default" />
 
 		<HelpFeedback class="mt-4" :title="article?.title" :url="`/help/articles/${article?.slug}`" />
 	</div>

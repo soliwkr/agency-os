@@ -44,27 +44,27 @@ const {
 				<div class="flex flex-col">
 					<TypographyHeadline :content="collection?.title" />
 
-					<div class="text-gray-500 text-md">
+					<div class="text-muted text-md">
 						<p>{{ collection?.description }}</p>
 					</div>
 				</div>
-				<div class="mt-5 text-gray-500">{{ collection?.articles.length }} articles</div>
+				<div class="mt-5 text-muted">{{ collection?.articles.length }} articles</div>
 			</div>
-			<div class="flex flex-col gap-5 p-2 border-2 dark:border-gray-600 rounded-card">
+			<div class="flex flex-col gap-5 p-2 border-2 border-accented rounded-card">
 				<NuxtLink
 					v-for="article in collection?.articles"
 					:key="article.id"
 					:to="`${baseUrl}/help/articles/${article.slug}`"
-					class="flex flex-col p-3 transition duration-150 rounded-card hover:bg-primary/10 dark:hover:bg-gray-900"
+					class="flex flex-col p-3 transition duration-150 rounded-card hover:bg-primary/10"
 				>
 					<div class="flex items-center justify-between">
 						<div>
 							<TypographyHeadline :content="article.title" size="sm" />
-							<p class="mt-2 text-sm text-gray-500">
+							<p class="mt-2 text-sm text-muted">
 								{{ article.summary }}
 							</p>
 						</div>
-						<Icon name="heroicons:arrow-right" class="w-6 h-6 dark:text-gray-300" />
+						<Icon name="heroicons:arrow-right" class="w-6 h-6 text-toned" />
 					</div>
 				</NuxtLink>
 			</div>

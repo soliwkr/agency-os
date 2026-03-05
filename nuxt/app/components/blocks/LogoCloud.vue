@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion } from 'motion-v';
 import type { BlockLogocloud, BlockLogocloudFile, File } from '~/types';
 
 defineProps<{
@@ -13,10 +14,9 @@ const { fileUrl } = useFiles();
 		<TypographyHeadline v-if="data?.headline" :content="data?.headline" size="lg" />
 		<div class="flow-root mt-8 lg:mt-10">
 			<div v-if="data.logos && data.logos.length > 0" class="grid gap-4 md:grid-cols-4 md:gap-8">
-				<div
+				<motion.div
 					v-for="(logo, fileIdx) in data?.logos as BlockLogocloudFile[]"
 					:key="logo.id"
-					v-motion
 					:initial="{
 						opacity: 0,
 						y: 100,
@@ -26,7 +26,7 @@ const { fileUrl } = useFiles();
 						y: 0,
 					}"
 					:transition="{ delay: 0.25 + 0.1 * fileIdx }"
-					class="flex items-center justify-center p-8 border rounded-card dark:border-gray-700 dark:bg-gray-200"
+					class="flex items-center justify-center p-8 border border-default rounded-card"
 				>
 					<NuxtImg
 						v-if="(logo.directus_files_id as File)?.id"
@@ -34,7 +34,7 @@ const { fileUrl } = useFiles();
 						:src="(logo.directus_files_id as File)?.id"
 						:alt="(logo.directus_files_id as File)?.description ?? ''"
 					/>
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	</BlockContainer>

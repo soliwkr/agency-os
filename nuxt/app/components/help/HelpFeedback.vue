@@ -100,9 +100,9 @@ async function handleSubmission(rating?: number) {
 			</div>
 			<!-- Ask For Comments -->
 			<div v-else-if="feedback?.rating && !success" class="space-y-4">
-				<p class="dark:text-gray-200">You chose:</p>
+				<p class="text-default">You chose:</p>
 				<div class="space-x-4">
-					<span class="text-xl font-bold dark:text-white">
+					<span class="text-xl font-bold text-highlighted">
 						{{ getRatingOption(feedback.rating)?.label }}
 					</span>
 					<UButton variant="outline" size="xs" icon="heroicons:x-mark" @click="feedback.rating = undefined" />

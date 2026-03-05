@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { AnimatePresence } from 'motion-v';
+import { motion, AnimatePresence } from 'motion-v';
+
+defineOptions({ inheritAttrs: false });
 
 interface MotionableProps {
 	as?: string | object;
@@ -13,18 +15,19 @@ withDefaults(defineProps<MotionableProps>(), {
 	as: 'div',
 	show: true,
 });
+
+const attrs = useAttrs();
 </script>
 <template>
 	<AnimatePresence>
-		<component
-			:is="as"
+		<motion.div
 			v-if="show"
-			v-motion
+			v-bind="attrs"
 			:initial="initial"
 			:animate="animate"
 			:exit="exit"
 		>
 			<slot />
-		</component>
+		</motion.div>
 	</AnimatePresence>
 </template>

@@ -129,9 +129,10 @@ export default cachedEventHandler(
 				data: data.flat(),
 			};
 		} catch (err: any) {
+			console.error('Search API error:', err);
 			throw createError({
 				statusCode: 500,
-				statusMessage: err.message,
+				statusMessage: err?.message || err?.errors?.[0]?.message || 'Search failed',
 			});
 		}
 	},

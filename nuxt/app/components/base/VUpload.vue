@@ -159,12 +159,12 @@ function useUpload() {
 			:class="[
 				'dropzone',
 				{
-					'border-primary bg-primary-50 dark:bg-primary !text-primary  dark:!text-gray-100 dark:border-primary':
+					'border-primary bg-primary-50 dark:bg-primary !text-primary dark:border-primary':
 						dragging,
-					'hover:border-primary hover:text-primary dark:hover:text-primary dark:hover:border-primary':
+					'hover:border-primary hover:text-primary':
 						!dragging && !uploading,
-					'text-gray-500 border-gray-300 dark:text-gray-100 dark:border-gray-700': !uploading,
-					'cursor-not-allowed dark:border-gray-700 dark:text-gray-100 text-gray-500 border-gray-300': uploading,
+					'text-muted border-default': !uploading,
+					'cursor-not-allowed border-default text-muted': uploading,
 				},
 			]"
 			@dragenter.prevent="onDragEnter"
@@ -201,7 +201,7 @@ function useUpload() {
 			>
 				<div
 					v-if="uploading"
-					class="absolute inset-0 flex items-center justify-center bg-white rounded-md bg-opacity-70 dark:bg-gray-800 dark:bg-opacity-90"
+					class="absolute inset-0 flex items-center justify-center bg-default/90 rounded-md"
 				>
 					<VLoading class="w-16 h-16 text-primary dark:text-primary" />
 				</div>
@@ -212,9 +212,9 @@ function useUpload() {
 		<!-- File List -->
 		<ul class="mt-2 space-y-2">
 			<li v-for="(file, fileIdx) in files" :key="file.id">
-				<div class="relative flex items-center px-4 py-2 rounded-md bg-gray-50 dark:bg-gray-800">
+				<div class="relative flex items-center px-4 py-2 rounded-md bg-muted">
 					<NuxtImg :src="file.id" class="object-contain w-12 h-12 mr-4 dark:brightness-90" />
-					<span class="sm:text-sm dark:text-gray-200">{{ file.filename_download }}</span>
+					<span class="sm:text-sm text-default">{{ file.filename_download }}</span>
 					<span class="flex ml-auto cursor-pointer">
 						<button @click="deleteImage(fileIdx)">
 							<Icon

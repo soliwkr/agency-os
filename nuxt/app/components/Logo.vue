@@ -55,6 +55,6 @@ const props = defineProps({
 
 <style>
 .accent {
-	fill: rgb(var(--color-primary-500));
+	fill: var(--ui-primary);
 }
 </style>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion } from 'motion-v';
 import type { BlockStep, BlockStepItem, BlockButtonGroup } from '~/types/';
 
 const props = defineProps<{
@@ -16,8 +17,7 @@ const steps = computed(() => {
 		<TypographyHeadline v-if="data.headline" :content="data.headline" size="lg" />
 		<div class="mt-8">
 			<template v-for="(step, stepIdx) in steps" :key="stepIdx">
-				<div
-					v-motion
+				<motion.div
 					:initial="{
 						opacity: 0,
 						scale: 1,
@@ -56,7 +56,7 @@ const steps = computed(() => {
 						<TypographyProse v-if="step.content" :content="step.content" class="mt-4" />
 						<BlocksButtonGroup v-if="step.button_group" :data="step.button_group as BlockButtonGroup" class="mt-4" />
 					</div>
-				</div>
+				</motion.div>
 				<svg
 					v-if="stepIdx !== steps.length - 1"
 					class="h-16 m-0 mx-auto stroke-current text-primary md:h-20 steps-animation"

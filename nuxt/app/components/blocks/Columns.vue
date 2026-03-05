@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { motion } from 'motion-v';
 import type { BlockButtonGroup, BlockColumn, BlockColumnRow } from '~/types';
 
 defineProps<{
@@ -22,10 +23,9 @@ defineProps<{
 					<TypographyProse v-if="row?.content" :content="row?.content" class="mt-4" />
 					<BlocksButtonGroup v-if="row?.button_group" :data="row?.button_group as BlockButtonGroup" class="mt-4" />
 				</div>
-				<div
+				<motion.div
 					v-if="row.image"
-					v-motion
-					class="order-first block w-full h-full overflow-hidden border dark:border-gray-700 rounded-card"
+					class="order-first block w-full h-full overflow-hidden border border-default rounded-card"
 					:initial="{ opacity: 0, scale: 0.5, y: 0 }"
 					:whileInView="{ opacity: 1, scale: 1, y: 0 }"
 					:transition="{ duration: 1, delay: 0.25 }"
@@ -41,9 +41,9 @@ defineProps<{
 						:src="safeRelationId(row.image) ?? ''"
 						height="600"
 						width="600"
-						class="object-cover object-center w-full h-full bg-gray-100 rounded-card dark:brightness-90"
+						class="object-cover object-center w-full h-full bg-elevated rounded-card dark:brightness-90"
 					/>
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	</BlockContainer>

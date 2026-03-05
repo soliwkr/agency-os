@@ -18,8 +18,8 @@ const galleryItems = computed(() => {
 	<div class="py-12">
 		<header class="relative h-[400px] overflow-hidden flex justify-center items-center">
 			<NuxtImg class="absolute inset-0 object-cover w-full h-full" :src="page?.image" />
-			<div class="absolute inset-0 bg-gray-900 opacity-75" />
-			<div class="relative max-w-3xl p-8 mx-auto overflow-hidden bg-gray-900 bg-opacity-50 rounded-card">
+			<div class="absolute inset-0 bg-inverted opacity-75" />
+			<div class="relative max-w-3xl p-8 mx-auto overflow-hidden bg-inverted/50 rounded-card">
 				<TypographyHeadline :content="page?.title" class="text-white" size="xl" />
 				<TypographyProse :content="page?.summary" class="text-white mt-4" />
 			</div>
@@ -36,10 +36,10 @@ const galleryItems = computed(() => {
 			</main>
 			<!-- Project Metadata -->
 			<aside class="md:w-[300px] flex-shrink-0">
-				<div class="p-4 space-y-8 border-2 dark:border-gray-700 rounded-card">
+				<div class="p-4 space-y-8 border-2 border-default rounded-card">
 					<div>
 						<TypographyTitle>Client</TypographyTitle>
-						<p class="font-bold dark:text-white">
+						<p class="font-bold text-highlighted">
 							{{ page?.client }}
 						</p>
 					</div>
@@ -51,7 +51,7 @@ const galleryItems = computed(() => {
 					</div>
 					<div>
 						<TypographyTitle>Cost</TypographyTitle>
-						<p class="font-bold dark:text-white">
+						<p class="font-bold text-highlighted">
 							{{ page?.cost }}
 						</p>
 					</div>

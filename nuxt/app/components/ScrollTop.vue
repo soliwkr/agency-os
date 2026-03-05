@@ -10,12 +10,12 @@ const { progress, scrollToTop } = useScrollProgress();
 				class="absolute inset-0 flex items-center justify-center"
 				@click="() => scrollToTop()"
 			>
-				<DirectusIcon name="material-symbols:arrow-upward-rounded" class="w-4 h-4 text-primary/75 hover:text-gray-500" />
+				<DirectusIcon name="material-symbols:arrow-upward-rounded" class="w-4 h-4 text-primary/75 hover:text-muted" />
 			</button>
 		</div>
 		<span
 			v-if="progress >= 0.95"
-			class="p-1.5 text-gray-700 bg-gray-300 bg-opacity-50 rounded-xl dark:bg-gray-700 dark:text-gray-200 font-display"
+			class="p-1.5 text-default bg-accented/50 rounded-xl font-display"
 		>
 			fin.
 		</span>

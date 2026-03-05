@@ -19,7 +19,7 @@ defineProps<{
 		<!-- Image -->
 		<div
 			v-if="data.image"
-			class="overflow-hidden border lg:relative lg:h-full dark:border-gray-700 rounded-card"
+			class="overflow-hidden border lg:relative lg:h-full border-default rounded-card"
 			:class="data.image_position === 'left' ? 'order-first lg:-ml-48 md:-ml-16' : 'lg:-mr-48 md:-mr-16 '"
 		>
 			<NuxtImg

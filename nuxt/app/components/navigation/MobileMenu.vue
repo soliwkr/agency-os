@@ -60,12 +60,12 @@ watch(
 					duration: 0.3,
 				},
 			}"
-			class="fixed inset-0 z-50 flex flex-col w-full h-full bg-gray-50 dark:bg-gray-800"
+			class="fixed inset-0 z-50 flex flex-col w-full h-full bg-muted"
 		>
-			<div class="relative w-full px-6 pt-6 flex justify-between border-b dark:border-gray-700 items-start">
+			<div class="relative w-full px-6 pt-6 flex justify-between border-b border-default items-start">
 				<div>
 					<NuxtLink href="/">
-						<Logo class="h-6 dark:text-white" />
+						<Logo class="h-6 text-highlighted" />
 					</NuxtLink>
 					<VText v-if="globals?.tagline" class="pb-4 mt-2">
 						{{ globals.tagline }}

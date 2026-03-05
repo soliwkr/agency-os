@@ -83,7 +83,7 @@ useServerSeoMeta({
 </script>
 <template>
 	<BlockContainer>
-		<header class="pb-6 border-b-2 dark:border-gray-700">
+		<header class="pb-6 border-b-2 border-default">
 			<TypographyTitle>{{ page?.title }}</TypographyTitle>
 			<TypographyHeadline v-if="page.headline" :content="page?.headline" />
 		</header>
@@ -94,7 +94,7 @@ useServerSeoMeta({
 					v-for="project in posts"
 					:key="project.id"
 					:href="`/posts/${project.slug}`"
-					:class="`relative block w-full mb-6 overflow-hidden transition duration-300 border rounded-card dark:border-gray-700`"
+					:class="`relative block w-full mb-6 overflow-hidden transition duration-300 border border-default rounded-card`"
 				>
 					<div class="relative h-56 overflow-hidden rounded-card group">
 						<NuxtImg
@@ -103,7 +103,7 @@ useServerSeoMeta({
 							class="object-cover transition duration-300 group-hover:scale-110"
 						/>
 						<div
-							class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
+							class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-default/75 opacity-0 hover:opacity-100"
 						>
 							<div class="p-8">
 								<TypographyTitle v-if="project?.client">{{ project?.client }}</TypographyTitle>

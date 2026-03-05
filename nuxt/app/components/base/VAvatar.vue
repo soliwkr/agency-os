@@ -13,7 +13,7 @@ withDefaults(defineProps<AvatarProps>(), {
 const { fileUrl } = useFiles();
 </script>
 <template>
-	<div class="flex items-center flex-none group dark:text-gray-100">
+	<div class="flex items-center flex-none group text-default">
 		<div class="mr-3">
 			<NuxtImg
 				v-if="author.avatar"

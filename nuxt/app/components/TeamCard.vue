@@ -47,7 +47,7 @@ const flipped = ref(false);
 					<NuxtLink
 						v-for="link in person.social_media"
 						:key="link?.service"
-						class="inline-flex w-full border border-gray-900 hover:border-white hover:text-white"
+						class="inline-flex w-full border border-inverted hover:border-inverted hover:text-inverted"
 						:href="link?.url"
 						target="_blank"
 					>

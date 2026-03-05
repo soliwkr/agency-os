@@ -8,6 +8,6 @@ withDefaults(defineProps<DividerProps>(), {
 });
 </script>
 <template>
-	<div v-if="vertical" class="h-full border-l border-gray-300 dark:border-gray-700" />
-	<div v-else class="w-full border-t border-gray-300 dark:border-gray-700" />
+	<div v-if="vertical" class="h-full border-l border-default" />
+	<div v-else class="w-full border-t border-default" />
 </template>

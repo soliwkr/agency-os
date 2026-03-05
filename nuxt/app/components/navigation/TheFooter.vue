@@ -58,7 +58,7 @@ const { data: form } = await useAsyncData(
 </script>
 <template>
 	<footer
-		class="relative px-8 py-8 bg-white md:px-12 md:py-10 dark:bg-gray-900 rounded-panel"
+		class="relative px-8 py-8 bg-muted md:px-12 md:py-10 rounded-panel"
 		aria-labelledby="footer-heading"
 	>
 		<div class="mx-auto">
@@ -66,14 +66,14 @@ const { data: form } = await useAsyncData(
 			<div class="flex justify-between items-start">
 				<div class="w-full">
 					<NuxtLink href="/">
-						<Logo class="h-8 dark:text-white" />
+						<Logo class="h-8 text-highlighted" />
 					</NuxtLink>
 					<VText v-if="globals?.tagline" text-color="light" class="mt-2">
 						{{ globals.tagline }}
 					</VText>
 				</div>
 				<div class="flex items-center justify-end">
-					<DarkModeToggle class="hidden text-gray-600 md:block hover:text-gray-400" />
+					<DarkModeToggle class="hidden text-muted md:block hover:text-highlighted" />
 				</div>
 			</div>
 
@@ -85,7 +85,7 @@ const { data: form } = await useAsyncData(
 						<li v-for="item in navigation?.items as NavigationItem[]" :key="item.id">
 							<NuxtLink
 								:to="getNavItemUrl(item) as RouteLocationRaw"
-								class="font-medium text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-primary"
+								class="font-medium text-default hover:text-highlighted"
 							>
 								{{ item.title }}
 							</NuxtLink>
@@ -103,21 +103,21 @@ const { data: form } = await useAsyncData(
 		</div>
 
 		<!-- Bottom -->
-		<div class="pt-6 mx-auto border-t dark:border-t-gray-700 max-w-7xl md:flex md:items-center md:justify-between">
+		<div class="pt-6 mx-auto border-t border-default max-w-7xl md:flex md:items-center md:justify-between">
 			<div class="flex items-center justify-center space-x-6 md:order-last md:mb-0">
 				<NuxtLink
 					v-for="link in globals?.social_links"
 					:key="link.url"
 					:href="link.url"
-					class="w-6 h-6 text-white"
+					class="w-6 h-6 text-highlighted"
 					target="_blank"
 				>
 					<span class="sr-only">{{ link.service }}</span>
-					<Icon class="w-8 h-8 text-gray-700 dark:text-white hover:opacity-75" :name="`mdi:${link.service}`" />
+					<Icon class="w-8 h-8 text-default hover:opacity-75" :name="`mdi:${link.service}`" />
 				</NuxtLink>
 			</div>
 			<div class="mt-8 md:mt-0 md:order-1">
-				<span class="mt-2 text-gray-600 dark:text-gray-400">
+				<span class="mt-2 text-muted">
 					Copyright © 1988 - {{ new Date().getFullYear() }}
 					<NuxtLink v-if="globals?.title" href="/" class="mx-2 hover:text-primary" rel="noopener noreferrer">
 						{{ globals.title }}.
@@ -125,14 +125,14 @@ const { data: form } = await useAsyncData(
 					All rights reserved.
 				</span>
 				<!-- You're free to remove this footer if you want. But we'd appreciate it if you keep the credits. -->
-				<span class="block mt-2 text-gray-600 dark:text-gray-400">
+				<span class="block mt-2 text-muted">
 					<Icon name="heroicons:bolt" class="w-4 h-4 text-primary" />
 					Site powered by
 					<NuxtLink
 						href="https://www.directus.io?ref=agencyos_footer"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="border-b dark:border-b-gray-700 hover:text-primary"
+						class="border-b border-default hover:text-primary"
 					>
 						Directus
 					</NuxtLink>
@@ -141,7 +141,7 @@ const { data: form } = await useAsyncData(
 						href="https://www.nuxt.com?ref=agencyos_footer"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="border-b dark:border-b-gray-700 hover:text-primary"
+						class="border-b border-default hover:text-primary"
 					>
 						Nuxt
 					</NuxtLink>

@@ -35,7 +35,7 @@ const {
 			v-for="collection in collections"
 			:key="collection.id"
 			:href="`${baseUrl}/help/collections/${collection.slug}`"
-			class="flex overflow-hidden no-underline transition duration-200 bg-white border dark:bg-gray-800 hover:border-primary dark:border-gray-700 rounded-card dark:hover:border-primary"
+			class="flex overflow-hidden no-underline transition duration-200 bg-default border border-default hover:border-primary rounded-card"
 		>
 			<div class="flex flex-col p-5 sm:p-6">
 				<div class="flex items-center">
@@ -47,11 +47,11 @@ const {
 				</div>
 				<div>
 					<TypographyHeadline :content="collection.title" size="sm" />
-					<p class="text-gray-500 dark:text-gray-300 line-clamp-3 text-md sm:line-clamp-3">
+					<p class="text-muted line-clamp-3 text-md sm:line-clamp-3">
 						{{ collection.description }}
 					</p>
 				</div>
-				<div class="mt-4 text-sm text-gray-500 dark:text-gray-300">{{ collection.articles.length }} articles</div>
+				<div class="mt-4 text-sm text-muted">{{ collection.articles.length }} articles</div>
 			</div>
 		</NuxtLink>
 	</div>

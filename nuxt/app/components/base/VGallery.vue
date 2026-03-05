@@ -16,15 +16,7 @@ const currentItem = computed(() => {
 	return props.items[currentItemIdx.value];
 });
 
-function next() {
-	// If the current item is the last item, go back to the first item
-	currentItemIdx.value = currentItemIdx.value === props.items.length - 1 ? 0 : currentItemIdx.value + 1;
-}
-
-function prev() {
-	// If the current item is the first item, go to the last item
-	currentItemIdx.value = currentItemIdx.value === 0 ? props.items.length - 1 : currentItemIdx.value - 1;
-}
+const carousel = useTemplateRef('carousel');
 
 function toggle() {
 	isOpen.value = !isOpen.value;
@@ -36,29 +28,13 @@ function toggleHelp() {
 	isHelpOpen.value = !isHelpOpen.value;
 }
 
-// Add keyboard navigation
-function onKeydown(e: KeyboardEvent) {
-	if (!isOpen.value) return;
-
-	if (e.key === 'Escape') {
-		toggle();
+// Scroll carousel to the correct slide when lightbox opens
+watch(isOpen, (val) => {
+	if (val) {
+		nextTick(() => {
+			carousel.value?.emblaApi?.scrollTo(currentItemIdx.value, true);
+		});
 	}
-
-	if (e.key === 'ArrowRight') {
-		next();
-	}
-
-	if (e.key === 'ArrowLeft') {
-		prev();
-	}
-}
-
-onMounted(() => {
-	window.addEventListener('keydown', onKeydown);
-});
-
-onUnmounted(() => {
-	window.removeEventListener('keydown', onKeydown);
 });
 </script>
 <template>
@@ -68,7 +44,7 @@ onUnmounted(() => {
 			v-for="(item, itemIdx) in items"
 			:key="item.id"
 			:class="[
-				'block relative w-full mb-6 overflow-hidden border dark:border-gray-700 rounded-card focus:outline-none',
+				'block relative w-full mb-6 overflow-hidden border border-default rounded-card focus:outline-none',
 			]"
 			@click="
 				() => {
@@ -84,7 +60,7 @@ onUnmounted(() => {
 					class="object-cover w-full transition duration-300 group-hover:scale-110"
 				/>
 				<div
-					class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-white bg-opacity-75 opacity-0 hover:opacity-100 dark:bg-gray-900 dark:bg-opacity-75"
+					class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-default/75 opacity-0 hover:opacity-100"
 				>
 					<DirectusIcon name="material-symbols:zoom-in-rounded" class="w-12 h-12 text-primary" />
 				</div>
@@ -100,7 +76,12 @@ onUnmounted(() => {
 		leave-from-class="opacity-100"
 		leave-to-class="opacity-0"
 	>
-		<div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gray-900 bg-opacity-75">
+		<div
+			v-if="isOpen"
+			class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-inverted/75"
+			@keydown.escape="toggle"
+			tabindex="0"
+		>
 			<div class="relative flex flex-col items-center justify-center w-full h-full max-w-7xl">
 				<!-- Help Button -->
 				<div
@@ -117,7 +98,7 @@ onUnmounted(() => {
 
 					<div
 						v-if="isHelpOpen"
-						class="flex items-center px-3 py-1 text-xs bg-gray-900 backdrop-blur-sm rounded-button gap-x-4"
+						class="flex items-center px-3 py-1 text-xs bg-inverted backdrop-blur-sm rounded-button gap-x-4"
 					>
 						<p>
 							Press
@@ -135,33 +116,42 @@ onUnmounted(() => {
 				</div>
 				<!-- Close Button -->
 				<UButton class="absolute z-50 top-4 right-4" icon="material-symbols:close-rounded" size="xl" @click="toggle" />
-				<div class="flex items-center justify-center w-full h-full">
-					<!-- Nav Buttons -->
-					<UButton class="absolute z-50 left-4" icon="material-symbols:arrow-back-rounded" size="xl" @click="prev" />
-					<UButton
-						class="absolute z-50 right-4"
-						icon="material-symbols:arrow-forward-rounded"
-						size="xl"
-						@click="next"
-					/>
-					<!-- Image -->
-					<div class="relative flex flex-col items-center justify-center w-full h-full p-20 mx-auto">
-						<p
-							v-if="currentItem.description"
-							class="inline-block px-6 py-2 text-sm text-white bg-gray-900 rounded-t-xl"
-						>
-							{{ currentItem.description }}
-						</p>
 
-						<template v-for="(item, itemIdx) in items" :key="item.id">
-							<NuxtImg
-								v-show="currentItemIdx === itemIdx"
-								:src="item.id"
-								:alt="item.description ?? ''"
-								class="object-contain w-full rounded-card"
-							/>
-						</template>
-					</div>
+				<!-- Image Carousel -->
+				<div class="relative flex flex-col items-center justify-center w-full h-full p-20 mx-auto">
+					<p
+						v-if="currentItem.description"
+						class="inline-block px-6 py-2 text-sm text-inverted bg-inverted rounded-t-xl"
+					>
+						{{ currentItem.description }}
+					</p>
+
+					<UCarousel
+						ref="carousel"
+						v-slot="{ item }"
+						loop
+						arrows
+						fade
+						:items="items"
+						:start-index="currentItemIdx"
+						:prev="{ size: 'xl', icon: 'material-symbols:arrow-back-rounded', variant: 'solid' }"
+						:next="{ size: 'xl', icon: 'material-symbols:arrow-forward-rounded', variant: 'solid' }"
+						:ui="{
+							root: 'w-full h-full',
+							viewport: 'h-full',
+							container: 'h-full',
+							item: 'h-full flex items-center justify-center',
+							prev: 'left-4',
+							next: 'right-4',
+						}"
+						@select="(idx: number) => currentItemIdx = idx"
+					>
+						<NuxtImg
+							:src="item.id"
+							:alt="item.description ?? ''"
+							class="object-contain max-h-full rounded-card"
+						/>
+					</UCarousel>
 				</div>
 			</div>
 		</div>

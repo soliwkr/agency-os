@@ -13,7 +13,7 @@ const emit = defineEmits(['close']);
 <template>
 	<div v-if="item.children.length > 0">
 		<button class="flex items-center rounded-md" @click="subMenuOpen = !subMenuOpen">
-			<span class="text-2xl mr-2 font-medium dark:text-white font-display">
+			<span class="text-2xl mr-2 font-medium text-highlighted font-display">
 				{{ item.title }}
 			</span>
 			<Icon v-if="item.children.length > 0" name="heroicons:plus" class="w-6 h-6 text-primary" />
@@ -38,11 +38,11 @@ const emit = defineEmits(['close']);
 					duration: 0.3,
 				},
 			}"
-			class="fixed inset-0 z-50 flex flex-col items-center justify-center w-full h-full bg-gray-50 dark:bg-gray-800"
+			class="fixed inset-0 z-50 flex flex-col items-center justify-center w-full h-full bg-muted"
 		>
 			<div class="w-full px-6">
 				<TypographyTitle class="pb-2 border-b border-b-primary">{{ item.title }}</TypographyTitle>
-				<NuxtLink v-for="child in item.children" :key="child.id" :href="child.url" class="px-3 dark:text-white">
+				<NuxtLink v-for="child in item.children" :key="child.id" :href="child.url" class="px-3 text-highlighted">
 					<VText size="2xl" class="font-medium font-display">
 						{{ child.title }}
 					</VText>
@@ -56,7 +56,7 @@ const emit = defineEmits(['close']);
 			</div>
 		</Motionable>
 	</div>
-	<NuxtLink v-else :href="item.url" class="flex items-center rounded-md dark:text-white">
+	<NuxtLink v-else :href="item.url" class="flex items-center rounded-md text-highlighted">
 		<span class="text-2xl font-medium font-display">
 			{{ item.title }}
 		</span>

@@ -10,6 +10,6 @@ defineProps<{ data: DividerBlockProps }>();
 		<div v-if="data.title" class="flex-shrink-0 mx-auto lg:mx-0">
 			<TypographyHeadline :content="data.title" />
 		</div>
-		<div class="w-full h-px bg-gray-300 dark:bg-gray-700"></div>
+		<div class="w-full h-px bg-(--ui-border)"></div>
 	</BlockContainer>
 </template>

@@ -23,11 +23,13 @@ useHead({
 	style: [
 		{
 			id: 'theme-vars',
-			innerHTML: `:root {${Object.entries(radiusValues)
+			innerHTML: `:root {
+--ui-radius: ${radiusValues.button};
+${Object.entries(radiusValues)
 				.map(([key, value]) => `--border-radius-${key}: ${value};`)
 				.join('\n')}
---font-display: ${globals?.font_display ?? 'Poppins'};
---font-sans: ${globals?.font_body ?? 'Inter'};
+--font-display: ${globals?.font_display ?? 'Source Serif 4'};
+--font-sans: ${globals?.font_body ?? 'Geist'};
 --font-code: ${globals?.font_monospace ?? 'Fira Code'};
 --font-signature: Nothing You Could Do;}`,
 		},

@@ -1,27 +1,53 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@theme static {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Source Serif 4', ui-serif, Georgia, serif;
+  --font-mono: 'Fira Code', ui-monospace, monospace;
+  --font-signature: 'Nothing You Could Do', cursive, sans-serif;
+
+  --radius-card: var(--border-radius-card);
+  --radius-button: var(--border-radius-button);
+  --radius-input: var(--border-radius-input);
+  --radius-panel: var(--border-radius-panel);
+
+  --animate-fade-in: fade-in 0.5s linear forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 :target {
-	scroll-margin-top: 4rem;
+  scroll-margin-top: 4rem;
 }
 
 .grain-bg {
-	background-image: url('~/assets/img/noise.png');
+  background-image: url('~/assets/img/noise.png');
 }
 
 ::selection {
-	background-color: var(--ui-primary);
-	color: white;
+  background-color: var(--ui-primary);
+  color: white;
 }
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

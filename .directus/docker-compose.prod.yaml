@@ -1,0 +1,37 @@
+services:
+  soliwkr-directus:
+    image: directus/directus:latest
+    environment:
+      KEY: ${DIRECTUS_KEY}
+      SECRET: ${DIRECTUS_SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      DB_CLIENT: postgres
+      DB_HOST: soliwkr-postgres
+      DB_PORT: 5432
+      DB_DATABASE: soliwkr_directus
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      STORAGE_LOCATIONS: local
+      STORAGE_LOCAL_ROOT: /directus/uploads
+      PUBLIC_URL: https://cms.soliwkr.pro
+      WEBSOCKETS_ENABLED: "true"
+    volumes:
+      - soliwkr-directus-uploads:/directus/uploads
+      - soliwkr-directus-extensions:/directus/extensions
+    networks:
+      - dokploy-network
+    labels:
+      - "homepage.group=Applicazioni"
+      - "homepage.name=Directus CMS"
+      - "homepage.icon=directus"
+      - "homepage.href=https://cms.soliwkr.pro"
+      - "homepage.description=Il quartier generale dei contenuti. Da qui esce tutto il copy che conquista Google."
+
+volumes:
+  soliwkr-directus-uploads:
+  soliwkr-directus-extensions:
+
+networks:
+  dokploy-network:
+    external: true
